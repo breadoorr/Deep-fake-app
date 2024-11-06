@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spot the Fake!</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/3ba50cbadb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+  <div id="mobile">
+    <i id="bar" class="fas fa-bars"></i> <!-- Mobile menu icon -->
+  </div>
+  <nav>
+    <ul id="navbar">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">How to Play</a></li>
+      <li><a href="#" id="login-link">Sign Up/Login</a></li> <!-- Trigger for the modal -->
+      <li><a href="#">My Profile</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div class="container">
+    <h1>Spot the Fake!</h1>
+    <div class="profile-placeholder"></div>
+    <button class="primary-btn">Start Game!</button>
+    <button class="secondary-btn">Continue</button>
+    <div class="footer-links">
+      <a href="#">Terms of Use</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+</main>
+
+<!-- Modal for Login/Registration -->
+<div id="modal" class="modal" data-mode="login">
+  <div class="modal-content">
+    <span class="close-btn" id="close-btn">&times;</span>
+    <h2 id="modal-title">Sign Up / Login</h2>
+
+    <!-- Login Form -->
+    <div id="login-form">
+      <input type="text" placeholder="Username" class="modal-input">
+      <input type="password" placeholder="Password" class="modal-input">
+      <button class="modal-btn">Login</button>
+      <p class="no-account-text">
+        Don’t have an account? <a href="#" id="signup-link">Sign up here</a>
+      </p>
+    </div>
+
+    <!-- Registration Form (hidden by default) -->
+    <div id="registration-form" style="display: none;">
+      <input type="text" placeholder="Enter Username" class="modal-input">
+      <input type="email" placeholder="Enter Your Email" class="modal-input">
+      <input type="password" placeholder="Password" class="modal-input">
+      <button class="modal-btn">Register</button>
+      <p class="no-account-text">
+        Already have an account? <a href="#" id="login-back-link">Log in here</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
