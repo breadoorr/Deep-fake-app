@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// script.js
 document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById("bar");
     const navbar = document.getElementById("navbar");
@@ -83,13 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-btn');
     const targetSection = document.getElementById('choose-mode');
 
     startButton.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent the default anchor link behavior
+        event.preventDefault();
 
         // Smoothly scroll to the target section
         targetSection.scrollIntoView({
