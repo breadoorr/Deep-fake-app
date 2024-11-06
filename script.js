@@ -8,7 +8,6 @@ function toggleMenu() {
     }
 }
 
-// Keep the continue button disabled until "Start Game" is clicked
 document.addEventListener('DOMContentLoaded', () => {
     const startGameButton = document.querySelector('.primary-btn');
     const continueButton = document.querySelector('.secondary-btn');
