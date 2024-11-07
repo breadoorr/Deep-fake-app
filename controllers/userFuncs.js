@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {pool} = require('pg');
+// const {pool} = require('');
 const nodemailer = require('nodemailer');
 
-const db = require("../controllers/db.js");
+const {db:pool} = require("../controllers/db");
 
 exports.Login = async (req, res) => {
     const {username, password} = req.body;
@@ -66,7 +66,7 @@ exports.ConfirmEmail = async (req, res) => {
     });
 
     const token = jwt.sign({
-            data: 'Token Data'  .
+            data: 'Token Data'
         }, 'ourSecretKey', { expiresIn: '10m' }
     );
 
@@ -81,15 +81,15 @@ exports.ConfirmEmail = async (req, res) => {
         subject: 'Email Verification',
 
         // This would be the text of email body
-        text: `Hi! There, You have recently visited 
+        text: `Hi! There, You have recently visited
            our website and entered your email.
            Please follow the given link to verify your email
-           http://localhost:3000/verify/${token} 
+           http://localhost:3000/verify/${token}
            Thanks`
     };
 
     transporter.sendMail(mailConfigurations, function(error, info){
-        if (error) throw Error(error);
+        // if (error) throw Error(error);
         console.log('Email Sent Successfully');
         console.log(info);
     });
@@ -100,15 +100,30 @@ exports.GetProfile = async (req, res) => {
     const sql = "SELECT * FROM Users WHERE username = req";
     const email = req.params.email;
 
-    db.query(sql, [email], (err, results) => {
-        if (err) {
-            return callback(err);
-        }
-        callback(null, results);
-    });
+    // db.query(sql, [email], (err, results) => {
+    //     if (err) {
+    //         return callback(err);
+    //     }
+    //     callback(null, results);
+    // });
 }
 
 exports.UpdateProfile = async (req, res) => {
     console.log("User updated info");
     res.status(200);
 }
+
+
+// exports.login = async (req, res) => {
+//     const { username, password } = req.body;
+//
+//     try {
+//         const sql = "INSERT INTO Users (username, password) VALUES (?, ?)";
+//         const [result] = await db.execute(sql, [username, password]);
+//         console.log(result);
+//         res.status(200).json(result);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).send("Internal Server Error");
+//     }
+// }
