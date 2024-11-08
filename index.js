@@ -1,27 +1,29 @@
 const express = require('express');
 const cors = require('cors');
-const sql = require('mysql2');
-const {db} = require('./controllers/db');
-const bodyParser = require('body-parser');
+const { db } = require('./controllers/db');
 
 const PORT = 3000;
-
-const index = express();
+const app = express();
 
 const userRoute = require("./routers/user.js");
 const gameRoute = require("./routers/game.js");
 
-index.use(cors());
-index.use(express.json());
+app.use(cors());
+app.use(express.json());
 
-index.use('/user', userRoute);
-index.use('/game', gameRoute);
+app.use('/user', userRoute);
+app.use('/game', gameRoute);
 
 db();
 
-index.get('/', (req, res) => {
-    res.status(200);
-    res.send("Welcome to root URL of Server");
+app.get('/', (req, res) => {
+  res.status(200);
+  res.send("Welcome to root URL of Server");
 });
 
-index.listen(3000);
+// Создаем сервер и экспортируем его
+const server = app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+module.exports = server;
