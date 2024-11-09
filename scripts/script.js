@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
     startButton.addEventListener('click', (event) => {
         event.preventDefault();
 
-        // Smoothly scroll to the target section
         targetSection.scrollIntoView({
             behavior: 'smooth'
         });
     });
 });
+
 

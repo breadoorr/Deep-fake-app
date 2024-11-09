@@ -1,0 +1,310 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #111;
+    color: #fff;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+header {
+    width: 100%;
+    background: linear-gradient(45deg, #333, #555);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#navbar {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+#navbar li {
+    position: relative;
+    margin: 0 1rem;
+}
+
+#navbar li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
+
+#navbar li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #4CAF50;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+#navbar li a:hover {
+    color: #4CAF50;
+}
+
+#navbar li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+#mobile {
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    width: 80%;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.modal-btn {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.no-account-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.no-account-text a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.no-account-text a:hover {
+    color: #45a049;
+}
+
+/*game section*/
+.game-section {
+    padding-top: 80px;
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+}
+
+.game-section h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.game-section p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 65px;
+    padding: 1rem 0;
+    max-width: 100%;
+}
+
+.image-item {
+    flex: 1 1 calc(40% - 20px); /* Smaller size with a larger gap */
+    max-width: calc(40% - 20px); /* Limit the width to 40% of the container */
+    height: auto; /* Maintain aspect ratio */
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.2);
+    text-align: center;
+}
+
+.image-item img {
+    width: 100%; /* Ensure images fill the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    object-fit: cover; /* Ensure consistent image display */
+}
+
+
+.feedback {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.buttons button[data-choice="real"] {
+    background-color: #4CAF50; /* Green for Real */
+}
+
+.buttons button[data-choice="fake"] {
+    background-color: #E53935; /* Red for Fake */
+}
+
+.buttons button:disabled {
+    background-color: #aaa; /* Disabled state */
+    cursor: not-allowed;
+}
+
+.feedback {
+    margin-top: 5px;
+    font-size: 1rem;
+    text-align: center;
+    height: 20px; /* Ensures space for feedback even before interaction */
+}
+
+
+/* Responsive Styling for Mobile */
+@media (max-width: 480px) {
+    .game-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .game-section p {
+        font-size: 1rem;
+    }
+
+    .gallery {
+        gap: 15px; /* Reduced gap for mobile */
+        /*overflow-x: scroll; !* Allows scrolling for smaller screens *!*/
+    }
+
+    .image-item {
+        width: 200px; /* Smaller width for mobile */
+        height: 200px; /* Smaller height for mobile */
+    }
+
+    .image-item img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .option-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hide desktop navbar and show mobile menu button */
+    #navbar {
+        display: none;
+    }
+
+    /* Show the mobile menu button only on screens <= 768px */
+    #mobile {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 1rem;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Display navbar as a vertical menu when active */
+    #navbar.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        background-color: #333;
+        padding: 1rem 0;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    #navbar li {
+        margin: 1rem 0;
+    }
+}

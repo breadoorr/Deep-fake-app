@@ -3,10 +3,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
     background-color: #111;
     color: #fff;
     line-height: 1.6;
@@ -149,7 +149,7 @@ header {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('deeeeeepfake.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../pics/background_1.png') no-repeat center center/cover;
     text-align: center;
     padding: 0 20px;
 }
@@ -269,7 +269,6 @@ header {
     margin: 3rem auto;
     padding: 2rem;
     text-align: center;
-    /*background-color: rgba(0, 0, 0, 0.7); !* Semi-transparent background for readability *!*/
     border-radius: 8px;
     max-width: 600px;
     color: #fff;
@@ -283,7 +282,8 @@ header {
 }
 
 .mode {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
 }
 
 .mode h3 {
@@ -296,8 +296,34 @@ header {
     color: #ccc;
     line-height: 1.5;
     max-width: 500px;
-    margin: 0.5rem auto;
+    margin: 0.5rem auto 1.5rem;
 }
+
+.mode-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(45deg, #4CAF50, #32a852);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5), 0 0 20px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+    background: linear-gradient(45deg, #32a852, #4CAF50);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7), 0 0 30px rgba(76, 175, 80, 0.5);
+    transform: scale(1.05);
+}
+
+.mode-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5), 0 0 16px rgba(76, 175, 80, 0.3);
+}
+
 
 /* Developer Team Section */
 .developer-team {
@@ -453,6 +479,10 @@ footer {
 
 
 @media (max-width: 768px) {
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -470,4 +500,37 @@ footer {
     }
 }
 
+@media (max-width: 768px) {
+    /* Hide desktop navbar and show mobile menu button */
+    #navbar {
+        display: none;
+    }
 
+    /* Show the mobile menu button only on screens <= 768px */
+    #mobile {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 1rem;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Display navbar as a vertical menu when active */
+    #navbar.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        background-color: #333;
+        padding: 1rem 0;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    #navbar li {
+        margin: 1rem 0;
+    }
+}

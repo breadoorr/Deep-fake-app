@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot the Fake - Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3ba50cbadb.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/gamePage.css">
+</head>
+<body>
+
+<!--Header-->
+<header>
+    <div id="mobile">
+        <i id="bar" class="fas fa-bars"></i> <!-- Mobile menu icon -->
+    </div>
+    <nav>
+        <ul id="navbar">
+            <li><a href="landingPage.html">Home</a></li>
+            <li><a href="#">How to Play</a></li>
+            <li><a href="#" id="login-link">Sign Up/Login</a></li>
+            <li><a href="#">My Profile</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Modal for Login/Registration -->
+<div id="modal" class="modal" data-mode="login">
+    <div class="modal-content">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <h2 id="modal-title">Sign Up / Login</h2>
+
+        <!-- Login Form -->
+        <div id="login-form">
+            <input type="text" placeholder="Username" class="modal-input">
+            <input type="password" placeholder="Password" class="modal-input">
+            <button class="modal-btn">Login</button>
+            <p class="no-account-text">
+                Don’t have an account? <a href="#" id="signup-link">Sign up here</a>
+            </p>
+        </div>
+
+        <!-- Registration Form (hidden by default) -->
+        <div id="registration-form" style="display: none;">
+            <input type="text" placeholder="Enter Username" class="modal-input">
+            <input type="email" placeholder="Enter Your Email" class="modal-input">
+            <input type="password" placeholder="Password" class="modal-input">
+            <button class="modal-btn">Register</button>
+            <p class="no-account-text">
+                Already have an account? <a href="#" id="login-back-link">Log in here</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Game Section -->
+<section class="game-section">
+    <h1>Spot the Fake</h1>
+    <p>Scroll through the images below. Choose "Real" if you think the person is real, or "Fake" if you think it's a deepfake.</p>
+
+    <div class="gallery">
+        <div class="image-item" data-correct-answer="fake">
+            <img src="../pics/fake1.jpg" alt="Person 1">
+        </div>
+
+        <div class="image-item" data-correct-answer="real">
+            <img src="../pics/fake2.jpg" alt="Person 2">
+        </div>
+
+        <div class="image-item" data-correct-answer="real">
+            <img src="../pics/fake1.jpg" alt="Person 3">
+        </div>
+
+        <div class="image-item" data-correct-answer="real">
+            <img src="../pics/fake2.jpg" alt="Person 4">
+        </div>
+    </div>
+</section>
+
+<script src="../scripts/script.js"></script>
+</body>
+</html>
