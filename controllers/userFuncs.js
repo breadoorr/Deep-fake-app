@@ -1,9 +1,15 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 // const {pool} = require('');
-const nodemailer = require('nodemailer');
 
 const {db:pool} = require("../controllers/db");
+
+const nodemailer = require('nodemailer');
+
+const jwtSecret = process.env.JWT_SECRET;
+const bcryptSalt = bcrypt.genSaltSync(10);
+
 
 exports.Login = async (req, res) => {
     const {username, password} = req.body;
@@ -56,44 +62,44 @@ exports.Register = async (req, res) => {
     }
 }
 
-exports.ConfirmEmail = async (req, res) => {
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: secure_configuration.EMAIL_USERNAME,
-            pass: secure_configuration.PASSWORD
-        }
-    });
-
-    const token = jwt.sign({
-            data: 'Token Data'
-        }, 'ourSecretKey', { expiresIn: '10m' }
-    );
-
-    const mailConfigurations = {
-
-        // It should be a string of sender/server email
-        from: 'mrtwinklesharma@gmail.com',
-
-        to: 'smtwinkle451@gmail.com',
-
-        // Subject of Email
-        subject: 'Email Verification',
-
-        // This would be the text of email body
-        text: `Hi! There, You have recently visited
-           our website and entered your email.
-           Please follow the given link to verify your email
-           http://localhost:3000/verify/${token}
-           Thanks`
-    };
-
-    transporter.sendMail(mailConfigurations, function(error, info){
-        // if (error) throw Error(error);
-        console.log('Email Sent Successfully');
-        console.log(info);
-    });
-}
+// exports.ConfirmEmail = async (req, res) => {
+//     const transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//             user: secure_configuration.EMAIL_USERNAME,
+//             pass: secure_configuration.PASSWORD
+//         }
+//     });
+//
+//     const token = jwt.sign({
+//             data: 'Token Data'
+//         }, 'ourSecretKey', { expiresIn: '10m' }
+//     );
+//
+//     const mailConfigurations = {
+//
+//         // It should be a string of sender/server email
+//         from: 'mrtwinklesharma@gmail.com',
+//
+//         to: 'smtwinkle451@gmail.com',
+//
+//         // Subject of Email
+//         subject: 'Email Verification',
+//
+//         // This would be the text of email body
+//         text: `Hi! There, You have recently visited
+//            our website and entered your email.
+//            Please follow the given link to verify your email
+//            http://localhost:3000/verify/${token}
+//            Thanks`
+//     };
+//
+//     transporter.sendMail(mailConfigurations, function(error, info){
+//         // if (error) throw Error(error);
+//         console.log('Email Sent Successfully');
+//         console.log(info);
+//     });
+// }
 
 exports.GetProfile = async (req, res) => {
     // res.json(members.filter(member => member.email === req.params.email));
@@ -112,7 +118,6 @@ exports.UpdateProfile = async (req, res) => {
     console.log("User updated info");
     res.status(200);
 }
-
 
 // exports.login = async (req, res) => {
 //     const { username, password } = req.body;
