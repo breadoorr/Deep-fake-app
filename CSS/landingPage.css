@@ -9,7 +9,7 @@
 }
 
 html, body {
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -155,9 +155,15 @@ header {
     color: #45a049;
 }
 
+section {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100%;
+}
+
 /* Hero Section */
 .hero {
-    height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url('../pics/background_1.png') no-repeat center center/cover;
     display: flex;
@@ -296,7 +302,6 @@ header {
 /* Content Sections */
 .content-section {
     margin-bottom: 4rem;
-    height: auto;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -306,7 +311,7 @@ header {
     text-align: center;
     background: #222;
     color: #fff;
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 1s ease, transform 1s ease-out;
 }
 
 .content-section:focus-within,
@@ -317,11 +322,11 @@ header {
 
 /* Heading Transition */
 .content-section h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #4CAF50;
     margin: 2rem 0 1.2rem;
     text-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-    opacity: 0;
+    opacity: 0.7;
     transform: translateY(-20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
@@ -335,12 +340,12 @@ header {
 
 /* Paragraph Transition */
 .content-section p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #ccc;
     line-height: 1.5;
     max-width: 800px;
     padding: 0 10px;
-    opacity: 0;
+    opacity: 0.7;
     transform: translateY(20px);
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
@@ -348,13 +353,11 @@ header {
 /* Make paragraph visible */
 .content-section:focus-within p,
 .content-section:hover p {
-    opacity: 1;
+    /*opacity: 1;*/
     transform: translateY(0);
 }
 
 .game-modes {
-    max-width: 1000px;
-    max-height: 1000px;
     margin: 3rem auto;
     padding: 2rem;
     text-align: center;
@@ -513,11 +516,16 @@ header {
     background-color: #333;
     border-radius: 12px;
     padding: 1.5rem;
-    width: 200px;
+    width: 20%;
+    min-width: 200px;
+    max-width: 400px;
+    font-size: 70%;
+    /*word-wrap: break-word;*/
+    white-space: normal;
     box-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
     border: 2px solid transparent;
     position: relative;
-    opacity: 0;
+    opacity: 0.3;
     transform: translateY(50px);
     animation: none;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -583,7 +591,6 @@ header {
 
 /* Footer styling */
 .footer {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
