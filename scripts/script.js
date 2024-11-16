@@ -82,17 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const startButton = document.getElementById('start-btn');
-    const targetSection = document.getElementById('choose-mode');
-
-    startButton.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        targetSection.scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
+// Disable body scrolling when modal is open
+function toggleBodyScroll(disable) {
+    if (disable) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+}
 

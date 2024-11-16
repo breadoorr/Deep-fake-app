@@ -4,12 +4,24 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
+    scroll-behavior: smooth;
+
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
+    margin-top: 60px;
+    padding: 0;
     background-color: #111;
+    font-family: 'Press Start 2P', cursive;
     color: #fff;
     line-height: 1.6;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
 }
 
 header {
@@ -22,6 +34,7 @@ header {
     z-index: 1000;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 #navbar {
     display: flex;
@@ -126,7 +139,7 @@ header {
     margin-top: 1rem;
 }
 
-.no-account-text {
+.no-account-text  {
     margin-top: 1rem;
     font-size: 0.9rem;
     color: #666;
@@ -144,15 +157,16 @@ header {
 
 /* Hero Section */
 .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../pics/background_1.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('../pics/background_1.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 0 20px;
+    color: #fff;
 }
+
 
 .hero h1 {
     font-size: 3rem;
@@ -174,10 +188,43 @@ header {
     font-weight: 600;
 }
 
-.content-section h2 {
-    font-weight: 600;
+.content-section h3 {
+    font-weight: 400;
 }
 
+/*Hero transitions*/
+.hero h1, .hero p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero h1 {
+    animation-delay: 0.2s;
+}
+
+.hero p {
+    animation-delay: 0.4s;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effect on Hero Text */
+.hero h1:hover, .hero p:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(76, 175, 80, 0.5);
+    transform: scale(1.05);
+    transition: transform 0.3s, text-shadow 0.3s;
+}
 
 .start-btn {
     display: inline-block;
@@ -197,6 +244,7 @@ header {
     z-index: 1;
     cursor: pointer;
 }
+
 
 .start-btn::before {
     content: '';
@@ -247,31 +295,100 @@ header {
 
 /* Content Sections */
 .content-section {
-    padding: 4rem 2rem;
+    margin-bottom: 4rem;
+    height: auto;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
     text-align: center;
+    background: #222;
+    color: #fff;
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+.content-section:focus-within,
+.content-section:hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Heading Transition */
 .content-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
     color: #4CAF50;
+    margin: 2rem 0 1.2rem;
+    text-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+/* Make heading visible */
+.content-section:focus-within h2,
+.content-section:hover h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Paragraph Transition */
 .content-section p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #ccc;
+    line-height: 1.5;
     max-width: 800px;
-    margin: 0 auto;
+    padding: 0 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
-/* Game Modes Section */
+/* Make paragraph visible */
+.content-section:focus-within p,
+.content-section:hover p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .game-modes {
+    max-width: 1000px;
+    max-height: 1000px;
     margin: 3rem auto;
     padding: 2rem;
     text-align: center;
-    border-radius: 8px;
-    max-width: 600px;
+    border-radius: 12px;
+    position: relative;
+    background: #333;
     color: #fff;
+    overflow: hidden;
+    z-index: 1;
+    border: 0.2rem solid #39ff14;
+    box-shadow:
+            0 0 3px #39ff14,
+            0 0 6px #39ff14,
+            0 0 12px #39ff14,
+            0 0 20px #39ff14;
+    animation: neon-pulsate 2s infinite alternate;
+}
+
+
+@keyframes neon-pulsate {
+    0% {
+        box-shadow:
+                0 0 3px #39ff14,
+                0 0 6px #39ff14,
+                0 0 12px #39ff14,
+                0 0 20px #39ff14;
+    }
+    100% {
+        box-shadow:
+                0 0 6px #39ff14,
+                0 0 10px #39ff14,
+                0 0 16px #39ff14,
+                0 0 25px #39ff14;
+    }
 }
 
 .game-modes h2 {
@@ -279,7 +396,30 @@ header {
     margin-bottom: 1rem;
     color: #4CAF50;
     font-family: 'Press Start 2P', cursive;
+    text-shadow:
+            0 0 2px #fff,
+            0 0 4px #39ff14,
+            0 0 8px #39ff14;
+    animation: text-pulsate 1.5s infinite alternate;
 }
+
+@keyframes text-pulsate {
+    0% {
+        text-shadow:
+                0 0 2px #fff,
+                0 0 5px #39ff14,
+                0 0 10px #39ff14,
+                0 0 20px #39ff14;
+    }
+    100% {
+        text-shadow:
+                0 0 5px #fff,
+                0 0 15px #39ff14,
+                0 0 30px #39ff14,
+                0 0 60px #39ff14;
+    }
+}
+
 
 .mode {
     margin-top: 2rem;
@@ -305,23 +445,41 @@ header {
     font-weight: bold;
     text-transform: uppercase;
     color: #fff;
-    background: linear-gradient(45deg, #4CAF50, #32a852);
-    border: none;
+    background: transparent;
+    border: 2px solid #4CAF50;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5), 0 0 20px rgba(76, 175, 80, 0.3);
+    text-shadow:
+            0 0 2px #fff,
+            0 0 4px #4CAF50,
+            0 0 8px #4CAF50,
+            0 0 16px #4CAF50;
     transition: all 0.3s ease;
+    box-shadow: none;
 }
 
+/* Hover Effect */
 .mode-btn:hover {
-    background: linear-gradient(45deg, #32a852, #4CAF50);
-    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7), 0 0 30px rgba(76, 175, 80, 0.5);
+    background: rgba(76, 175, 80, 0.1);
+    border-color: #32a852;
+    text-shadow:
+            0 0 4px #fff,
+            0 0 8px #32a852,
+            0 0 16px #32a852,
+            0 0 32px #32a852;
     transform: scale(1.05);
 }
 
+/* Active State */
 .mode-btn:active {
     transform: scale(0.95);
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5), 0 0 16px rgba(76, 175, 80, 0.3);
+    text-shadow:
+            0 0 2px #fff,
+            0 0 4px #32a852,
+            0 0 8px #32a852,
+            0 0 16px #32a852;
+    border-color: #32a852;
+    background: rgba(76, 175, 80, 0.2);
 }
 
 
@@ -331,6 +489,7 @@ header {
     padding: 4rem 2rem;
     background-color: #222;
     color: #fff;
+    overflow: hidden;
 }
 
 .developer-team h2 {
@@ -338,8 +497,10 @@ header {
     color: #4CAF50;
     margin-bottom: 2rem;
     font-family: 'Press Start 2P', cursive;
+    text-shadow: 0 0 2px #4CAF50, 0 0 2px #39ff14;
 }
 
+/* Team Members Container */
 .team-members {
     display: flex;
     flex-wrap: wrap;
@@ -347,37 +508,87 @@ header {
     justify-content: center;
 }
 
+/* Member Card */
 .member {
     background-color: #333;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 1.5rem;
     width: 200px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    box-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+    border: 2px solid transparent;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.member h3 {
-    font-size: 1.2rem;
-    color: #4CAF50;
-    margin-bottom: 0.5rem;
+.developer-team:is(:hover, :focus-within) .member {
+    animation: fadeInBounce 1s ease forwards;
 }
 
-.member p {
-    font-size: 1rem;
-    color: #ccc;
+.member:nth-child(1) { animation-delay: 0.2s; }
+.member:nth-child(2) { animation-delay: 0.4s; }
+.member:nth-child(3) { animation-delay: 0.6s; }
+.member:nth-child(4) { animation-delay: 0.8s; }
+.member:nth-child(5) { animation-delay: 1s; }
+.member:nth-child(6) { animation-delay: 1.2s; }
+
+/* Bounce Animation */
+@keyframes fadeInBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* Hover Effects */
 .member:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.8);
+    border-color: #39ff14;
+    background-color: rgba(51, 51, 51, 0.9);
+}
+
+.member:hover h3,
+.member:hover p {
+    color: #fff;
+    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+}
+
+.member::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #39ff14, transparent);
+    filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.member:hover::before {
+    opacity: 1;
 }
 
 
 /* Footer styling */
-footer {
+.footer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #333;
-    color: #fff;
-    padding: 2rem 1rem;
     text-align: center;
 }
 
@@ -477,30 +688,95 @@ footer {
     color: #aaa;
 }
 
+.snap-wrapper {
+    scroll-snap-type: y mandatory;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+section {
+    transition: opacity 0.5s, transform 0.5s ease;
+}
+
+section:focus-visible, section:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+section:not(:hover) {
+    opacity: 0.9;
+    transform: scale(0.98);
+}
+
+
+section {
+    scroll-snap-align: start;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    transition: opacity 0.5s, transform 0.5s ease;
+}
+
+section:not(.hero) {
+    opacity: 0.8;
+    transform: scale(0.95);
+}
+
+section:target, section:focus-visible, section:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.start-btn, .mode-btn, .contact-btn {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.content-section:nth-child(2n),
+.game-modes:nth-child(2n),
+.developer-team:nth-child(2n) {
+    background: #111;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 @media (max-width: 768px) {
-    .content-section h2 {
-        font-size: 1.6rem;
-    }
 
+    /* Footer section overall padding */
+    .footer {
+        padding: 2rem 1rem;
+    }
     .footer-content {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+    .content-section h2 {
+        font-size: 1.4rem;
     }
 
     .contact-info {
         border-right: none;
-        padding-right: 0;
-        padding-bottom: 1rem;
+    }
+
+    .contact-info p {
+        font-size: 12px;
     }
 
     .contact-form {
         padding-left: 0;
     }
-}
 
-@media (max-width: 768px) {
     /* Hide desktop navbar and show mobile menu button */
     #navbar {
         display: none;
@@ -534,3 +810,5 @@ footer {
         margin: 1rem 0;
     }
 }
+
+
