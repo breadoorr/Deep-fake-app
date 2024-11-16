@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/profile.css">
+  <script src="https://kit.fontawesome.com/3ba50cbadb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+  <div id="mobile">
+    <i id="bar" class="fas fa-bars"></i>
+  </div>
+  <nav>
+    <ul id="navbar">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Leaderboard</a></li>
+      <li><a href="#">My Profile</a></li>
+      <li>
+        <button id="mode-toggle" class="mode-toggle-btn">
+          <i id="mode-icon" class="fas fa-moon"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main class="profile-container">
+  <section class="profile-header">
+    <img src="../pics/player_1.jpg" alt="Profile Picture" class="profile-picture">
+    <h1>Nyan Meow</h1>
+    <p>Player Level: <strong>Advanced</strong></p>
+  </section>
+
+  <section class="profile-stats">
+    <h2>Your Statistics</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3>Total Points</h3>
+        <p>1,250</p>
+      </div>
+      <div class="stat-item">
+        <h3>Games Played</h3>
+        <p>45</p>
+      </div>
+      <div class="stat-item">
+        <h3>Accuracy</h3>
+        <p>87%</p>
+      </div>
+<!--      <div class="stat-item">-->
+<!--        <h3>Rank</h3>-->
+<!--        <p>#15</p>-->
+<!--      </div>-->
+    </div>
+  </section>
+
+  <section class="leaderboard-link">
+    <a href="leaderboard.html" class="leaderboard-btn">View Leaderboard</a>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2024 Deepfake Awareness Team. All rights reserved.</p>
+</footer>
+
+<script src="../scripts/script.js"></script>
+</body>
+</html>
