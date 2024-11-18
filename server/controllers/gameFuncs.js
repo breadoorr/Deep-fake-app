@@ -1,4 +1,4 @@
-const {db:pool} = require("../controllers/db");
+const {db:pool} = require("./db");
 
 // Block of constants to support different game modes
 const picturesAmount = 10; // Max amount of picture pairs in a level

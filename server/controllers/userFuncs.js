@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 // const {pool} = require('');
 
-const {db:pool} = require("../controllers/db");
+const {db:pool} = require("./db");
 
 const nodemailer = require('nodemailer');
 
