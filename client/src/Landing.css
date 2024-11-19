@@ -1,9 +1,13 @@
+@font-face {
+    font-family: Pixel;
+    src: url(asseta/PressStart2P-Regular.ttf);
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Pixel', cursive;
     scroll-behavior: smooth;
 
 }
@@ -17,7 +21,7 @@ body {
     margin-top: 60px;
     padding: 0;
     background-color: #111;
-    font-family: 'Press Start 2P', cursive;
+    /*font-family: 'Press Start 2P', cursive;*/
     color: #fff;
     line-height: 1.6;
     scroll-snap-type: y mandatory;
@@ -165,7 +169,7 @@ section {
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('../pics/background_1.png') no-repeat center center/cover;
+    url('./asseta/images/background_1.png') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -398,7 +402,6 @@ section {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     color: #4CAF50;
-    font-family: 'Press Start 2P', cursive;
     text-shadow:
             0 0 2px #fff,
             0 0 4px #39ff14,
@@ -496,10 +499,9 @@ section {
 }
 
 .developer-team h2 {
-    font-size: 2rem;
+    font-size: 3.5vh;
     color: #4CAF50;
-    margin-bottom: 2rem;
-    font-family: 'Press Start 2P', cursive;
+    margin-bottom: 0.5rem;
     text-shadow: 0 0 2px #4CAF50, 0 0 2px #39ff14;
 }
 
@@ -515,11 +517,15 @@ section {
 .member {
     background-color: #333;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     width: 20%;
     min-width: 200px;
     max-width: 400px;
-    font-size: 70%;
+    max-height: 400px;
+    min-height: 100px;
+    height: 20vh;
+    align-content: center;
+    font-size: 1.5vh;
     /*word-wrap: break-word;*/
     white-space: normal;
     box-shadow: 0 0 5px rgba(57, 255, 20, 0.5);

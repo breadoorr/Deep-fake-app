@@ -1,11 +1,10 @@
 import './Landing.css';
-function Landing() {
+export const Landing = () => {
     return (
         <>
-            <body>
             <header>
                 <div id="mobile">
-                    <i id="bar" className="fas fa-bars"></i> <!-- Mobile menu icon -->
+                    <i id="bar" className="fas fa-bars"></i>
                 </div>
                 <nav>
                     <ul id="navbar">
@@ -17,13 +16,11 @@ function Landing() {
                 </nav>
             </header>
 
-            <!-- Modal for Login/Registration -->
             <div id="modal" className="modal" data-mode="login">
                 <div className="modal-content">
                     <span className="close-btn" id="close-btn">&times;</span>
                     <h2 id="modal-title">Sign Up / Login</h2>
 
-                    <!-- Login Form -->
                     <div id="login-form">
                         <input type="text" placeholder="Username" className="modal-input"/>
                         <input type="password" placeholder="Password" className="modal-input"/>
@@ -33,8 +30,7 @@ function Landing() {
                         </p>
                     </div>
 
-                    <!-- Registration Form (hidden by default) -->
-                    <div id="registration-form" style="display: none;">
+                    <div id="registration-form" style={{display: null}}>
                         <input type="text" placeholder="Enter Username" className="modal-input"/>
                         <input type="email" placeholder="Enter Your Email" className="modal-input"/>
                         <input type="password" placeholder="Password" className="modal-input"/>
@@ -47,7 +43,7 @@ function Landing() {
             </div>
 
             <div className="snap-wrapper">
-                <!-- Hero Section -->
+
                 <section id="hero" className="hero">
                     <h1>Welcome</h1>
                     <p>Deepfake Awareness Game</p>
@@ -55,7 +51,6 @@ function Landing() {
                     <p className="scroll-text">Scroll to learn more about the project</p>
                 </section>
 
-                <!-- Information Section -->
                 <section id="info" className="content-section" tabIndex="0">
                     <h2>Fighting Misinformation</h2>
                     <p>Six students are raising awareness about deepfakes, revealing their impact on society.</p>
@@ -71,7 +66,6 @@ function Landing() {
 
                 </section>
 
-                <!-- Game Modes Section -->
                 <section id="choose-mode" className="game-modes">
                     <h2>Choose Your Mode</h2>
                     <div className="mode">
@@ -87,7 +81,6 @@ function Landing() {
                     </div>
                 </section>
 
-                <!-- Developer Team Section -->
                 <section id="team" className="developer-team">
                     <h2>Meet the Developer Team</h2>
                     <div className="team-members">
@@ -112,14 +105,9 @@ function Landing() {
                             <h3>Stukalin Timofey</h3>
                             <p>DB Admin</p>
                         </div>
-                        <!--      <div class="member">-->
-                        <!--        <h3>Casey White</h3>-->
-                        <!--        <p>Quality Assurance</p>-->
-                        <!--      </div>-->
                     </div>
                 </section>
 
-                <!-- Footer Section -->
                 <section className="footer">
                     <div className="footer-content">
                         <div className="contact-info">
@@ -146,8 +134,8 @@ function Landing() {
                     </div>
                 </section>
             </div>
-            {/*<script src="../scripts/script.js"></script>*/}
-            </body>
         </>
     )
 }
+
+// module.exports.default = { Landing };
