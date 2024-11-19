@@ -8,12 +8,12 @@ function App() {
   return (
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />}>
+        <Route path="/" element={<Landing />} />
           {/*<Route index element={< />} />*/}
-          <Route path="login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           {/*<Route path="contact" element={<Contact />} />*/}
           {/*<Route path="*" element={<NoPage />} />*/}
-        </Route>
+        {/*</Route>*/}
       </Routes>
       </BrowserRouter>
   );

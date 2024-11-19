@@ -1,7 +1,8 @@
 import {useState} from "react";
 import Header from "../components/Header";
+import './Login.css';
 
-const Login = () => {
+const Login = ({ isOpen, onClose}) => {
 
     const [isLoginMode, setIsLoginMode] = useState(true);
 
@@ -11,10 +12,12 @@ const Login = () => {
 
 
     return (
+        <>
+            { isOpen ? (
     <div id="modal" className="modal" data-mode="login">
         <div className="modal-content">
-            <span className="close-btn" id="close-btn">&times;</span>
-            <h2>{isLoginMode ? 'Sign Up / Login' : 'Register'}</h2>
+            <span className="close-btn" id="close-btn" onClick={onClose}>&times;</span>
+            <h2>{isLoginMode ? 'Login' : 'Register'}</h2>
             {isLoginMode ? (
             <div id="login-form">
                 <input type="text" placeholder="Username" className="modal-input"/>
@@ -25,7 +28,7 @@ const Login = () => {
                 </p>
             </div>
                 ) : (
-            <div id="registration-form" style={{display: null}}>
+            <div id="registration-form">
                 <input type="text" placeholder="Enter Username" className="modal-input"/>
                 <input type="email" placeholder="Enter Your Email" className="modal-input"/>
                 <input type="password" placeholder="Password" className="modal-input"/>
@@ -37,6 +40,8 @@ const Login = () => {
             )}
         </div>
     </div>
+                ): null }
+        </>
     );
 
 }

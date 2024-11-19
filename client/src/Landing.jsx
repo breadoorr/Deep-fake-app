@@ -1,14 +1,24 @@
 import './Landing.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import {useEffect, useRef} from "react";
 export const Landing = () => {
+
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            sectionRef.current.focus();
+        }
+    }, []);
+
     return (
         <div className="Landing">
             <Header />
 
             <div className="snap-wrapper">
 
-                <section id="hero" className="hero">
+                <section  id="hero" className="hero" ref={sectionRef}>
                     <h1>Welcome</h1>
                     <p>Deepfake Awareness Game</p>
                     <a href="#" className="start-btn">Start</a>
@@ -30,7 +40,7 @@ export const Landing = () => {
 
                 </section>
 
-                <section id="choose-mode" className="game-modes">
+                <section id="choose-mode" className="game-modes" tabIndex="0">
                     <h2>Choose Your Mode</h2>
                     <div className="mode">
                         <h3>Learning Mode</h3>
@@ -45,7 +55,7 @@ export const Landing = () => {
                     </div>
                 </section>
 
-                <section id="team" className="developer-team">
+                <section id="team" className="developer-team" tabIndex="0">
                     <h2>Meet the Developer Team</h2>
                     <div className="team-members">
                         <div className="member">
@@ -72,7 +82,7 @@ export const Landing = () => {
                     </div>
                 </section>
 
-                <section className="footer">
+                <section className="footer" tabIndex="0">
                     <div className="footer-content">
                         <div className="contact-info">
                             <h3>Contact Us</h3>

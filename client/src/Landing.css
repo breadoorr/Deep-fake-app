@@ -188,7 +188,7 @@ section {
     transition: opacity 1s ease, transform 1s ease-out;
 }
 
-.content-section:focus-within,
+.content-section:focus, .content-section:focus-visible,
 .content-section:hover {
     opacity: 1;
     transform: translateY(0);
@@ -392,7 +392,7 @@ section {
     min-width: 200px;
     max-width: 400px;
     max-height: 400px;
-    min-height: 100px;
+    min-height: 70px;
     height: 20vh;
     align-content: center;
     font-size: 1.5vh;
@@ -401,7 +401,7 @@ section {
     box-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
     border: 2px solid transparent;
     position: relative;
-    opacity: 0.3;
+    opacity: 0.6;
     transform: translateY(50px);
     animation: none;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -422,7 +422,7 @@ section {
 @keyframes fadeInBounce {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(50px);
     }
     50% {
         opacity: 1;
@@ -481,13 +481,13 @@ section {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: flex-start;
 }
 
 /* Contact Info Section */
 .contact-info {
-    flex: 1 1 300px;
+    flex: 1 1 3vh;
     text-align: left;
     padding-right: 2rem;
     border-right: 2px solid #555;
@@ -581,7 +581,7 @@ section {
     transition: opacity 0.5s, transform 0.5s ease;
 }
 
-section:focus-visible, section:hover {
+section:focus-visible, section:target, section:hover {
     opacity: 1;
     transform: scale(1);
 }
@@ -641,6 +641,22 @@ section:target, section:focus-visible, section:hover {
 
     .content-section p {
         font-size: 1.3vh;
+    }
+
+    .developer-team h2 {
+        font-size: 2.5vh;
+    }
+
+    .team-members h3 {
+        font-size: 1.5vh;
+    }
+
+    .team-members p {
+        font-size: 1vh;
+    }
+
+    .member {
+        height: auto;
     }
 
     /* Footer section overall padding */
