@@ -1,53 +1,17 @@
 import './Landing.css';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 export const Landing = () => {
     return (
-        <>
-            <header>
-                <div id="mobile">
-                    <i id="bar" className="fas fa-bars"></i>
-                </div>
-                <nav>
-                    <ul id="navbar">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">How to Play</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#" id="login-link">Sign Up/Login</a></li>
-                    </ul>
-                </nav>
-            </header>
-
-            <div id="modal" className="modal" data-mode="login">
-                <div className="modal-content">
-                    <span className="close-btn" id="close-btn">&times;</span>
-                    <h2 id="modal-title">Sign Up / Login</h2>
-
-                    <div id="login-form">
-                        <input type="text" placeholder="Username" className="modal-input"/>
-                        <input type="password" placeholder="Password" className="modal-input"/>
-                        <button className="modal-btn">Login</button>
-                        <p className="no-account-text">
-                            Don’t have an account? <a href="#" id="signup-link">Sign up here</a>
-                        </p>
-                    </div>
-
-                    <div id="registration-form" style={{display: null}}>
-                        <input type="text" placeholder="Enter Username" className="modal-input"/>
-                        <input type="email" placeholder="Enter Your Email" className="modal-input"/>
-                        <input type="password" placeholder="Password" className="modal-input"/>
-                        <button className="modal-btn">Register</button>
-                        <p className="no-account-text">
-                            Already have an account? <a href="#" id="login-back-link">Log in here</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div className="Landing">
+            <Header />
 
             <div className="snap-wrapper">
 
                 <section id="hero" className="hero">
                     <h1>Welcome</h1>
                     <p>Deepfake Awareness Game</p>
-                    <a href="#choose-mode" className="start-btn">Start</a>
+                    <a href="#" className="start-btn">Start</a>
                     <p className="scroll-text">Scroll to learn more about the project</p>
                 </section>
 
@@ -129,12 +93,10 @@ export const Landing = () => {
                             <button type="submit" className="contact-btn">Send Message</button>
                         </form>
                     </div>
-                    <div className="footer-copyright">
-                        <p>&copy; 2024 Deepfake Awareness Team. All rights reserved.</p>
-                    </div>
+                        <Footer />
                 </section>
             </div>
-        </>
+        </div>
     )
 }
 
