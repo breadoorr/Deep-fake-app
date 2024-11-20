@@ -16,7 +16,7 @@ const Login = ({ isOpen, onClose}) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('/user/login', { username, password });
+            const response = await axios.post('http://127.0.0.1:5000/user/login', { username, password });
             console.log('Login successful:', response.data);
             // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();

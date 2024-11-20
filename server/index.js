@@ -14,7 +14,7 @@ app.use(express.json());
 app.use('/user', userRoute);
 app.use('/game', gameRoute);
 
-// db();
+db();
 
 app.get('/', (req, res) => {
   res.status(200);
