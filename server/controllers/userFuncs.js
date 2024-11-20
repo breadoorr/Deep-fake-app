@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 // const {pool} = require('');
 
-const {db:pool} = require("./db");
+const pool = require("./db");
 
 const nodemailer = require('nodemailer');
 
@@ -14,7 +14,7 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 exports.Login = async (req, res) => {
     const {username, password} = req.body;
     try {
-        const sql = "SELECT Username, Password FROM Users WHERE username = ?";
+        const sql = "SELECT Username, Password FROM UserInfo WHERE username = ?";
         const [result] = await pool.execute(sql, [username]);
 
         if (result.length > 0) {
@@ -44,11 +44,11 @@ exports.Logout = async (req, res) => {
 }
 
 exports.Register = async (req, res) => {
-    const {username, password} = req.body;
+    const {username, email, password} = req.body;
     try {
         const hashedPassword = bcrypt.hashSync(password, bcryptSalt);
-        const sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-        const [result] = await pool.execute(sql, [username, hashedPassword]);
+        const sql = "INSERT INTO UserInfo (Username, Password, Email) VALUES (?, ?, ?)";
+        const [result] = await pool.execute(sql, [username, hashedPassword, email]);
         const userId = result.insertId;
 
         jwt.sign({userId, username}, jwtSecret, {expiresIn: '1h'}, (err, token) => {

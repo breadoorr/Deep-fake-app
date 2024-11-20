@@ -26,5 +26,8 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
-  }
+  },
+  "exports": {
+  "./lib/connection.js": "./lib/connection.js"
+}
 }

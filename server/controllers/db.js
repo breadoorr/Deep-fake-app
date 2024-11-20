@@ -1,17 +1,14 @@
-const mysql = require('mysql2');
-const {createPool} = require("mysql2");
+const mysql = require('mysql2/promise');
 
-exports.db = async () => {
-    try{
-        const pool = await mysql.createPool({
-            host: "https://vesta.uclan.ac.uk",
-            user: "iiambarshev",
-            password: "y3D58mH4j6",
-            database: "iiambarshev"
-        });
+// Create and export the database pool
+const pool = mysql.createPool({
+    host: "db4free.net",
+    user: "deepfake_db1",
+    password: "DSB1oa_A",
+    database: "deepfake_db",
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
 
-        console.log("connected to db");
-    } catch (err) {
-        console.log(err);
-    }
-}
+module.exports = pool;

@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { db } = require('./controllers/db');
 
-const PORT = 3000;
+const PORT = 5000;
 const app = express();
 
 const userRoute = require("./routers/user.js");
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use('/user', userRoute);
 app.use('/game', gameRoute);
 
-db();
+// db();
 
 app.get('/', (req, res) => {
   res.status(200);

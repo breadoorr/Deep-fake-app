@@ -8,7 +8,7 @@ const user = express.Router();
 user.post("/login", Login)
 user.get("/logout", Logout);
 user.post("/register", Register);
-user.post("/confirmEmail", ConfirmEmail);
+// user.post("/confirmEmail", ConfirmEmail);
 user.get("/getProfile/:username", GetProfile)
 user.put("/updateProfile", UpdateProfile);
 
