@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-size: 400% 400%;
+    background: linear-gradient(135deg, #0d0d0d, #1c1c1c, #2b2b2b, #1e2e1e);
+    animation: gradientBG 10s ease infinite;
+    color: #fff;
+    line-height: 1.6;
+    text-align: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.menu-container {
+    flex: 1;
+    padding: 4rem 2rem;
+}
+
+
+header {
+    width: 100%;
+    background: linear-gradient(45deg, #333, #555);
+    padding: 1rem 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#navbar {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding: 0 1rem;
+}
+
+#navbar li {
+    margin-right: 2rem;
+}
+
+#navbar li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#navbar li a:hover {
+    color: #4CAF50;
+}
+
+.menu-container {
+    padding: 4rem 2rem;
+}
+
+.menu-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.menu-container p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 3rem;
+}
+
+.mode-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 255, 128, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card h2 i {
+    margin-right: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 2rem;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+}
+
+.play-btn {
+    background: linear-gradient(45deg, #4CAF50, #32a852);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+    background: linear-gradient(45deg, #32a852, #4CAF50);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #333;
+    padding: 1rem;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .mode-cards {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

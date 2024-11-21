@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Play Mode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/menu.css">
+    <script src="https://kit.fontawesome.com/3ba50cbadb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul id="navbar">
+            <li><a href="profile.html">Back to Profile</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="menu-container">
+    <h1>Choose Your Play Mode</h1>
+    <p>Select one of the modes below to start playing.</p>
+    <div class="mode-cards">
+        <div class="card" id="regular-mode">
+            <h2><i class="fas fa-gamepad"></i> Regular Mode</h2>
+            <p>Play the classic mode with standard rules.</p>
+            <button class="play-btn">Play</button>
+        </div>
+        <div class="card" id="infinite-mode">
+            <h2><i class="fas fa-infinity"></i> Infinite Mode</h2>
+            <p>Endless gameplay. Test your endurance!</p>
+            <button class="play-btn">Play</button>
+        </div>
+        <div class="card" id="timer-mode">
+            <h2><i class="fas fa-clock"></i> Time Attack</h2>
+            <p>Race against the clock and beat your best time.</p>
+            <button class="play-btn">Play</button>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 Deepfake Awareness Team. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById("regular-mode").addEventListener("click", () => {
+        alert("Regular Mode Selected!");
+        // Add your redirect or game logic here
+    });
+
+    document.getElementById("infinite-mode").addEventListener("click", () => {
+        alert("Infinite Mode Selected!");
+        // Add your redirect or game logic here
+    });
+
+    document.getElementById("timer-mode").addEventListener("click", () => {
+        alert("With Timer Mode Selected!");
+        // Add your redirect or game logic here
+    });
+</script>
+</body>
+</html>
