@@ -69,12 +69,7 @@ header {
 }
 
 #mobile {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
+    display: none;
 }
 
 /*Mode toggle button*/
@@ -207,6 +202,40 @@ body.light-mode .mode-toggle-btn i {
     transform: scale(1.05);
 }
 
+/* Section for the Play button */
+.play-link {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+/* Styling the Play button */
+.play-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(45deg, #4CAF50, #32a852);
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 255, 128, 0.2);
+}
+
+.play-btn:hover {
+    background: linear-gradient(45deg, #32a852, #4CAF50);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+    transform: scale(1.05);
+}
+
+.play-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 255, 128, 0.3);
+}
+
+
 footer {
     background-color: #333;
     padding: 1rem;
@@ -215,3 +244,43 @@ footer {
     color: #aaa;
     font-size: 0.9rem;
 }
+
+@media (max-width: 768px) {
+    /* Hide desktop navbar and show mobile menu button */
+    #navbar {
+        display: none;
+    }
+
+    /* Show the mobile menu button only on screens <= 768px */
+    #mobile {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 1rem;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    #navbar.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        background-color: #333;
+        padding: 1rem 0;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    #navbar li {
+        margin: 1rem 0;
+    }
+
+    .profile-stats h3 {
+        font-size: 1.8vh;
+    }
+
+}
+
