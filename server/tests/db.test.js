@@ -1,5 +1,10 @@
+// require supertest for testing
+const request = require("supertest");
 // require express file because we use express.js
 const express = require("express");
+jest.mock("../controllers/db", () => ({
+    db: jest.fn(), // mocking db function
+}));
 // require db.js file
 const { db } = require("../controllers/db");
 
@@ -27,8 +32,27 @@ app.get("/", (req, res) => {
     res.send("Hello! Test server is running."); 
 });
 
-// starting the server and listening on the needed port
-app.listen(PORT, () => {
-    // logging the server URL for easy access
-    console.log(`Server is running on http://localhost:${PORT}`); 
+describe("Testing Express Server Routes", () => {
+    // testing the root route for a success message
+    test("GET / should return a success message", async () => {
+        const response = await request(app).get("/");
+        expect(response.statusCode).toBe(200);
+        expect(response.text).toBe("Hello! Test server is running.");
+    });
+
+    // mocking a successful DB connection and testing the /db-check route
+    test("GET /db-check should return success when DB is connected", async () => {
+        db.mockResolvedValueOnce(); // mocking a successful DB connection
+        const response = await request(app).get("/db-check");
+        expect(response.statusCode).toBe(200);
+        expect(response.text).toBe("Database connected successfully!");
+    });
+
+    // mocking a failed DB connection and testing the /db-check route
+    test("GET /db-check should return error when DB connection fails", async () => {
+        db.mockRejectedValueOnce(new Error("Connection error")); // mocking a DB connection failure
+        const response = await request(app).get("/db-check");
+        expect(response.statusCode).toBe(500);
+        expect(response.text).toBe("Database connection failed: Connection error");
+    });
 });

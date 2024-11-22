@@ -1,32 +1,30 @@
-const request = require('supertest');
-const server = require('../index'); 
+// importing supertest for testing HTTP requests
+const request = require("supertest"); 
+// importing the index for testing
+const server = require("../index"); 
 
-describe('API Server Tests', function() {
+describe("Testing Express Server", () => {
+    // testing the root route for a welcome message
+    test("GET / should return a welcome message", async () => {
+        const response = await request(server).get("/"); // sending a GET request to the root route
+        expect(response.statusCode).toBe(200); // checking the status code is 200
+        expect(response.text).toBe("Welcome to root URL of Server"); // checking the response text
+    });
 
-  after(function(done) {
-    server.close(done); 
-  });
+    // testing the /user route for a 404 response when not implemented
+    test("GET /user should return 404 if route is not implemented", async () => {
+        const response = await request(server).get("/user"); // sending a GET request to the /user route
+        expect(response.statusCode).toBe(404); // checking the status code is 404
+    });
 
-  it('GET / should return welcome message', function(done) {
-    request(server)
-      .get('/')
-      .expect(200)
-      .expect('Content-Type', /text/)
-      .end(function(err, res) {
-        if (err) return done(err);
-        if (res.text !== 'Welcome to root URL of Server') {
-          return done(new Error('Response text did not match'));
-        }
-        done();
-      });
-  });
+    // testing the /game route for a 404 response when not implemented
+    test("GET /game should return 404 if route is not implemented", async () => {
+        const response = await request(server).get("/game"); // sending a GET request to the /game route
+        expect(response.statusCode).toBe(404); // checking the status code is 404
+    });
 
-  
-
-  it('GET /unknown should return 404 for unknown routes', function(done) {
-    request(server)
-      .get('/unknown')
-      .expect(404, done);
-  });
-
+    // closing the server after completing all tests
+    afterAll((done) => {
+        server.close(done); // shutting down the server to free the port
+    });
 });

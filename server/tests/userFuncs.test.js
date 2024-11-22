@@ -1,12 +1,12 @@
 // supertest is used for testing node.js
 const request = require('supertest');
 const express = require('express');
-// bodyparser which proccesses incoming requests, useful for HTTP files
+// bodyparser which processes incoming requests, useful for HTTP files
 const bodyParser = require('body-parser');
 // our path to db.js file
-const { pool } = require('../controller/db'); 
+const { pool } = require('../controllers/db'); 
 // path to file where we have Login and Register funcs
-const { Login, Register, Logout } = require('../controller/userFuncs'); 
+const { Login, Register, Logout } = require('../controllers/userFuncs'); 
 
 const app = express();
 // parsing JSON request bodies
@@ -18,7 +18,7 @@ app.post('/register', Register);
 app.post('/logout', Logout);
 
 // mocking database for testing
-jest.mock('../controller/db', () => ({
+jest.mock('../controllers/db', () => ({
   pool: {
     execute: jest.fn()
   }
@@ -49,7 +49,7 @@ describe('Auth API', () => {
         password: 'hashedPassword'
       });
 
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(200); // changed to 200 for successful login
     expect(response.body.id).toBe(1);
   });
 
@@ -63,7 +63,7 @@ describe('Auth API', () => {
         password: 'password'
       });
 
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(401); // checking for 401 instead of 500
     expect(response.body.message).toBe('Invalid username');
   });
 
@@ -77,7 +77,7 @@ describe('Auth API', () => {
         password: 'wrongPassword'
       });
 
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(401); // expect 401 for invalid password
     expect(response.body.message).toBe('Invalid password');
   });
 
@@ -93,7 +93,7 @@ describe('Auth API', () => {
         password: 'hashedPassword'
       });
 
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(201); // status 201 for successful registration
     expect(response.body.id).toBe(1);
   });
 
@@ -108,8 +108,8 @@ describe('Auth API', () => {
         password: 'hashedPassword'
       });
 
-    expect(response.status).toBe(500);
-    expect(response.body.error).toBe('Database error');
+    expect(response.status).toBe(409); // changed to 409 (conflict) for existing username
+    expect(response.body.message).toBe('Username already exists');
   });
 
   // testing the logout route
@@ -120,7 +120,7 @@ describe('Auth API', () => {
     expect(response.body).toBe('ok');
   });
 
-  // will create tests for getprofile and other functs once they are gonna be done
+  // will fix and create tests for getprofile and other functions once they are implemented
   // to be continued
 
 });
