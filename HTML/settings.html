@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/settings.css">
+  <script src="https://kit.fontawesome.com/3ba50cbadb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+  <nav>
+    <ul id="navbar">
+      <li><a href="profile.html">Back to Profile</a></li>
+    </ul>
+    <button id="mode-toggle" class="mode-toggle-btn">
+      <i id="mode-icon" class="fas fa-moon"></i>
+    </button>
+  </nav>
+</header>
+
+<main class="settings-container">
+  <h1>Account Settings</h1>
+  <p>Update your username, email, or password below.</p>
+  <form id="settings-form">
+    <div class="form-group">
+      <label for="username">Change Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter new username" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Change Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter new email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Change Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter new password" required>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="save-btn">Save Changes</button>
+    </div>
+  </form>
+</main>
+
+<footer>
+  <p>&copy; 2024 Deepfake Awareness Team. All rights reserved.</p>
+</footer>
+
+<script>
+  const modeToggle = document.getElementById('mode-toggle');
+  const body = document.body;
+  const modeIcon = document.getElementById('mode-icon');
+
+  modeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    modeIcon.classList.toggle('fa-sun');
+    modeIcon.classList.toggle('fa-moon');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background-color: #111;
+    color: #fff;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    width: 100%;
+    background: linear-gradient(45deg, #333, #555);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#navbar {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding: 0 1rem;
+}
+
+#navbar li {
+    margin-right: 2rem;
+}
+
+#navbar li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+body.light-mode #navbar li a {
+    color: #333;
+}
+
+#navbar li a:hover {
+    color: #4CAF50;
+}
+
+.mode-toggle-btn {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 10px;
+    right: 150px;
+}
+
+.mode-toggle-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+body.light-mode .mode-toggle-btn {
+    background-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+body.light-mode .mode-toggle-btn:hover {
+    background-color: #FFC107;
+}
+
+.settings-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.2);
+    transition: background 0.3s, color 0.3s;
+}
+
+body.light-mode .settings-container {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.settings-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+body.light-mode .settings-container h1 {
+    color: #333;
+}
+
+.settings-container p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+body.light-mode .settings-container p {
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: #ccc;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+body.light-mode .form-group label {
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+    color: #fff;
+    outline: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+body.light-mode .form-group input {
+    background: #eee;
+    color: #333;
+}
+
+.form-group input:focus {
+    background: #555;
+    border: 1px solid #4CAF50;
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+body.light-mode .form-group input:focus {
+    background: #fff;
+    border: 1px solid #FFD700;
+    box-shadow: 0 0 5px #FFD700;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(45deg, #4CAF50, #32a852);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background: linear-gradient(45deg, #32a852, #4CAF50);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+    transform: scale(1.05);
+}
+
+body.light-mode .save-btn {
+    background: linear-gradient(45deg, #FFD700, #FFC107);
+}
+
+body.light-mode .save-btn:hover {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+footer {
+    background-color: #333;
+    padding: 1rem;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode footer {
+    background-color: #eee;
+    color: #555;
+}
