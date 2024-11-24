@@ -16,7 +16,7 @@ const Header = () => {
         </div>
         <nav>
             <ul id="navbar" className={isNavbarOpen ? 'active' : ''}>
-                <li><Link to="/" onClick={() => setNavbarOpen(false)}>Home</Link></li>
+                <li><Link to="/menu" onClick={() => setNavbarOpen(false)}>Home</Link></li>
                 <li><a href="#" onClick={() => setNavbarOpen(false)}>How to Play</a></li>
                 {/*<li><a href="#">Team</a></li>*/}
                 <li><a onClick={() => { setLoginOpen(!isLoginOpen); setNavbarOpen(false);}}>Sign Up/Login</a></li>

@@ -1,6 +1,6 @@
 import './Landing.css';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import {useEffect, useRef} from "react";
 export const Landing = () => {
 

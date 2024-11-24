@@ -1,0 +1,189 @@
+
+/*body {*/
+/*    background-color: #111;*/
+/*    color: #fff;*/
+/*    line-height: 1.6;*/
+/*    !*display: flex;*!*/
+/*    width: 100%;*/
+/*    !*gap: 0;*!*/
+/*    !*flex-direction: column;*!*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+section {
+    height: 100vh;
+}
+
+/*Mode toggle button*/
+.mode-toggle-btn {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: -10px;
+    right: -320px;
+}
+
+.mode-toggle-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+.mode-toggle-btn i {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+body.light-mode .mode-toggle-btn {
+    background-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+body.light-mode .mode-toggle-btn:hover {
+    background-color: #FFC107;
+}
+
+body.light-mode .mode-toggle-btn i {
+    color: #333;
+}
+
+.profile-container {
+    width: 100%;
+    /*height: 100vh;*/
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.profile-header {
+    margin-bottom: 2rem;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-header p {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.profile-stats {
+    margin: 2rem 0;
+}
+
+.profile-stats h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.2);
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.leaderboard-link {
+    margin-top: 5rem;
+}
+
+.leaderboard-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(45deg, #4CAF50, #32a852);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.leaderboard-btn:hover {
+    background: linear-gradient(45deg, #32a852, #4CAF50);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+    transform: scale(1.05);
+}
+
+/* Section for the Play button */
+.play-link {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+/* Styling the Play button */
+.play-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(45deg, #4CAF50, #32a852);
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    /*font-family: 'Press Start 2P', cursive;*/
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 255, 128, 0.2);
+}
+
+.play-btn:hover {
+    background: linear-gradient(45deg, #32a852, #4CAF50);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+    transform: scale(1.05);
+}
+
+.play-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 255, 128, 0.3);
+}
+
+@media (max-width: 768px) {
+    /* Show the mobile menu button only on screens <= 768px */
+
+    .profile-stats h3 {
+        font-size: 1.8vh;
+    }
+
+}
