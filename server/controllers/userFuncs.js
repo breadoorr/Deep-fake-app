@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 // const {pool} = require('');
 
@@ -14,17 +15,18 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 exports.Login = async (req, res) => {
     const {username, password} = req.body;
     try {
-        const sql = "SELECT Username, Password FROM UserInfo WHERE username = ?";
+        const sql = "SELECT Username, Password FROM UserInfo WHERE Username = ?";
         const [result] = await pool.execute(sql, [username]);
 
         if (result.length > 0) {
             const user = result[0];
-            const passOk = bcrypt.compareSync(password, user.password);
+            const passOk = bcrypt.compareSync(password, user.Password);
             if (passOk) {
                 const userId = user.id;
-                jwt.sign({userId, username}, jwtSecret, {expiresIn: '1h'}, (err, token) => {
+                jwt.sign({userId, username}, jwtSecret, {expiresIn: '24h'}, (err, token) => {
                     if (err) throw err;
-                    res.cookie('token', token, {sameSite: 'None', secure: true})
+                    // console.log('token', token);
+                    res.cookie('token', token, {sameSite: "none", secure: true})
                         .status(201).json({id: userId});
                 });
             } else {
@@ -40,7 +42,7 @@ exports.Login = async (req, res) => {
 }
 
 exports.Logout = async (req, res) => {
-    res.cookie('token', '', {sameSite: 'none', secure: true}).json('ok');
+    res.cookie('token', '', {sameSite: 'none', secure: true, httpOnly: true}).json('ok');
 }
 
 exports.Register = async (req, res) => {
@@ -53,7 +55,7 @@ exports.Register = async (req, res) => {
 
         jwt.sign({userId, username}, jwtSecret, {expiresIn: '1h'}, (err, token) => {
             if (err) throw err;
-            res.cookie('token', token, {sameSite: 'none', secure: true})
+            res.cookies('token', token, {sameSite: true, secure: true, httpOnly: true})
                 .status(201).json({id: userId});
         });
     } catch (error) {

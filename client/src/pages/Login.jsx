@@ -16,8 +16,8 @@ const Login = ({ isOpen, onClose}) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://127.0.0.1:5000/user/login', { username, password });
-            console.log('Login successful:', response.data);
+            const response = await axios.post('http://127.0.0.1:5000/user/login', { username, password }, { withCredentials: true });
+            console.log('Login successful:', response);
             // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();
         } catch (error) {
@@ -28,7 +28,7 @@ const Login = ({ isOpen, onClose}) => {
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('http://127.0.0.1:5000/user/register', { username, password, email });
+            const response = await axios.post('http://127.0.0.1:5000/user/register', {username, email, password});
             console.log('Register successful:', response.data);
             // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();

@@ -7,6 +7,7 @@ const Header = () => {
 
     const [isLoginOpen, setLoginOpen] = useState(false);
     const [isNavbarOpen, setNavbarOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
         <>
@@ -18,8 +19,11 @@ const Header = () => {
             <ul id="navbar" className={isNavbarOpen ? 'active' : ''}>
                 <li><Link to="/menu" onClick={() => setNavbarOpen(false)}>Home</Link></li>
                 <li><a href="#" onClick={() => setNavbarOpen(false)}>How to Play</a></li>
-                {/*<li><a href="#">Team</a></li>*/}
+                { !isLoggedIn ? (
                 <li><a onClick={() => { setLoginOpen(!isLoginOpen); setNavbarOpen(false);}}>Sign Up/Login</a></li>
+                ) : (
+                    <li>Hi</li>
+                )}
             </ul>
         </nav>
     </header>
