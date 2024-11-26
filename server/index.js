@@ -21,7 +21,7 @@ db();
 
 app.get('/', (req, res) => {
   res.status(200);
-  res.send("Welcome to root URL of Server");
+  res.json({message: "Welcome to root URL of Server" });
 });
 
 // Создаем сервер и экспортируем его

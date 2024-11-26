@@ -15,19 +15,19 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 exports.Login = async (req, res) => {
     const {username, password} = req.body;
     try {
-        const sql = "SELECT Username, Password FROM UserInfo WHERE Username = ?";
+        const sql = "SELECT * FROM UserInfo WHERE Username = ?";
         const [result] = await pool.execute(sql, [username]);
 
         if (result.length > 0) {
             const user = result[0];
             const passOk = bcrypt.compareSync(password, user.Password);
             if (passOk) {
-                const userId = user.id;
+                const userId = user.UserID;
                 jwt.sign({userId, username}, jwtSecret, {expiresIn: '24h'}, (err, token) => {
                     if (err) throw err;
                     // console.log('token', token);
-                    res.cookie('token', token, {sameSite: "none", secure: true})
-                        .status(201).json({id: userId});
+                    res.cookie('token', token, {sameSite: "none", secure: true});
+                    res.status(201).json({id: user.UserID});
                 });
             } else {
                 res.status(401).json({message: "Invalid password"});
