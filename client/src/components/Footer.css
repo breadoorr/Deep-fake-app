@@ -1,0 +1,15 @@
+.footer-copyright {
+    background: linear-gradient(45deg, #333, #555);
+    color: #aaa;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-copyright p {
+    margin: 0;
+    padding: 0;
+}

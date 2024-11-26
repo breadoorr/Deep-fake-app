@@ -103,7 +103,9 @@ export const Landing = () => {
                             <button type="submit" className="contact-btn">Send Message</button>
                         </form>
                     </div>
-                        <Footer />
+                    <div className="landing-footer-copyright">
+                        <p>&copy; 2024 Deepfake Awareness Team. All rights reserved.</p>
+                    </div>
                 </section>
             </div>
         </div>
