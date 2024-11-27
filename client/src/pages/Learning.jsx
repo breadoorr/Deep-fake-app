@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
+import {Navigation} from "../components/Navigation";
 
 export const Learning = () => {
     const [quizStarted, setQuizStarted] = useState(false);
@@ -128,7 +129,9 @@ export const Learning = () => {
     return (
         <>
             <Header />
+            <Navigation />
             <div style={containerStyle}>
+
                 {!quizStarted && currentQuestion === 0 && (
                     <>
                         <h1 style={{ fontSize: "2.5rem", marginBottom: "1.5rem", color: "#4CAF50" }}>

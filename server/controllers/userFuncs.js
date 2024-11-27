@@ -23,11 +23,13 @@ exports.Login = async (req, res) => {
             const passOk = bcrypt.compareSync(password, user.Password);
             if (passOk) {
                 const userId = user.UserID;
-                jwt.sign({userId, username}, jwtSecret, {expiresIn: '24h'}, (err, token) => {
+                jwt.sign({userId, username}, jwtSecret, {expiresIn: '1d'}, (err, token) => {
                     if (err) throw err;
                     // console.log('token', token);
-                    res.cookie('token', token, {sameSite: "none", secure: true});
+                    res.cookie('token', token, {sameSite: "none", secure: true, path: '/'});
                     res.status(201).json({id: user.UserID});
+                    // console.log(res.getHeaders()['set-cookie']);
+
                 });
             } else {
                 res.status(401).json({message: "Invalid password"});

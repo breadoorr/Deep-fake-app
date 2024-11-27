@@ -20,19 +20,21 @@
     align-items: center;
     gap: 2rem;
     width: 100%;
-    max-width: 1200px;
+    /*max-width: 600px;*/
 }
 
 .menu-card {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 255, 128, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
-    min-width: 300px;
+    min-width: 250px;
+    width: 25%;
     max-width: 300px;
-    min-height: 200px;
+    height: 25vh;
+    max-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
