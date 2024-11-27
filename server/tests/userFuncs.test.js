@@ -1,3 +1,5 @@
+// has issues, need to fix userFuncs.js
+
 // supertest is used for testing node.js
 const request = require('supertest');
 const express = require('express');
