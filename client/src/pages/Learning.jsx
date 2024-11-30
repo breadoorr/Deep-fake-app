@@ -213,7 +213,7 @@ export const Learning = () => {
                         <h2 style={{ marginBottom: "1rem", color: "#32a852", fontSize: "1.8rem" }}>
                             How to Spot Deepfakes
                         </h2>
-                        <div style={listContainerStyle}>
+                        {/* <div style={listContainerStyle}>
                             <div style={listItemStyle}>
                                 <span style={bulletIconStyle}></span>
                                 <span>Look for unnatural facial expressions.</span>
@@ -230,7 +230,7 @@ export const Learning = () => {
                                 <span style={bulletIconStyle}></span>
                                 <span>Use tools like reverse image search or metadata analysis.</span>
                             </div>
-                        </div>
+                        </div> */}
                         <button onClick={startQuiz} style={buttonStyle}>
                             Start Quiz
                         </button>
