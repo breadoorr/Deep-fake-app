@@ -633,7 +633,7 @@ section:target, section:focus-visible, section:hover {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 756px) {
 
     .content-section h2 {
         font-size: 1.5vh;
