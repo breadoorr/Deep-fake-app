@@ -1,18 +1,21 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect } from "react";
 
 export const Game = () => {
     const [feedback, setFeedback] = useState("");
 
     const GameBodyStyle = {
+        flex: 1,
         backgroundColor: "#111",
         color: "#fff",
         fontFamily: "'Press Start 2P', cursive",
         margin: 0,
         padding: 0,
         lineHeight: 1.6,
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
     };
 
     const handleImageClick = (correctAnswer) => {
@@ -30,6 +33,9 @@ export const Game = () => {
             Object.assign(document.body.style, {
                 backgroundColor: "",
                 color: "",
+                minHeight: "",
+                display: "",
+                flexDirection: "",
             });
         };
     }, []);
@@ -37,9 +43,10 @@ export const Game = () => {
     return (
         <>
             <Header />
-            <section
-                className="game-section"
+            <div
+                className="game-container"
                 style={{
+                    flex: 1,
                     paddingTop: "100px",
                     maxWidth: "1000px",
                     margin: "0 auto",
@@ -57,10 +64,10 @@ export const Game = () => {
                 <div
                     className="gallery"
                     style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        justifyContent: "center",
+                        display: "grid",
+                        gridTemplateColumns: "repeat(2, 250px)",
                         gap: "20px",
+                        justifyContent: "center",
                         padding: "1rem",
                     }}
                 >
@@ -75,7 +82,8 @@ export const Game = () => {
                             className="image-item"
                             onClick={() => handleImageClick(item.correctAnswer)}
                             style={{
-                                width: "calc(40% - 20px)",
+                                width: "250px",
+                                height: "250px",
                                 background: "rgba(255, 255, 255, 0.1)",
                                 borderRadius: "8px",
                                 boxShadow: "0 0 10px rgba(0, 255, 128, 0.2)",
@@ -89,7 +97,7 @@ export const Game = () => {
                                 alt={item.alt}
                                 style={{
                                     width: "100%",
-                                    height: "auto",
+                                    height: "100%",
                                     borderRadius: "8px",
                                     objectFit: "cover",
                                 }}
@@ -109,8 +117,47 @@ export const Game = () => {
                 >
                     {feedback}
                 </div>
-            </section>
+            </div>
             <Footer />
+            <style>
+                {`
+                html, body {
+                    margin: 0;
+                    height: 100%;
+                }
+
+                #root {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                }
+
+                .game-container {
+                    flex: 1; /* Ensures main content grows to fill space */
+                }
+
+                .gallery {
+                    grid-template-columns: repeat(2, 250px);
+                }
+
+                .image-item {
+                    width: 250px;
+                    height: 250px;
+                }
+                
+                @media (max-width: 600px) {
+                    .gallery {
+                        grid-template-columns: repeat(2, 150px);
+                        gap: 10px;
+                    }
+
+                    .image-item {
+                        width: 150px;
+                        height: 150px;
+                    }
+                }
+                `}
+            </style>
         </>
     );
 };

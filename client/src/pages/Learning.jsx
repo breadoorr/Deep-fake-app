@@ -291,7 +291,26 @@ export const Learning = () => {
                     </div>
                 )}
             </div>
+
             <Footer />
+            <style>
+                {`
+                @media (max-width: 800px) {
+                    h1 {
+                        font-size: 1.1rem;
+                    }
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+                    p {
+                        font-size: 1rem;
+                    }
+                    button {
+                        font-size: 0.9rem;
+                    }
+                }
+                `}
+            </style>
         </>
     );
 };
