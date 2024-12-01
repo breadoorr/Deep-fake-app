@@ -10,7 +10,6 @@ export const Learning = () => {
     const [currentInfo, setCurrentInfo] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
 
-    // Set body background color
     useEffect(() => {
         document.body.style.backgroundColor = "#111";
         document.body.style.color = "#fff";
@@ -144,31 +143,6 @@ export const Learning = () => {
         lineHeight: "1.8",
     };
 
-    const listContainerStyle = {
-        textAlign: "left",
-        margin: "1.5rem auto",
-        padding: "1rem",
-        maxWidth: "600px",
-        background: "rgba(70, 70, 70, 0.8)",
-        borderRadius: "10px",
-        boxShadow: "0 5px 10px rgba(0, 255, 128, 0.3)",
-    };
-
-    const listItemStyle = {
-        fontSize: "1.1rem",
-        marginBottom: "0.8rem",
-        display: "flex",
-        alignItems: "center",
-    };
-
-    const bulletIconStyle = {
-        width: "10px",
-        height: "10px",
-        backgroundColor: "#4CAF50",
-        borderRadius: "50%",
-        marginRight: "10px",
-    };
-
     const quizButtonStyle = {
         display: "block",
         margin: "1rem auto",
@@ -210,27 +184,6 @@ export const Learning = () => {
                             Deepfakes are AI-generated media that can alter reality.
                             They can be used for both creative purposes and malicious intent.
                         </p>
-                        <h2 style={{ marginBottom: "1rem", color: "#32a852", fontSize: "1.8rem" }}>
-                            How to Spot Deepfakes
-                        </h2>
-                        <div style={listContainerStyle}>
-                            <div style={listItemStyle}>
-                                <span style={bulletIconStyle}></span>
-                                <span>Look for unnatural facial expressions.</span>
-                            </div>
-                            <div style={listItemStyle}>
-                                <span style={bulletIconStyle}></span>
-                                <span>Check for inconsistent lighting or shadows.</span>
-                            </div>
-                            <div style={listItemStyle}>
-                                <span style={bulletIconStyle}></span>
-                                <span>Listen for mismatched or robotic audio.</span>
-                            </div>
-                            <div style={listItemStyle}>
-                                <span style={bulletIconStyle}></span>
-                                <span>Use tools like reverse image search or metadata analysis.</span>
-                            </div>
-                        </div>
                         <button onClick={startQuiz} style={buttonStyle}>
                             Start Quiz
                         </button>
