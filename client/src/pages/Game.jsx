@@ -46,6 +46,8 @@ export const Game = () => {
             <div
                 className="game-container"
                 style={{
+                    width: '70%',
+                    maxWidth: '600px',
                     flex: 1,
                     paddingTop: "100px",
                     maxWidth: "1000px",
@@ -54,21 +56,31 @@ export const Game = () => {
                     color: "#fff",
                 }}
             >
-                <h1 style={{ fontSize: "2rem", color: "#4CAF50", marginBottom: "1rem" }}>
+                <h1 style={{ fontSize: "1.5rem", color: "#4CAF50", marginBottom: "1rem" }}>
                     Spot the Fake
                 </h1>
-                <p style={{ fontSize: "1.2rem", color: "#ccc", marginBottom: "2rem" }}>
-                    Scroll through the images below. Click an image to guess if it's "Real" or "Fake".
+                <p style={{ fontSize: "1rem", color: "#ccc", marginBottom: "2rem" }}>
+                    Scroll through the images below. Click an image if you guess it's "Fake".
                 </p>
 
                 <div
                     className="gallery"
                     style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(2, 250px)",
+                        display: 'grid',
+                        gridTemplateColumns: "repeat(2, 256px)",
                         gap: "20px",
                         justifyContent: "center",
                         padding: "1rem",
+
+                        '@media (max-width: 756px)': {
+                            display: 'flex',
+                            flexDirection: "column", // Stack items vertically
+                            // gap: "100px",
+                            justifyContent: 'space-between',
+                            width: '90%',
+                            maxWidth: '600px',
+
+                        },
                     }}
                 >
                     {[
@@ -82,8 +94,8 @@ export const Game = () => {
                             className="image-item"
                             onClick={() => handleImageClick(item.correctAnswer)}
                             style={{
-                                width: "250px",
-                                height: "250px",
+                                width: "256px",
+                                height: "256px",
                                 background: "rgba(255, 255, 255, 0.1)",
                                 borderRadius: "8px",
                                 boxShadow: "0 0 10px rgba(0, 255, 128, 0.2)",
