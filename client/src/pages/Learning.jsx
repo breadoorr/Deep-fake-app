@@ -133,7 +133,7 @@ export const Learning = () => {
     const containerStyle = {
         padding: "2.5rem",
         maxWidth: "600px",
-        height: '500px',
+        height: 'auto',
         margin: "6rem auto",
         backgroundColor: "rgba(50, 50, 50, 0.9)",
         color: "#fff",
@@ -177,7 +177,7 @@ export const Learning = () => {
 
                 {!quizStarted && currentPage === 0 && (
                     <>
-                        <h1 style={{ fontSize: "2.5rem", marginBottom: "1.5rem", color: "#4CAF50" }}>
+                        <h1 style={{ fontSize: "2.3rem", marginBottom: "1.3rem", color: "#4CAF50" }}>
                             Understanding Deepfakes
                         </h1>
                         <p style={{ marginBottom: "1.5rem", fontSize: "1.1rem", color: "#ddd" }}>
@@ -207,7 +207,7 @@ export const Learning = () => {
                 )}
                 {quizStarted && currentPage % 2 !== 0 && (
                     <div>
-                        <h2 style={{fontSize: "1.8rem", marginBottom: "1rem"}}>
+                        <h2 style={{fontSize: "1.4rem", marginBottom: "0.9rem"}}>
                             {questions[currentQuestion].question}
                         </h2>
                         <div>
@@ -253,7 +253,7 @@ export const Learning = () => {
                         font-size: 1.1rem;
                     }
                     h2 {
-                        font-size: 1.5rem;
+                        font-size: 1.1rem;
                     }
                     p {
                         font-size: 1rem;
