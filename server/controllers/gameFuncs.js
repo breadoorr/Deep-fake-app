@@ -1,4 +1,4 @@
-const {db:pool} = require("./db");
+const { pool } = require("./db");
 
 // Block of constants to support different game modes
 const picturesAmount = 10; // Max amount of picture pairs in a level
@@ -41,27 +41,29 @@ exports.GetLevelInfinite = async (req, res) => {
 
 // Pull a pair of pictures from a DB
 exports.GetPictures = async (req, res) => {
-    // const id = req.params["id"];
-    const index = req.body;
     if (pictureNumber < picturesAmount) {
         pictureNumber += 1;
         try {
-            const sql = "SELECT * FROM Pictures WHERE [id] = ${index}`";
-            const [result] = await pool.execute(sql, [req]);
+            const sql = "SELECT ImageReal, ImageFake FROM ImageInfo LIMIT 100;";
+            const [result] = await pool.execute(sql, []);
 
-            if (Math.floor(Math.random() * 101) > 50) {
-                // const imgFake = result[0].image_data.toString('base64');
-                let imgFake = result[1].toString('base64');
-                let imgReal = result[2].toString('base64');
-                prevPictureID = nextPictureID;
-                nextPictureID += 1;
-            } else {
-                // const imgFake = result[0].image_data.toString('base64');
-                let imgFake = result[2].toString('base64');
-                let imgReal = result[1].toString('base64');
-                prevPictureID = nextPictureID;
-                nextPictureID += 1;
-            }
+            // if (Math.floor(Math.random() * 101) > 50) {
+            //     // const imgFake = result[0].image_data.toString('base64');
+                
+            //     // prevPictureID = nextPictureID;
+            //     // nextPictureID += 1;
+            // } else {
+            //     // const imgFake = result[0].image_data.toString('base64');
+            //     let imgFake = result[2]
+            //     let imgReal = result[1]
+            //     prevPictureID = nextPictureID;
+            //     nextPictureID += 1;
+            // }
+
+
+            // let imgFake = result[0].ImageFake
+            // let imgReal = result[0].ImageReal
+            res.status(201).json(result[0]);
         } catch (error) {
             console.log(error);
             res.status(500).json({error: "Error getting images"});

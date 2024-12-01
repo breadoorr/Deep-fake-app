@@ -2,17 +2,20 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {Link, Navigate, useNavigate} from "react-router-dom";
 import "./menu.css";
-import {Navigation} from "../components/Navigation";
+// import {Navigation} from "../components/Navigation";
 
 export const Menu = () => {
+    const navigate = useNavigate();
+
+    
     return (
         <>
             <Header/>
-            <Navigation />
+            {/* <Navigation /> */}
 
 
                 {/* Main Content */}
-                <main className="menu-container d-flex">
+                <main className="menu-container d-flex w-screen">
 
                     <h1 style={{fontSize: '2rem', marginBottom: '1rem', color: '#4CAF50'}}>
                         Choose Your Play Mode
@@ -26,7 +29,7 @@ export const Menu = () => {
                             maxWidth: '80%'
                         }}
                     >
-                        <div className="menu-card">
+                        <div className="menu-card h-auto p-2" onClick={() => navigate('/learning')}>
                             <h2
                                 style={{
                                     fontSize: '1.5rem',
@@ -48,7 +51,7 @@ export const Menu = () => {
                             {/*</Link>*/}
                         </div>
                         {/* Regular Mode */}
-                        <div className="menu-card">
+                        <div className="menu-card" onClick={() => navigate('/game')}>
                             <h2
                                 style={{
                                     fontSize: '1.5rem',
@@ -71,7 +74,7 @@ export const Menu = () => {
                         </div>
 
                         {/* Infinite Mode */}
-                        <div className="menu-card">
+                        <div className="menu-card" onClick={() => navigate('/game')}>
                             <h2
                                 style={{
                                     fontSize: '1.5rem',
@@ -92,7 +95,7 @@ export const Menu = () => {
                         </div>
 
                         {/* Timer Mode */}
-                        <div className="menu-card">
+                        <div className="menu-card" onClick={() => navigate('/game')}>
                             <h2
                                 style={{
                                     fontSize: '1.5rem',

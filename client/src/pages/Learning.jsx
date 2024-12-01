@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import {Navigation} from "../components/Navigation";
+import './Learning.css'
 
 export const Learning = () => {
     const [quizStarted, setQuizStarted] = useState(false);
@@ -134,10 +135,11 @@ export const Learning = () => {
         padding: "2.5rem",
         maxWidth: "600px",
         height: 'auto',
+        width: '90%',
+        // height: '500px',
         margin: "6rem auto",
         backgroundColor: "rgba(50, 50, 50, 0.9)",
         color: "#fff",
-        borderRadius: "10px",
         boxShadow: "0 10px 20px rgba(0, 0, 0, 0.6)",
         textAlign: "center",
         lineHeight: "1.8",
@@ -171,16 +173,19 @@ export const Learning = () => {
     };
 
     return (
-        <>
-            <Header />
+        <>            <Header />
+            <div className="w-screen">
             <div style={containerStyle}>
 
                 {!quizStarted && currentPage === 0 && (
                     <>
-                        <h1 style={{ fontSize: "2.3rem", marginBottom: "1.3rem", color: "#4CAF50" }}>
+
+
+                        <h1 style={{ fontSize: "1.5rem", marginBottom: "1.5rem", color: "#4CAF50" }}>
+
                             Understanding Deepfakes
                         </h1>
-                        <p style={{ marginBottom: "1.5rem", fontSize: "1.1rem", color: "#ddd" }}>
+                        <p style={{ marginBottom: "1rem", fontSize: "1.1rem", color: "#ddd" }}>
                             Deepfakes are AI-generated media that can alter reality.
                             They can be used for both creative purposes and malicious intent.
                         </p>
@@ -191,10 +196,10 @@ export const Learning = () => {
                 )}
                 { quizStarted && currentPage % 2 === 0 && (
                     <div>
-                        <h2 style={{fontSize: "1.8rem", marginBottom: "1rem"}}>
+                        <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
                             {info[currentInfo].header}
                         </h2>
-                        <div>
+                        <div style={{fontSize: '1rem'}}>
                             {info[currentInfo].content}
                             <button
                                 onClick={() => handleRead()}
@@ -207,10 +212,10 @@ export const Learning = () => {
                 )}
                 {quizStarted && currentPage % 2 !== 0 && (
                     <div>
-                        <h2 style={{fontSize: "1.4rem", marginBottom: "0.9rem"}}>
+                        <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
                             {questions[currentQuestion].question}
                         </h2>
-                        <div>
+                        <div style={{fontSize: '1rem'}}>
                             {questions[currentQuestion].options.map((option, index) => (
                                 <button
                                     key={index}
@@ -244,6 +249,7 @@ export const Learning = () => {
                     </div>
                 )}
             </div>
+            </div>
 
             <Footer />
             <style>
@@ -264,6 +270,8 @@ export const Learning = () => {
                 }
                 `}
             </style>
-        </>
+            </>
+
+            
     );
 };
