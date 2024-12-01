@@ -133,7 +133,7 @@ export const Learning = () => {
     const containerStyle = {
         padding: "2.5rem",
         maxWidth: "600px",
-        height: '500px',
+        // height: '500px',
         margin: "6rem auto",
         backgroundColor: "rgba(50, 50, 50, 0.9)",
         color: "#fff",
@@ -171,7 +171,7 @@ export const Learning = () => {
     };
 
     return (
-        <>
+        <div className="h-screen">
             <Header />
             <div style={containerStyle}>
 
@@ -264,6 +264,6 @@ export const Learning = () => {
                 }
                 `}
             </style>
-        </>
+            </div>
     );
 };

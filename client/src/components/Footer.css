@@ -1,6 +1,6 @@
 .footer-copyright {
     width: 100%;
-    position: sticky;
+    position: fixed;
     bottom: 0;
     background: linear-gradient(45deg, #333, #555);
     color: #aaa;
