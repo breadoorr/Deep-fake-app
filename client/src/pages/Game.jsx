@@ -1,6 +1,7 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
+import "./Game.css";
 
 export const Game = () => {
     const [feedback, setFeedback] = useState("");
@@ -43,11 +44,14 @@ export const Game = () => {
     return (
         <>
             <Header />
+            {/* Back Arrow */}
+            <a href="#" className="back-arrow-game" title="Go Back">
+                <i className="bi bi-arrow-left"></i>
+            </a>
             <div
                 className="game-container"
                 style={{
                     width: '70%',
-                    // maxWidth: '600px',
                     flex: 1,
                     paddingTop: "100px",
                     maxWidth: "1000px",
@@ -63,26 +67,7 @@ export const Game = () => {
                     Scroll through the images below. Click an image if you guess it's "Fake".
                 </p>
 
-                <div
-                    className="gallery"
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: "repeat(2, 256px)",
-                        gap: "20px",
-                        justifyContent: "center",
-                        padding: "1rem",
-
-                        '@media (maxWidth: 756px)': {
-                            display: 'flex',
-                            flexDirection: "column",
-                            // gap: "100px",
-                            justifyContent: 'space-between',
-                            width: '90%',
-                            maxWidth: '600px',
-
-                        },
-                    }}
-                >
+                <div className="gallery">
                     {[
                         { src: "../pics/fake1.jpg", alt: "Person 1", correctAnswer: "fake" },
                         { src: "../pics/fake2.jpg", alt: "Person 2", correctAnswer: "real" },
@@ -93,27 +78,8 @@ export const Game = () => {
                             key={index}
                             className="image-item"
                             onClick={() => handleImageClick(item.correctAnswer)}
-                            style={{
-                                width: "256px",
-                                height: "256px",
-                                background: "rgba(255, 255, 255, 0.1)",
-                                borderRadius: "8px",
-                                boxShadow: "0 0 10px rgba(0, 255, 128, 0.2)",
-                                padding: "10px",
-                                textAlign: "center",
-                                cursor: "pointer",
-                            }}
                         >
-                            <img
-                                src={item.src}
-                                alt={item.alt}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    borderRadius: "8px",
-                                    objectFit: "cover",
-                                }}
-                            />
+                            <img src={item.src} alt={item.alt} />
                         </div>
                     ))}
                 </div>
@@ -131,45 +97,6 @@ export const Game = () => {
                 </div>
             </div>
             <Footer />
-            <style>
-                {`
-                html, body {
-                    margin: 0;
-                    height: 100%;
-                }
-
-                #root {
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-                }
-
-                .game-container {
-                    flex: 1; /* Ensures main content grows to fill space */
-                }
-
-                .gallery {
-                    grid-template-columns: repeat(2, 250px);
-                }
-
-                .image-item {
-                    width: 250px;
-                    height: 250px;
-                }
-                
-                @media (max-width: 600px) {
-                    .gallery {
-                        grid-template-columns: repeat(2, 150px);
-                        gap: 10px;
-                    }
-
-                    .image-item {
-                        width: 150px;
-                        height: 150px;
-                    }
-                }
-                `}
-            </style>
         </>
     );
 };

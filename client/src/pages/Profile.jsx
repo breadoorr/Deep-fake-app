@@ -1,15 +1,34 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
 import "./Profile.css";
 
 export const Profile = () => {
     const containerStyle = {
-
         padding: '4rem 2rem',
         textAlign: 'center',
         marginTop: '2rem',
         backgroundColor: '#111',
         color: '#fff',
+        position: 'relative',
+    };
+
+    const settingsIconStyle = {
+        position: 'absolute',
+        top: '1rem',
+        right: '1rem',
+        color: '#4CAF50',
+        fontSize: '2.2rem',
+        cursor: 'pointer',
+    };
+
+    const backArrowStyle = {
+        position: 'absolute',
+        top: '1rem',
+        left: '1rem',
+        color: '#4CAF50',
+        fontSize: '2rem',
+        cursor: 'pointer',
     };
 
     const headerStyle = {
@@ -54,10 +73,6 @@ export const Profile = () => {
         color: '#ccc',
     };
 
-    const linkContainerStyle = {
-        marginTop: '5rem',
-    };
-
     const playLinkStyle = {
         marginTop: '3rem',
         textAlign: 'center',
@@ -67,6 +82,16 @@ export const Profile = () => {
         <>
             <Header />
             <main style={containerStyle}>
+                {/* Back Arrow */}
+                <a href="#" style={backArrowStyle} className="back-arrow" title="Go Back">
+                    <i className="bi bi-arrow-left"></i>
+                </a>
+
+                {/* Settings Icon */}
+                <a href="Settings.jsx" style={settingsIconStyle} className="settings-icon" title="Account Settings">
+                    <i className="bi bi-gear-fill"></i>
+                </a>
+
                 <div style={headerStyle}>
                     <img
                         src="../pics/player_1.jpg"
@@ -83,7 +108,7 @@ export const Profile = () => {
                     <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#4CAF50' }}>
                         Your Statistics
                     </h2>
-                    <div style={statsGridStyle}>
+                    <div className="stats-grid" style={statsGridStyle}>
                         <div style={statItemStyle}>
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Total Points</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
@@ -96,27 +121,19 @@ export const Profile = () => {
                                 45
                             </p>
                         </div>
-                        <div style={statItemStyle}>
+                        <div style={statItemStyle} className="accuracy-item">
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Accuracy</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
                                 87%
                             </p>
                         </div>
                     </div>
-                </div>
 
-                <div style={linkContainerStyle}>
-                    <a
-                        href="settings.html"
-                        className="edit-settings-btn"
-                    >
-                        Edit Account Settings
-                    </a>
                 </div>
 
                 <div style={playLinkStyle}>
                     <a
-                        href="Menu.html"
+                        href="Menu.jsx"
                         className="profile-play-btn"
                     >
                         Play

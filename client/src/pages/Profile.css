@@ -1,5 +1,9 @@
+body {
+    background-color: #111;
+    margin: 0;
+    color: #fff;
+}
 
-.edit-settings-btn,
 .profile-play-btn {
     display: inline-block;
     text-transform: uppercase;
@@ -13,7 +17,18 @@
     transition: all 0.3s ease;
 }
 
-.edit-settings-btn:hover,
+
+.settings-icon i {
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.settings-icon:hover i {
+    transform: rotate(45deg) scale(1.2);
+    color: #32a852;
+}
+
+
 .profile-play-btn:hover {
     background: linear-gradient(45deg, #32a852, #4CAF50);
     box-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
@@ -25,4 +40,33 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 255, 128, 0.2);
 }
+
+.bi {
+    transition: transform 0.3s ease;
+}
+
+.bi:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .settings-icon, .back-arrow {
+        top: 3rem !important;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 1.5rem;
+    }
+
+    .accuracy-item {
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin-top: 1rem;
+    }
+
+}
+
 

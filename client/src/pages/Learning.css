@@ -11,6 +11,23 @@
     line-height: "1.8";
 }
 
+.back-arrow-learning {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #4CAF50;
+    font-size: 2rem;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: color 0.3s ease;
+}
+
+.back-arrow-learning:hover {
+    color: #81C784;
+}
+
+
 @media (max-width: 756px) {
     .container {
         max-width: 90%;
