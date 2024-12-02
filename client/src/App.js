@@ -9,6 +9,7 @@ import {Settings} from "./pages/Settings";
 import {Menu} from "./pages/Menu";
 import {Game} from "./pages/Game";
 import {Learning} from "./pages/Learning";
+import {Start} from "./pages/Start";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/game" element={<Game />} />
           <Route path="/learning" element={<Learning />} />
+          <Route path="/start" element={<Start />} />
 
           {/*<Route path="contact" element={<Contact />} />*/}
           {/*<Route path="*" element={<NoPage />} />*/}
