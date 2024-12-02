@@ -47,7 +47,7 @@ export const Game = () => {
                 className="game-container"
                 style={{
                     width: '70%',
-                    maxWidth: '600px',
+                    // maxWidth: '600px',
                     flex: 1,
                     paddingTop: "100px",
                     maxWidth: "1000px",
@@ -72,9 +72,9 @@ export const Game = () => {
                         justifyContent: "center",
                         padding: "1rem",
 
-                        '@media (max-width: 756px)': {
+                        '@media (maxWidth: 756px)': {
                             display: 'flex',
-                            flexDirection: "column", // Stack items vertically
+                            flexDirection: "column",
                             // gap: "100px",
                             justifyContent: 'space-between',
                             width: '90%',
