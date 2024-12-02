@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const { GetPictures } = require('./gameFuncs')
 
 // const {pool} = require('');
 
@@ -50,10 +51,12 @@ exports.Logout = async (req, res) => {
 exports.Register = async (req, res) => {
     const {username, email, password} = req.body;
     try {
+        const image = GetPictures();
         const hashedPassword = bcrypt.hashSync(password, bcryptSalt);
-        const sql = "INSERT INTO UserInfo (Username, Password, Email) VALUES (?, ?, ?)";
-        const [result] = await pool.execute(sql, [username, hashedPassword, email]);
-        const userId = result.insertId;
+        const sql = "INSERT INTO UserInfo (Username, Password, Email, ImageID) VALUES (?, ?, ?, ?)";
+        const [result] = await pool.execute(sql, [username, hashedPassword, email, ]);
+        const userId = result.UserID;
+        
 
         jwt.sign({userId, username}, jwtSecret, {expiresIn: '1h'}, (err, token) => {
             if (err) throw err;

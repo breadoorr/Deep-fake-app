@@ -41,8 +41,6 @@ exports.GetLevelInfinite = async (req, res) => {
 
 // Pull a pair of pictures from a DB
 exports.GetPictures = async (req, res) => {
-    if (pictureNumber < picturesAmount) {
-        pictureNumber += 1;
         try {
             const sql = "SELECT ImageReal, ImageFake FROM ImageInfo LIMIT 100;";
             const [result] = await pool.execute(sql, []);
@@ -68,9 +66,6 @@ exports.GetPictures = async (req, res) => {
             console.log(error);
             res.status(500).json({error: "Error getting images"});
         }
-    } else {
-        console.log("Game finished");
-    }
 }
 
 // Function, which responds to a user answer
