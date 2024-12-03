@@ -10,9 +10,11 @@ import {Menu} from "./pages/Menu";
 import {Game} from "./pages/Game";
 import {Learning} from "./pages/Learning";
 import {Start} from "./components/Start";
+import { UserProvider } from './UserContext';
 
 function App() {
   return (
+    <UserProvider>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -25,12 +27,9 @@ function App() {
           <Route path="/learning" element={<Learning />} />
           <Route path="/start" element={<Start />} />
           <Route path="/start" element={<Start />} />
-
-          {/*<Route path="contact" element={<Contact />} />*/}
-          {/*<Route path="*" element={<NoPage />} />*/}
-        {/*</Route>*/}
       </Routes>
       </BrowserRouter>
+      </UserProvider>
   );
 }
 

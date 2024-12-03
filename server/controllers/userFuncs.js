@@ -38,11 +38,8 @@ exports.Login = async (req, res) => {
                 const userId = user.UserID;
                 jwt.sign({userId, username}, jwtSecret, {expiresIn: '1d'}, (err, token) => {
                     if (err) throw err;
-                    // console.log('token', token);
-                    res.cookie('token', token, {sameSite: "none", secure: true, path: '/'});
+                    res.cookie('token', token, {sameSite: "none", secure: true});
                     res.status(201).json({id: user.UserID});
-                    // console.log(res.getHeaders()['set-cookie']);
-
                 });
             } else {
                 res.status(401).json({message: "Invalid password"});
@@ -57,7 +54,7 @@ exports.Login = async (req, res) => {
 }
 
 exports.Logout = async (req, res) => {
-    res.cookie('token', '', {sameSite: 'none', secure: true, httpOnly: true}).json('ok');
+    res.cookie('token', '', {sameSite: 'none', secure: true, httpOnly: true}).json({id: null});
 }
 
 exports.Register = async (req, res) => {

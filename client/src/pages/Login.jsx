@@ -1,9 +1,10 @@
 import {useState} from "react";
 import './Login.css';
 import axios from "axios";
+import { useUser } from './UserContext';
 
 const Login = ({ isOpen, onClose}) => {
-
+    const { login } = useUser();
     const [isLoginMode, setIsLoginMode] = useState(true);
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState('');
@@ -17,7 +18,7 @@ const Login = ({ isOpen, onClose}) => {
     const handleLogin = async () => {
         try {
             const response = await axios.post('http://127.0.0.1:5000/user/login', { username, password }, { withCredentials: true });
-
+            // login(response.data)
             console.log('Login successful:', response.data);
             // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();
@@ -30,6 +31,7 @@ const Login = ({ isOpen, onClose}) => {
     const handleRegister = async () => {
         try {
             const response = await axios.post('http://127.0.0.1:5000/user/register', {username, email, password});
+            // login(response.data);
             console.log('Register successful:', response.data);
             // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();
