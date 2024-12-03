@@ -6,12 +6,7 @@ const {GetLevelTutorial, GetLevelClassic, GetLevelTimeLim, GetLevelInfinite, Get
 const game = express.Router();
 game.use(cors());
 
-game.get("/startTutorial", GetLevelTutorial);
-game.get("/startClassic", GetLevelClassic);
-game.get("/startTimeLimited", GetLevelTimeLim);
-game.get("/startInfinite", GetLevelInfinite);
 game.get("/getPictures", GetPictures);
-game.post("/answer", Answer);
 game.put("/end", FinishGame);
 
 game.get("/", (req, res) => {

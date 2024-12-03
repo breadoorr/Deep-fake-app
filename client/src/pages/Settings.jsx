@@ -8,8 +8,7 @@ export const Settings = () => {
     const [inputFocus, setInputFocus] = useState(false);
     const [saveButtonHover, setSaveButtonHover] = useState(false);
     const [signOutHover, setSignOutHover] = useState(false);
-    const [saveButtonHover, setSaveButtonHover] = useState(false);
-    const [signOutHover, setSignOutHover] = useState(false);
+
 
     useEffect(() => {
         document.body.style.backgroundColor = "#222";
@@ -90,13 +89,11 @@ export const Settings = () => {
         fontSize: "1rem",
         color: "#fff",
         background: saveButtonHover
-        background: saveButtonHover
             ? "linear-gradient(45deg, #32a852, #4CAF50)"
             : "linear-gradient(45deg, #4CAF50, #32a852)",
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",
-        boxShadow: saveButtonHover
         boxShadow: saveButtonHover
             ? "0 0 15px rgba(76, 175, 80, 0.7)"
             : "none",
@@ -105,25 +102,6 @@ export const Settings = () => {
         marginBottom: "1rem",
     };
 
-    const signOutButtonStyle = {
-        width: "100%",
-        padding: "0.8rem",
-        fontSize: "1rem",
-        color: "#fff",
-        background: signOutHover
-            ? "linear-gradient(45deg, #ff5252, #ff1744)"
-            : "linear-gradient(45deg, #ff1744, #ff5252)",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
-        boxShadow: signOutHover
-            ? "0 0 15px rgba(255, 87, 87, 0.7)"
-            : "none",
-        transform: signOutHover ? "scale(1.05)" : "scale(1)",
-        transform: saveButtonHover ? "scale(1.05)" : "scale(1)",
-        transition: "all 0.3s ease",
-        marginBottom: "1rem",
-    };
 
     const signOutButtonStyle = {
         width: "100%",
@@ -143,15 +121,6 @@ export const Settings = () => {
         transition: "all 0.3s ease",
     };
 
-    const backArrowStyle = {
-        position: "fixed",
-        top: "3rem",
-        left: "1rem",
-        color: "#4CAF50",
-        fontSize: "2.5rem",
-        cursor: "pointer",
-        zIndex: 1000,
-    };
 
     const backArrowStyle = {
         position: "fixed",
@@ -219,8 +188,6 @@ export const Settings = () => {
                     <button
                         type="submit"
                         style={buttonStyle}
-                        onMouseEnter={() => setSaveButtonHover(true)}
-                        onMouseLeave={() => setSaveButtonHover(false)}
                         onMouseEnter={() => setSaveButtonHover(true)}
                         onMouseLeave={() => setSaveButtonHover(false)}
                     >

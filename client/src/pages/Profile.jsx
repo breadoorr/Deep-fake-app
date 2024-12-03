@@ -42,23 +42,6 @@ export const Profile = () => {
         position: 'relative',
     };
 
-    const settingsIconStyle = {
-        position: 'absolute',
-        top: '1rem',
-        right: '1rem',
-        color: '#4CAF50',
-        fontSize: '2.2rem',
-        cursor: 'pointer',
-    };
-
-    const backArrowStyle = {
-        position: 'absolute',
-        top: '1rem',
-        left: '1rem',
-        color: '#4CAF50',
-        fontSize: '2rem',
-        cursor: 'pointer',
-    };
 
     const headerStyle = {
         marginBottom: '2rem',
@@ -162,16 +145,6 @@ export const Profile = () => {
                         </div>
                     </div>
 
-                </div>
-
-                <div style={playLinkStyle}>
-                    <a
-                        href="Menu.jsx"
-                        href="Menu.jsx"
-                        className="profile-play-btn"
-                    >
-                        Play
-                    </a>
                 </div>
             </main>
             <Footer />
