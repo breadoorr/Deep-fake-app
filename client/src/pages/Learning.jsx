@@ -269,6 +269,11 @@ export const Learning = () => {
 
     return (
         <>            <Header />
+            {/* Back Arrow */}
+            <a href="#" className="back-arrow-game" title="Go Back">
+                <i className="bi bi-arrow-left"></i>
+            </a>
+
             <div className="w-screen">
             <div style={containerStyle}>
 
