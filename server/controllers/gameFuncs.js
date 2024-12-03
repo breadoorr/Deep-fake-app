@@ -60,43 +60,13 @@ exports.GetLevelInfinite = async (req, res) => {
 
 // Pull a pair of pictures from a DB
 exports.GetPictures = async (req, res) => {
-        //     const sql = "SELECT ImageReal, ImageFake FROM ImageInfo LIMIT 100;";
-        //     const [result] = await pool.execute(sql, []);
-
-        // if (Math.floor(Math.random() * 101) > 50) {
-        //     // const imgFake = result[0].image_data.toString('base64');
-
-        //     // prevPictureID = nextPicID;
-        //     // nextPicID += 1;
-        // } else {
-        //     // const imgFake = result[0].image_data.toString('base64');
-        //     let imgFake = result[2]
-        //     let imgReal = result[1]
-        //     prevPictureID = nextPicID;
-        //     nextPicID += 1;
-        // }
+        
 
     try {
-        // console.log('Start - 1:', nextPicID, 'PicAmount:', defPicAmount);
-        // const sql = "SELECT ImageRealB64, ImageFakeB64 FROM ImageInfo LIMIT 1, 10";
-        const sql1 = "SELECT ImageRealB64 FROM ImageInfo LIMIT 1, 10";
-        const sql2 = "SELECT ImageFakeB64 FROM ImageInfo LIMIT 1, 10";
+        const sql1 = "SELECT ImageReal, ImageFake FROM ImageInfo LIMIT 20";
+        let result = await pool.execute(sql1);
 
-        // let result = await pool.execute(sql, [nextPicID, defPicAmount]);
-        let result1 = await pool.execute(sql1);
-        let result2 = await pool.execute(sql2);
-
-        // nextPicID += result.length;
-
-        // picBatch = result.map((row, index) => ({
-        //     photo1: result[0],
-        //     photo2: result[1],
-        // }));
-        let arr1 = extractStrings(result1);
-        let arr2 = extractStrings(result2);
-        console.log(arr1);
-        console.log("--------------------------------------------------------------------");
-        console.log(arr2);
+        res.status(202).json( { "real": result[0], "fake": result[0] } )
     } catch (error) {
         console.error("Error fetching photos:", error);
         throw error;

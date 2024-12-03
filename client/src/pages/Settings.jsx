@@ -1,8 +1,10 @@
+import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 
 export const Settings = () => {
+    const navigate = useNavigate();
     const [inputFocus, setInputFocus] = useState(false);
     const [saveButtonHover, setSaveButtonHover] = useState(false);
     const [signOutHover, setSignOutHover] = useState(false);
@@ -117,7 +119,7 @@ export const Settings = () => {
         <>
             <Header />
             {/* Back Arrow */}
-            <a href="#" style={backArrowStyle} className="back-arrow" title="Go Back">
+            <a style={backArrowStyle} className="back-arrow" title="Go Back" onClick={() => navigate('/profile')}>
                 <i className="bi bi-arrow-left"></i>
             </a>
             <div style={containerStyle}>

@@ -9,7 +9,7 @@ const userRoute = require("./routers/user.js");
 const gameRoute = require("./routers/game.js");
 
 app.use(cors( {
-  origin: 'http://localhost:5000',
+  origin: 'http://localhost:3000',
   credentials: true
 }));
 app.use(express.json());

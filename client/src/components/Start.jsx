@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import "./Start.css";
 
-export const Start = () => {
+export const Start = ( {onButtonClick} ) => {
     const navigate = useNavigate();
 
     return (
@@ -31,7 +31,7 @@ export const Start = () => {
                 </div>
 
                 <div className="start-buttons">
-                    <button className="start-btn start-play" onClick={() => navigate("/game")}>
+                    <button className="start-btn start-play" onClick={onButtonClick}>
                         Start Game
                     </button>
                     <button className="start-btn start-back" onClick={() => navigate("/menu")}>
@@ -43,3 +43,6 @@ export const Start = () => {
         </>
     );
 };
+
+// module.exports.default = {Start};
+

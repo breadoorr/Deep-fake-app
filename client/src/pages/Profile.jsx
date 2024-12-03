@@ -2,8 +2,17 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import "./Profile.css";
+import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
+
+    const navigate = useNavigate();
+
+    const getProfile = () => {
+
+    }
+
+
     const containerStyle = {
         padding: '4rem 2rem',
         textAlign: 'center',
@@ -83,12 +92,12 @@ export const Profile = () => {
             <Header />
             <main style={containerStyle}>
                 {/* Back Arrow */}
-                <a href="#" style={backArrowStyle} className="back-arrow" title="Go Back">
+                <a style={backArrowStyle} className="back-arrow" title="Go Back" onClick={() => navigate('/menu')}>
                     <i className="bi bi-arrow-left"></i>
                 </a>
 
                 {/* Settings Icon */}
-                <a href="Settings.jsx" style={settingsIconStyle} className="settings-icon" title="Account Settings">
+                <a style={settingsIconStyle} className="settings-icon" title="Account Settings" onClick={() => navigate('/settings')}>
                     <i className="bi bi-gear-fill"></i>
                 </a>
 
