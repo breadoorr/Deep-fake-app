@@ -8,12 +8,18 @@ export const Settings = () => {
     const [inputFocus, setInputFocus] = useState(false);
     const [saveButtonHover, setSaveButtonHover] = useState(false);
     const [signOutHover, setSignOutHover] = useState(false);
+    const [saveButtonHover, setSaveButtonHover] = useState(false);
+    const [signOutHover, setSignOutHover] = useState(false);
 
     useEffect(() => {
         document.body.style.backgroundColor = "#222";
         document.body.style.color = "#fff";
+        document.body.style.backgroundColor = "#222";
+        document.body.style.color = "#fff";
 
         return () => {
+            document.body.style.backgroundColor = "";
+            document.body.style.color = "";
             document.body.style.backgroundColor = "";
             document.body.style.color = "";
         };
@@ -23,6 +29,7 @@ export const Settings = () => {
         backgroundColor: "rgba(255, 255, 255, 0.1)",
         transition: "background-color 0.3s, color 0.3s",
         maxWidth: "600px",
+        margin: "5rem auto 3rem",
         margin: "5rem auto 3rem",
         padding: "2rem",
         textAlign: "center",
@@ -56,7 +63,11 @@ export const Settings = () => {
         border: inputFocus
             ? "2px solid #4CAF50"
             : "1px solid rgba(255, 255, 255, 0.3)",
+        border: inputFocus
+            ? "2px solid #4CAF50"
+            : "1px solid rgba(255, 255, 255, 0.3)",
         borderRadius: "5px",
+        backgroundColor: "#444",
         backgroundColor: "#444",
         color: "#fff",
         outline: "none",
@@ -65,7 +76,12 @@ export const Settings = () => {
         boxShadow: inputFocus
             ? "0 0 10px rgba(76, 175, 80, 0.7)"
             : "none",
+        transition: "box-shadow 0.15s ease, border 0.15s ease",
+        boxShadow: inputFocus
+            ? "0 0 10px rgba(76, 175, 80, 0.7)"
+            : "none",
     };
+
 
 
     const buttonStyle = {
@@ -74,11 +90,13 @@ export const Settings = () => {
         fontSize: "1rem",
         color: "#fff",
         background: saveButtonHover
+        background: saveButtonHover
             ? "linear-gradient(45deg, #32a852, #4CAF50)"
             : "linear-gradient(45deg, #4CAF50, #32a852)",
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",
+        boxShadow: saveButtonHover
         boxShadow: saveButtonHover
             ? "0 0 15px rgba(76, 175, 80, 0.7)"
             : "none",
@@ -102,7 +120,37 @@ export const Settings = () => {
             ? "0 0 15px rgba(255, 87, 87, 0.7)"
             : "none",
         transform: signOutHover ? "scale(1.05)" : "scale(1)",
+        transform: saveButtonHover ? "scale(1.05)" : "scale(1)",
         transition: "all 0.3s ease",
+        marginBottom: "1rem",
+    };
+
+    const signOutButtonStyle = {
+        width: "100%",
+        padding: "0.8rem",
+        fontSize: "1rem",
+        color: "#fff",
+        background: signOutHover
+            ? "linear-gradient(45deg, #ff5252, #ff1744)"
+            : "linear-gradient(45deg, #ff1744, #ff5252)",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+        boxShadow: signOutHover
+            ? "0 0 15px rgba(255, 87, 87, 0.7)"
+            : "none",
+        transform: signOutHover ? "scale(1.05)" : "scale(1)",
+        transition: "all 0.3s ease",
+    };
+
+    const backArrowStyle = {
+        position: "fixed",
+        top: "3rem",
+        left: "1rem",
+        color: "#4CAF50",
+        fontSize: "2.5rem",
+        cursor: "pointer",
+        zIndex: 1000,
     };
 
     const backArrowStyle = {
@@ -173,10 +221,21 @@ export const Settings = () => {
                         style={buttonStyle}
                         onMouseEnter={() => setSaveButtonHover(true)}
                         onMouseLeave={() => setSaveButtonHover(false)}
+                        onMouseEnter={() => setSaveButtonHover(true)}
+                        onMouseLeave={() => setSaveButtonHover(false)}
                     >
                         Save Changes
                     </button>
                 </form>
+                <button
+                    type="button"
+                    style={signOutButtonStyle}
+                    onMouseEnter={() => setSignOutHover(true)}
+                    onMouseLeave={() => setSignOutHover(false)}
+                    onClick={() => alert("Signing out...")}
+                >
+                    Sign Out
+                </button>
                 <button
                     type="button"
                     style={signOutButtonStyle}

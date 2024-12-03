@@ -24,6 +24,7 @@ function App() {
           <Route path="/game" element={<Game />} />
           <Route path="/learning" element={<Learning />} />
           <Route path="/start" element={<Start />} />
+          <Route path="/start" element={<Start />} />
 
           {/*<Route path="contact" element={<Contact />} />*/}
           {/*<Route path="*" element={<NoPage />} />*/}

@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +20,25 @@ export const Profile = () => {
         marginTop: '2rem',
         backgroundColor: '#111',
         color: '#fff',
+        position: 'relative',
+    };
+
+    const settingsIconStyle = {
+        position: 'absolute',
+        top: '1rem',
+        right: '1rem',
+        color: '#4CAF50',
+        fontSize: '2.2rem',
+        cursor: 'pointer',
+    };
+
+    const backArrowStyle = {
+        position: 'absolute',
+        top: '1rem',
+        left: '1rem',
+        color: '#4CAF50',
+        fontSize: '2rem',
+        cursor: 'pointer',
         position: 'relative',
     };
 
@@ -118,6 +138,7 @@ export const Profile = () => {
                         Your Statistics
                     </h2>
                     <div className="stats-grid" style={statsGridStyle}>
+                    <div className="stats-grid" style={statsGridStyle}>
                         <div style={statItemStyle}>
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Total Points</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
@@ -131,10 +152,13 @@ export const Profile = () => {
                             </p>
                         </div>
                         <div style={statItemStyle} className="accuracy-item">
+                        <div style={statItemStyle} className="accuracy-item">
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Accuracy</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
                                 87%
                             </p>
+                        </div>
+                    </div>
                         </div>
                     </div>
 
@@ -142,6 +166,7 @@ export const Profile = () => {
 
                 <div style={playLinkStyle}>
                     <a
+                        href="Menu.jsx"
                         href="Menu.jsx"
                         className="profile-play-btn"
                     >
