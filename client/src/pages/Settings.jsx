@@ -1,17 +1,24 @@
+import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 
 export const Settings = () => {
+    const navigate = useNavigate();
     const [inputFocus, setInputFocus] = useState(false);
     const [saveButtonHover, setSaveButtonHover] = useState(false);
     const [signOutHover, setSignOutHover] = useState(false);
 
+
     useEffect(() => {
+        document.body.style.backgroundColor = "#222";
+        document.body.style.color = "#fff";
         document.body.style.backgroundColor = "#222";
         document.body.style.color = "#fff";
 
         return () => {
+            document.body.style.backgroundColor = "";
+            document.body.style.color = "";
             document.body.style.backgroundColor = "";
             document.body.style.color = "";
         };
@@ -21,6 +28,7 @@ export const Settings = () => {
         backgroundColor: "rgba(255, 255, 255, 0.1)",
         transition: "background-color 0.3s, color 0.3s",
         maxWidth: "600px",
+        margin: "5rem auto 3rem",
         margin: "5rem auto 3rem",
         padding: "2rem",
         textAlign: "center",
@@ -54,7 +62,11 @@ export const Settings = () => {
         border: inputFocus
             ? "2px solid #4CAF50"
             : "1px solid rgba(255, 255, 255, 0.3)",
+        border: inputFocus
+            ? "2px solid #4CAF50"
+            : "1px solid rgba(255, 255, 255, 0.3)",
         borderRadius: "5px",
+        backgroundColor: "#444",
         backgroundColor: "#444",
         color: "#fff",
         outline: "none",
@@ -63,7 +75,12 @@ export const Settings = () => {
         boxShadow: inputFocus
             ? "0 0 10px rgba(76, 175, 80, 0.7)"
             : "none",
+        transition: "box-shadow 0.15s ease, border 0.15s ease",
+        boxShadow: inputFocus
+            ? "0 0 10px rgba(76, 175, 80, 0.7)"
+            : "none",
     };
+
 
 
     const buttonStyle = {
@@ -85,6 +102,7 @@ export const Settings = () => {
         marginBottom: "1rem",
     };
 
+
     const signOutButtonStyle = {
         width: "100%",
         padding: "0.8rem",
@@ -103,6 +121,7 @@ export const Settings = () => {
         transition: "all 0.3s ease",
     };
 
+
     const backArrowStyle = {
         position: "fixed",
         top: "3rem",
@@ -117,7 +136,7 @@ export const Settings = () => {
         <>
             <Header />
             {/* Back Arrow */}
-            <a href="#" style={backArrowStyle} className="back-arrow" title="Go Back">
+            <a style={backArrowStyle} className="back-arrow" title="Go Back" onClick={() => navigate('/profile')}>
                 <i className="bi bi-arrow-left"></i>
             </a>
             <div style={containerStyle}>
@@ -175,6 +194,15 @@ export const Settings = () => {
                         Save Changes
                     </button>
                 </form>
+                <button
+                    type="button"
+                    style={signOutButtonStyle}
+                    onMouseEnter={() => setSignOutHover(true)}
+                    onMouseLeave={() => setSignOutHover(false)}
+                    onClick={() => alert("Signing out...")}
+                >
+                    Sign Out
+                </button>
                 <button
                     type="button"
                     style={signOutButtonStyle}

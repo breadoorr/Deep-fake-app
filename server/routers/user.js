@@ -9,7 +9,7 @@ user.post("/login", Login)
 user.get("/logout", Logout);
 user.post("/register", Register);
 // user.post("/confirmEmail", ConfirmEmail);
-user.get("/getProfile/:username", GetProfile)
+user.post("/getProfile", GetProfile)
 user.put("/updateProfile", UpdateProfile);
 
 user.get("/", (req, res, next) => {

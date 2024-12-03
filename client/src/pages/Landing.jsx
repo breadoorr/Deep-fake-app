@@ -3,8 +3,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {useEffect, useRef} from "react";
 
+
+
+import { Navigate, useNavigate } from 'react-router-dom';
 export const Landing = () => {
+    const navigate = useNavigate();
     const sections = useRef([]);
+
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -47,7 +52,7 @@ export const Landing = () => {
                 >
                     <h1>Welcome</h1>
                     <p>Deepfake Awareness Game</p>
-                    <a href="#" className="start-btn">Start</a>
+                    <a className="start-btn" onClick={() => navigate('/menu')}>Start</a>
                     <p className="scroll-text">Scroll to learn more about the project</p>
                 </section>
 
@@ -81,12 +86,12 @@ export const Landing = () => {
                         <h3>Learning Mode</h3>
                         <p>Explore the world of deepfakes. This mode provides tips and examples to help you identify
                             manipulated content and understand common signs of fake images and videos.</p>
-                        <button className="mode-btn" id="learning-mode">Let's Learn</button>
+                        <button className="mode-btn" id="learning-mode" onClick={() => navigate('/learning')}>Let's Learn</button>
                     </div>
                     <div className="mode">
                         <h3>Play Mode</h3>
                         <p>Put your skills to the test! Use your knowledge to spot fake content in real scenarios.</p>
-                        <button className="mode-btn" id="play-mode">Challenge Me</button>
+                        <button className="mode-btn" id="play-mode" onClick={() => navigate('/menu')}>Challenge Me</button>
                     </div>
                 </section>
 
@@ -153,5 +158,6 @@ export const Landing = () => {
                 </section>
             </div>
         </div>
-    );
-};
+    )
+}
+

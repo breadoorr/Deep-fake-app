@@ -12,6 +12,18 @@ const nodemailer = require('nodemailer');
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
+exports.GetProfile = async (req, res) => {
+    const userId = req.body.userId;
+    try {
+        const sql = "SELECT * FROM UserInfo WHERE UserID = ?";
+        const [result] = await pool.execute(sql, [userId]);
+
+        res.status(203).json({user: result[0]});
+    } catch(err) {
+        console.log(err);
+        res.status(500).json({"error": "Database error"});
+    }
+}
 
 exports.Login = async (req, res) => {
     const {username, password} = req.body;
@@ -53,9 +65,12 @@ exports.Register = async (req, res) => {
     try {
         const image = GetPictures();
         const hashedPassword = bcrypt.hashSync(password, bcryptSalt);
-        const sql = "INSERT INTO UserInfo (Username, Password, Email, ImageID) VALUES (?, ?, ?, ?)";
-        const [result] = await pool.execute(sql, [username, hashedPassword, email, ]);
+        const sql = "INSERT INTO UserInfo (Username, Password, Email) VALUES (?, ?, ?)";
+        const [result] = await pool.execute(sql, [username, hashedPassword, email]);
         const userId = result.UserID;
+
+        const sqlImage = "INSERT INTO UserInfo (ImageID) VALUES (?)";
+        await pool.execute(sqlImage, [userId])
         
 
         jwt.sign({userId, username}, jwtSecret, {expiresIn: '1h'}, (err, token) => {
@@ -108,34 +123,8 @@ exports.Register = async (req, res) => {
 //     });
 // }
 
-exports.GetProfile = async (req, res) => {
-    // res.json(members.filter(member => member.email === req.params.email));
-    const sql = "SELECT * FROM Users WHERE username = req";
-    const email = req.params.email;
-
-    // db.query(sql, [email], (err, results) => {
-    //     if (err) {
-    //         return callback(err);
-    //     }
-    //     callback(null, results);
-    // });
-}
 
 exports.UpdateProfile = async (req, res) => {
     console.log("User updated info");
     res.status(200);
 }
-
-// exports.login = async (req, res) => {
-//     const { username, password } = req.body;
-//
-//     try {
-//         const sql = "INSERT INTO Users (username, password) VALUES (?, ?)";
-//         const [result] = await db.execute(sql, [username, password]);
-//         console.log(result);
-//         res.status(200).json(result);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).send("Internal Server Error");
-//     }
-// }
