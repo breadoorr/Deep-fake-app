@@ -2,30 +2,61 @@ import './Landing.css';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {useEffect, useRef} from "react";
-export const Landing = () => {
 
-    const sectionRef = useRef(null);
+export const Landing = () => {
+    const sections = useRef([]);
 
     useEffect(() => {
-        if (sectionRef.current) {
-            sectionRef.current.focus();
-        }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.focus();
+                    }
+                });
+            },
+            {
+                threshold: 1,
+            }
+        );
+
+        sections.current.forEach((section) => {
+            if (section) observer.observe(section);
+        });
+
+        return () => {
+            sections.current.forEach((section) => {
+                if (section) observer.unobserve(section);
+            });
+        };
     }, []);
+
+    const setRef = (index) => (el) => {
+        sections.current[index] = el;
+    };
 
     return (
         <div className="Landing">
             <Header />
-
             <div className="snap-wrapper">
-
-                <section  id="hero" className="hero" ref={sectionRef}>
+                <section
+                    id="hero"
+                    className="hero"
+                    tabIndex="0"
+                    ref={setRef(0)}
+                >
                     <h1>Welcome</h1>
                     <p>Deepfake Awareness Game</p>
                     <a href="#" className="start-btn">Start</a>
                     <p className="scroll-text">Scroll to learn more about the project</p>
                 </section>
 
-                <section id="info" className="content-section" tabIndex="0">
+                <section
+                    id="info"
+                    className="content-section"
+                    tabIndex="0"
+                    ref={setRef(1)}
+                >
                     <h2>Fighting Misinformation</h2>
                     <p>Six students are raising awareness about deepfakes, revealing their impact on society.</p>
 
@@ -37,10 +68,14 @@ export const Landing = () => {
 
                     <h2>Why It Matters</h2>
                     <p>Deepfake awareness is vital for everyone in today’s digital age.</p>
-
                 </section>
 
-                <section id="choose-mode" className="game-modes" tabIndex="0">
+                <section
+                    id="choose-mode"
+                    className="game-modes"
+                    tabIndex="0"
+                    ref={setRef(2)}
+                >
                     <h2>Choose Your Mode</h2>
                     <div className="mode">
                         <h3>Learning Mode</h3>
@@ -55,12 +90,16 @@ export const Landing = () => {
                     </div>
                 </section>
 
-                <section id="team" className="developer-team" tabIndex="0">
+                <section
+                    id="team"
+                    className="developer-team"
+                    tabIndex="0"
+                    ref={setRef(3)}
+                >
                     <h2>Meet the Developer Team</h2>
                     <div className="team-members">
                         <div className="member">
-                            <h3>Chystiakova
-                                Daria</h3>
+                            <h3>Chystiakova Daria</h3>
                             <p>Project Manager</p>
                         </div>
                         <div className="member">
@@ -82,7 +121,12 @@ export const Landing = () => {
                     </div>
                 </section>
 
-                <section className="footer" tabIndex="0">
+                <section
+                    id="footer"
+                    className="footer"
+                    tabIndex="0"
+                    ref={setRef(4)}
+                >
                     <div className="footer-content">
                         <div className="contact-info">
                             <h3>Contact Us</h3>
@@ -109,7 +153,5 @@ export const Landing = () => {
                 </section>
             </div>
         </div>
-    )
-}
-
-// module.exports.default = { Landing };
+    );
+};
