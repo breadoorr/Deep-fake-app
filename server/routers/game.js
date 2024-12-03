@@ -10,7 +10,7 @@ game.get("/startTutorial", GetLevelTutorial);
 game.get("/startClassic", GetLevelClassic);
 game.get("/startTimeLimited", GetLevelTimeLim);
 game.get("/startInfinite", GetLevelInfinite);
-game.get("/getPicture", GetPictures);
+game.get("/getPictures", GetPictures);
 game.post("/answer", Answer);
 game.put("/end", FinishGame);
 

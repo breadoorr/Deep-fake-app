@@ -3,8 +3,10 @@ import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import {Navigation} from "../components/Navigation";
 import './Learning.css'
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const Learning = () => {
+    const navigate = useNavigate();
     const [quizStarted, setQuizStarted] = useState(false);
     const [score, setScore] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -270,7 +272,7 @@ export const Learning = () => {
     return (
         <>            <Header />
             {/* Back Arrow */}
-            <a href="#" className="back-arrow-game" title="Go Back">
+            <a href="#" className="back-arrow-game" title="Go Back" onClick={() => navigate('/menu')}>
                 <i className="bi bi-arrow-left"></i>
             </a>
 
