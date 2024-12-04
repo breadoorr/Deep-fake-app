@@ -12,13 +12,27 @@ const nodemailer = require('nodemailer');
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
+exports.GetImage = async (userId) => {
+    try {
+        const imageSearchQuery = "SELECT ImageFake FROM ImageInfo WHERE ImageID = ?";
+        const [imageResult] = await pool.execute(imageSearchQuery, [userId])
+
+        const image = imageResult[0].ImageFake;
+        // console.log(image);
+        return image;
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+
 exports.GetProfile = async (req, res) => {
     const userId = req.body.userId;
     try {
         const sql = "SELECT * FROM UserInfo WHERE UserID = ?";
         const [result] = await pool.execute(sql, [userId]);
 
-        res.status(203).json({user: result[0]});
+        res.status(200).json({user: result});
     } catch(err) {
         console.log(err);
         res.status(500).json({"error": "Database error"});
@@ -36,10 +50,12 @@ exports.Login = async (req, res) => {
             const passOk = bcrypt.compareSync(password, user.Password);
             if (passOk) {
                 const userId = user.UserID;
+
+                const image = this.GetImage(userId);
                 jwt.sign({userId, username}, jwtSecret, {expiresIn: '1d'}, (err, token) => {
                     if (err) throw err;
                     res.cookie('token', token, {sameSite: "none", secure: true});
-                    res.status(201).json({id: user.UserID});
+                    res.status(201).json({user: user, image: image});
                 });
             } else {
                 res.status(401).json({message: "Invalid password"});
@@ -60,21 +76,14 @@ exports.Logout = async (req, res) => {
 exports.Register = async (req, res) => {
     const {username, email, password} = req.body;
     try {
-        const image = GetPictures();
         const hashedPassword = bcrypt.hashSync(password, bcryptSalt);
         const sql = "INSERT INTO UserInfo (Username, Password, Email) VALUES (?, ?, ?)";
         const [result] = await pool.execute(sql, [username, hashedPassword, email]);
-        const userId = result.UserID;
+        const userId = result.insertId;
 
-        const sqlImage = "INSERT INTO UserInfo (ImageID) VALUES (?)";
-        await pool.execute(sqlImage, [userId])
-        
+        const image = this.GetImage(userId);
 
-        jwt.sign({userId, username}, jwtSecret, {expiresIn: '1h'}, (err, token) => {
-            if (err) throw err;
-            res.cookies('token', token, {sameSite: true, secure: true, httpOnly: true})
-                .status(201).json({id: userId});
-        });
+        res.status(200).json({user: { id: userId, username: username }, image: image});
     } catch (error) {
         console.error(error);
         res.status(500).json({error: "Database error"});
