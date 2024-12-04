@@ -1,7 +1,7 @@
 import {useState} from "react";
 import './Login.css';
 import axios from "axios";
-import { useUser } from './UserContext';
+import { useUser } from '../context/UserContext';
 
 const Login = ({ isOpen, onClose}) => {
     const { login } = useUser();

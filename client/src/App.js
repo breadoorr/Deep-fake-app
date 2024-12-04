@@ -10,7 +10,7 @@ import {Menu} from "./pages/Menu";
 import {Game} from "./pages/Game";
 import {Learning} from "./pages/Learning";
 import {Start} from "./components/Start";
-import { UserProvider } from './UserContext';
+import { UserProvider } from './context/UserContext';
 
 function App() {
   return (
