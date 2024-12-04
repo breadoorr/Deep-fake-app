@@ -39,7 +39,6 @@ export const Profile = () => {
         color: '#4CAF50',
         fontSize: '2rem',
         cursor: 'pointer',
-        position: 'relative',
     };
 
 
@@ -85,11 +84,6 @@ export const Profile = () => {
         color: '#ccc',
     };
 
-    const playLinkStyle = {
-        marginTop: '3rem',
-        textAlign: 'center',
-    };
-
     return (
         <>
             <Header />
@@ -121,7 +115,6 @@ export const Profile = () => {
                         Your Statistics
                     </h2>
                     <div className="stats-grid" style={statsGridStyle}>
-                    <div className="stats-grid" style={statsGridStyle}>
                         <div style={statItemStyle}>
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Total Points</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
@@ -135,16 +128,12 @@ export const Profile = () => {
                             </p>
                         </div>
                         <div style={statItemStyle} className="accuracy-item">
-                        <div style={statItemStyle} className="accuracy-item">
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Accuracy</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
                                 87%
                             </p>
                         </div>
                     </div>
-                        </div>
-                    </div>
-
                 </div>
             </main>
             <Footer />

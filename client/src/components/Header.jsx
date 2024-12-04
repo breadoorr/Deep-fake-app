@@ -20,7 +20,7 @@ const Header = () => {
             <ul id="navbar" className={isNavbarOpen ? 'active' : ''}>
                 <li><Link to="/" onClick={() => setNavbarOpen(false)}>Home</Link></li>
                 <li><Link to="/menu" onClick={() => setNavbarOpen(false)}>Menu</Link></li>
-                <li><a href="#" onClick={() => setNavbarOpen(false)}>How to Play</a></li>
+                <li><Link to="/rules" onClick={() => setNavbarOpen(false)}>How to Play</Link></li>
                 { !userId ? (
                 <li><a onClick={() => { setLoginOpen(!isLoginOpen); setNavbarOpen(false);}}>Sign Up/Login</a></li>
                 ) : (

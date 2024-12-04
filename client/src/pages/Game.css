@@ -63,6 +63,27 @@ body {
     color: #81C784;
 }
 
+/*Score*/
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.3);
+}
+
+.score-container h2 {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.score-container span {
+    color: #4CAF50;
+}
+
 
 @media (max-width: 600px) {
     .gallery {

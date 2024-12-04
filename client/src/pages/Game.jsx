@@ -96,26 +96,44 @@ export const Game = () => {
             { !gameStarted && (
                     <Start onButtonClick={handleGameStart} />
                 ) }
-           
-                
-            
-                { gameStarted && (
-                     <div
-                     className="game-container"
-                     style={{
-                         width: '70%',
-                         flex: 1,
-                         paddingTop: "100px",
-                         maxWidth: "1000px",
-                         margin: "0 auto",
-                         textAlign: "center",
-                         color: "#fff",
-                     }}
-                     >
-                <h1 style={{ fontSize: "1.5rem", color: "#4CAF50", marginBottom: "1rem" }}>
-                    Spot the Fake
-                </h1>
-                {/* <p style={{ fontSize: "1rem", color: "#ccc", marginBottom: "2rem" }}>
+
+
+
+            {gameStarted && (
+                <div
+                    className="game-container"
+                    style={{
+                        width: '70%',
+                        flex: 1,
+                        paddingTop: "100px",
+                        maxWidth: "1000px",
+                        margin: "0 auto",
+                        textAlign: "center",
+                        color: "#fff",
+                    }}
+                >
+                    {/* Score Display */}
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            padding: '1rem',
+                            background: 'rgba(0, 0, 0, 0.5)',
+                            borderRadius: '10px',
+                            marginBottom: '1rem',
+                            boxShadow: '0 0 10px rgba(0, 255, 128, 0.3)',
+                        }}
+                    >
+                        <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Score: <span style={{ color: '#4CAF50' }}>{score}</span></h2>
+                        <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Round: <span style={{ color: '#4CAF50' }}>{pageNum + 1}/10</span></h2>
+                    </div>
+
+                    <h1 style={{ fontSize: "1.5rem", color: "#4CAF50", marginBottom: "1rem" }}>
+                        Spot the Fake
+                    </h1>
+
+                    {/* <p style={{ fontSize: "1rem", color: "#ccc", marginBottom: "2rem" }}>
                     Scroll through the images below. Click an image if you guess it's "Fake".
                 </p> */}
 

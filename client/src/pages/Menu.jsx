@@ -30,16 +30,7 @@ export const Menu = () => {
                         }}
                     >
                         <div className="menu-card h-auto p-2" onClick={() => navigate('/learning')}>
-                            <h2
-                                style={{
-                                    fontSize: '1.5rem',
-                                    marginBottom: '1rem',
-                                    color: '#4CAF50',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                            >
+                            <h2 className="menu-h2">
                                 <i className="bi bi-book" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Learning Mode
                             </h2>
@@ -52,16 +43,7 @@ export const Menu = () => {
                         </div>
                         {/* Regular Mode */}
                         <div className="menu-card" onClick={() => navigate('/game')}>
-                            <h2
-                                style={{
-                                    fontSize: '1.5rem',
-                                    marginBottom: '1rem',
-                                    color: '#4CAF50',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                            >
+                            <h2 className="menu-h2">
                                 <i className="bi bi-controller" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Regular Mode
                             </h2>
@@ -75,16 +57,7 @@ export const Menu = () => {
 
                         {/* Infinite Mode */}
                         <div className="menu-card" onClick={() => navigate('/game')}>
-                            <h2
-                                style={{
-                                    fontSize: '1.5rem',
-                                    marginBottom: '1rem',
-                                    color: '#4CAF50',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                            >
+                            <h2 className="menu-h2">
                                 <i className="bi bi-infinity" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Infinite Mode
                             </h2>
@@ -96,16 +69,7 @@ export const Menu = () => {
 
                         {/* Timer Mode */}
                         <div className="menu-card" onClick={() => navigate('/game')}>
-                            <h2
-                                style={{
-                                    fontSize: '1.5rem',
-                                    marginBottom: '1rem',
-                                    color: '#4CAF50',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
-                            >
+                            <h2 className="menu-h2">
                                 <i className="bi bi-clock" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Time Attack
                             </h2>

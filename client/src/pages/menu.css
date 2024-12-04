@@ -6,7 +6,7 @@
     min-height: 100vh;
     padding: 4rem 2rem 6rem;
     text-align: center;
-    background: linear-gradient(135deg, #0d0d0d, #1c1c1c, #2b2b2b, #1e2e1e);
+    background: linear-gradient(135deg, #0d0d0d, #1c1c1c, #2b2b2b, #162416);
     animation: gradientBG 10s ease infinite;
     background-size: 400% 400%;
     margin-top: 2rem;
@@ -37,10 +37,37 @@
     justify-content: space-between;
 }
 
+.menu-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 255, 120, 0.9);
+    transform: scale(1.05);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover h2 {
+    text-shadow: 0 4px 15px rgba(0, 255, 128, 0.3);
+}
+
+.menu-card:hover p {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(76, 175, 80, 0.5);
+}
+
+.menu-h2 {
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #4CAF50;
+    align-items: center;
+    display: flex;
+}
+
 @media (max-width: 768px) {
     .menu-container .d-flex {
         flex-direction: column;
         gap: 3rem;
+    }
+
+    .menu-h2 {
+        font-size: 1.3rem;
     }
 }
 
