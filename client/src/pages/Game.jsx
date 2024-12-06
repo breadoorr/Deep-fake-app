@@ -47,7 +47,7 @@ export const Game = () => {
                 const blob = new Blob([new Uint8Array(result.data.fake[image].ImageFake.data)], { type: 'image/jpg' });
                 const url = URL.createObjectURL(blob);
                 fake.push(url);
-                setFakeImages(real);
+                setFakeImages(fake);
             }
         } catch(err) {
             console.log(err);
@@ -60,16 +60,19 @@ export const Game = () => {
     }
 
     const handleImageClick = (answer) => {
-        // if (pageNum < 10 && answer == "fake") {
-        //     setScore(score + 1)
-        //     console.log(answer);
-        // }
-        // setPageNum(pageNum + 1)
-
-        // else {
-        //     setGameStarted(false);
-        // }
-    }
+        if (pageNum < 10) {
+            if (answer === "fake") {
+                setScore(score + 1);
+                setFeedback("Correct! It's fake.");
+            } else {
+                setFeedback("Incorrect! It's real.");
+            }
+            setPageNum(pageNum + 1);  // Move to the next page/round
+        } else {
+            setGameStarted(false);
+        }
+    };
+    
 
 
     useEffect(() => {
@@ -93,13 +96,11 @@ export const Game = () => {
             <button className="back-arrow-game" title="Go Back" onClick={() => navigate('/menu')}>
                 <i className="bi bi-arrow-left"></i>
             </button>
-            { !gameStarted && (
+            { !gameStarted && pageNum === 0 && (
                     <Start onButtonClick={handleGameStart} />
                 ) }
 
-
-
-            {gameStarted && (
+            {  gameStarted && (
                 <div
                     className="game-container"
                     style={{
@@ -126,7 +127,7 @@ export const Game = () => {
                         }}
                     >
                         <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Score: <span style={{ color: '#4CAF50' }}>{score}</span></h2>
-                        <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Round: <span style={{ color: '#4CAF50' }}>{pageNum + 1}/10</span></h2>
+                        <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Round: <span style={{ color: '#4CAF50' }}>{pageNum}/10</span></h2>
                     </div>
 
                     <h1 style={{ fontSize: "1.5rem", color: "#4CAF50", marginBottom: "1rem" }}>
@@ -147,7 +148,7 @@ export const Game = () => {
                         <div
                             key={index}
                             className="image-item"
-                            onClick={handleImageClick(item.correctAnswer)}
+                            onClick={() => handleImageClick(item.correctAnswer)}
                         >
                             <img src={item.src} alt={item.alt} />
                         </div>
@@ -166,6 +167,26 @@ export const Game = () => {
                     {feedback}
                 </div>
             
+                </div>
+                )}
+                { !gameStarted && pageNum > 0 && (
+                    <div>
+                    <h2 style={{ color: "#4CAF50", fontSize: "2rem", marginBottom: "1rem" }}>
+                        Quiz Completed!
+                    </h2>
+                    <p style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
+                        Your Score: <strong>{score}/{pageNum}</strong>
+                    </p>
+                    <button
+                        onClick={() => {
+                            setGameStarted(false);
+                            setScore(0);
+                            setPageNum(0)
+                        }}
+                        // style={buttonStyle}
+                    >
+                        Try Again
+                    </button>
                 </div>
                 )}
                 
