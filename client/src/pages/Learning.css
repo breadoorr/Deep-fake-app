@@ -1,15 +1,15 @@
-.container {
-    padding: "2.5rem";
-    max-width: "600px";
-    /* height: '500px'; */
-    margin: "6rem auto";
-    background-color: "rgba(50, 50, 50, 0.9)";
-    color: "#fff";
-    border-radius: "10px";
-    box-shadow: "0 10px 20px rgba(0, 0, 0, 0.6)";
-    text-align: "center";
-    line-height: "1.8";
-}
+/*.container {*/
+/*    padding: "2.5rem";*/
+/*    max-width: "600px";*/
+/*    !* height: '500px'; *!*/
+/*    margin: "6rem auto";*/
+/*    background-color: "rgba(50, 50, 50, 0.9)";*/
+/*    color: "#fff";*/
+/*    border-radius: "10px";*/
+/*    box-shadow: "0 10px 20px rgba(0, 0, 0, 0.6)";*/
+/*    text-align: "center";*/
+/*    line-height: "1.8";*/
+/*}*/
 
 .back-arrow-learning {
     position: fixed;
