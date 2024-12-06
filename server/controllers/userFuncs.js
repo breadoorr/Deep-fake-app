@@ -18,7 +18,7 @@ exports.GetImage = async (userId) => {
         const [imageResult] = await pool.execute(imageSearchQuery, [userId])
 
         const image = imageResult[0].ImageFake;
-        // console.log(image);
+        // console.log(JSON.stringify(imageResult[0].ImageFake));
         return image;
     } catch(err) {
         console.log(err);
@@ -51,7 +51,8 @@ exports.Login = async (req, res) => {
             if (passOk) {
                 const userId = user.UserID;
 
-                const image = this.GetImage(userId);
+                const image = await this.GetImage(userId);
+                // console.log(image)
                 jwt.sign({userId, username}, jwtSecret, {expiresIn: '1d'}, (err, token) => {
                     if (err) throw err;
                     res.cookie('token', token, {sameSite: "none", secure: true});

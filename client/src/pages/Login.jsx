@@ -19,7 +19,7 @@ const Login = ({ isOpen, onClose}) => {
         try {
             const response = await axios.post('http://localhost:5000/user/login', { username, password }, {withCredentials: true});
             login(response.data.user.UserID, response.data.user.Username, response.data.image)
-            console.log(response.data.image)
+            // console.log(JSON.stringify(response.data))
             console.log('Login successful:', response.data.user.UserID);
             // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();
