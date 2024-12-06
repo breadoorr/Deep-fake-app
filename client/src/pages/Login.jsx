@@ -18,10 +18,11 @@ const Login = ({ isOpen, onClose}) => {
     const handleLogin = async () => {
         try {
             const response = await axios.post('http://localhost:5000/user/login', { username, password }, {withCredentials: true});
-            login(response.data.user.UserID, response.data.user.Username, response.data.image)
-            // console.log(JSON.stringify(response.data))
+            const image = response.data.image
+            const blob = new Blob([new Uint8Array(image.data)], {type: 'image/jpg'});
+            const url = URL.createObjectURL(blob);
+            login(response.data.user.UserID, response.data.user.Username, url)
             console.log('Login successful:', response.data.user.UserID);
-            // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();
         } catch (error) {
             console.error('Login failed:', error);
@@ -31,11 +32,12 @@ const Login = ({ isOpen, onClose}) => {
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('http://127.0.0.1:5000/user/register', {username, email, password});
-            console.log(response.data.image)
-            login(response.data.user.id, response.data.user.username, response.data.image);
+            const response = await axios.post('http://localhost:5000/user/register', {username, email, password}, {withCredentials: true});
+            const image = response.data.image
+            const blob = new Blob([new Uint8Array(image.data)], {type: 'image/jpg'});
+            const url = URL.createObjectURL(blob);
+            login(response.data.user.id, response.data.user.username, url);
             console.log('Register successful:', response.data);
-            // Handle success (e.g., close modal, navigate, set user data, etc.)
             onClose();
         } catch (error) {
             console.error('Register failed:', error);

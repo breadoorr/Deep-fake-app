@@ -1,17 +1,40 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useUser } from '../context/UserContext';
+
 
 
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
+import { Landing } from "./Landing";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const Profile = () => {
 
     const navigate = useNavigate();
+    const { userId, username, userImage, logout } = useUser();
+    const [totalScore, setTotalScore] = useState(0);
+    const [gamesPlayed, setGamesPlayed] = useState(0);
+    const [questions, setQuestions] = useState(0);
+    const [accuracy, setAccuracy] = useState(0);
 
-    const getProfile = () => {
 
+    const getProfile = async () => {
+        const user = await axios.post('http://localhost:5000/user/getProfile', {userId}, {withCredentials: true})
+        // console.log(user.data.user[0]);  
+        setTotalScore(user.data.user[0].TotalScore);
+        setGamesPlayed(user.data.user[0].GamesPlayed);
+        setQuestions(user.data.user[0].TotalQuestions);
+        if (gamesPlayed >= 1) {
+            setAccuracy(totalScore / questions);
+            
+        }
     }
+
+    useEffect(() => {
+        getProfile();
+    }, []);
 
 
     const containerStyle = {
@@ -85,6 +108,7 @@ export const Profile = () => {
     };
 
     return (
+         userId ? (
         <>
             <Header />
             <main style={containerStyle}>
@@ -100,14 +124,11 @@ export const Profile = () => {
 
                 <div style={headerStyle}>
                     <img
-                        src="../pics/player_1.jpg"
+                        src={`${userImage}`}
                         alt="Profile"
                         style={pictureStyle}
                     />
-                    <h1 style={headingStyle}>Nyan Meow</h1>
-                    <p style={subHeadingStyle}>
-                        Player Level: <strong>Advanced</strong>
-                    </p>
+                    <h1 style={headingStyle}>{username}</h1>
                 </div>
 
                 <div>
@@ -118,19 +139,19 @@ export const Profile = () => {
                         <div style={statItemStyle}>
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Total Points</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
-                                1,250
+                                {totalScore}
                             </p>
                         </div>
                         <div style={statItemStyle}>
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Games Played</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
-                                45
+                                {gamesPlayed}
                             </p>
                         </div>
                         <div style={statItemStyle} className="accuracy-item">
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Accuracy</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
-                                87%
+                                {accuracy}%
                             </p>
                         </div>
                     </div>
@@ -138,5 +159,8 @@ export const Profile = () => {
             </main>
             <Footer />
         </>
+        ) : (
+            <Landing />
+        )
     );
 };

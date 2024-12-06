@@ -9,6 +9,10 @@ export const Settings = () => {
     const [saveButtonHover, setSaveButtonHover] = useState(false);
     const [signOutHover, setSignOutHover] = useState(false);
 
+    const handleLogout = () => {
+
+    }
+
 
     useEffect(() => {
         document.body.style.backgroundColor = "#222";
@@ -133,6 +137,7 @@ export const Settings = () => {
     };
 
     return (
+        
         <>
             <Header />
             {/* Back Arrow */}
@@ -199,16 +204,7 @@ export const Settings = () => {
                     style={signOutButtonStyle}
                     onMouseEnter={() => setSignOutHover(true)}
                     onMouseLeave={() => setSignOutHover(false)}
-                    onClick={() => alert("Signing out...")}
-                >
-                    Sign Out
-                </button>
-                <button
-                    type="button"
-                    style={signOutButtonStyle}
-                    onMouseEnter={() => setSignOutHover(true)}
-                    onMouseLeave={() => setSignOutHover(false)}
-                    onClick={() => alert("Signing out...")}
+                    onClick={handleLogout}
                 >
                     Sign Out
                 </button>

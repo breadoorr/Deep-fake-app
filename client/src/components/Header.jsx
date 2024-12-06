@@ -10,26 +10,6 @@ const Header = () => {
     const { userId, username, userImage, logout } = useUser();
     const [isLoginOpen, setLoginOpen] = useState(false);
     const [isNavbarOpen, setNavbarOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [iconURL, setIconUrl] = useState(null);
-
-    const getIcon = () => {
-        if (userImage){
-            // console.log(typeof(userImage))
-            const byteArray = new Uint8Array(userImage.data); // Ensure it's an array of bytes
-            const blob = new Blob([byteArray], { type: 'image/jpg' }); // Create a Blob object with the correct MIME type
-            const iconURL = URL.createObjectURL(blob);// Create an object URL for the Blob
-            return iconURL;
-        } else {
-            console.log("no image");
-        }
-    }
-
-    if (userId && !isLoggedIn) {
-        setIconUrl(getIcon());
-        // consolelog(getIcon());
-        setIsLoggedIn(true);
-    }
 
  
     return (
@@ -46,8 +26,8 @@ const Header = () => {
                 { !userId ? (
                 <li><a onClick={() => { setLoginOpen(!isLoginOpen); setNavbarOpen(false);}}>Sign Up/Login</a></li>
                 ) : (
-                    // <li>Hi, { username }</li>
-                    <img src={`${iconURL}`} alt="icon" width={'50px'} onClick={() => navigate('/profile')}/>
+                   <li>{username}<img src={`${userImage}`} alt="icon" width={'20px'} onClick={() => navigate('/profile')}/></li>
+                //    <li>Logout</li>
                 )}
             </ul>
         </nav>

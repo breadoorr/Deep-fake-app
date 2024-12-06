@@ -82,7 +82,7 @@ exports.Register = async (req, res) => {
         const [result] = await pool.execute(sql, [username, hashedPassword, email]);
         const userId = result.insertId;
 
-        const image = this.GetImage(userId);
+        const image = await this.GetImage(userId);
 
         res.status(200).json({user: { id: userId, username: username }, image: image});
     } catch (error) {
