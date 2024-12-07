@@ -11,6 +11,7 @@ import {Game} from "./pages/Game";
 import {Learning} from "./pages/Learning";
 import {Start} from "./components/Start";
 import {Rules} from "./pages/Rules";
+import {LoadingScreen} from "./pages/Loading";
 import { UserProvider } from './context/UserContext';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/start" element={<Start />} />
           <Route path="/start" element={<Start />} />
           <Route path="/rules" element={<Rules />} />
+          <Route path="/loading" element={<LoadingScreen />} />
       </Routes>
       </BrowserRouter>
       </UserProvider>
