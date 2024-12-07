@@ -56,7 +56,7 @@ export const Menu = () => {
                         </div>
 
                         {/* Infinite Mode */}
-                        <div className="menu-card" onClick={() => navigate('/game')}>
+                        <div className="menu-card" onClick={() => navigate('/game', {state: {mode: 'infinite'}})}>
                             <h2 className="menu-h2">
                                 <i className="bi bi-infinity" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Infinite Mode
@@ -68,7 +68,7 @@ export const Menu = () => {
                         </div>
 
                         {/* Timer Mode */}
-                        <div className="menu-card" onClick={() => navigate('/game')}>
+                        <div className="menu-card" onClick={() => navigate('/game', {state: {mode: 'timer'}})}>
                             <h2 className="menu-h2">
                                 <i className="bi bi-clock" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Time Attack

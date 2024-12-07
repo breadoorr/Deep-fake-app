@@ -13,10 +13,10 @@ export const Start = () => {
                 <div className="start-header">
                     <h1>Welcome to Basic Mode</h1>
                     <p>Get ready to explore and test your knowledge!</p>
-                    {/*
-                    //
+                    
+                    {/* //
                     // if (mode === "learning") {
-                    //     <h1>Welcome to Learning Mode</h1>
+                        //     <h1>Welcome to Learning Mode</h1>
                     //     <p>Learn how to distinguish deepfakes from real media.</p>
                     // }
                     // if (mode === "infinite") {
@@ -26,8 +26,8 @@ export const Start = () => {
                     // if (mode === "timer") {
                     //     <h1>Welcome to Time Attack Mode</h1>
                     //     <p>Race against the clock and beat your best time.</p>
-                    // }
-                    */}
+                    // } */}
+                   
                 </div>
 
                 <div className="start-buttons">

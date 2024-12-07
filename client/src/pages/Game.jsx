@@ -2,19 +2,22 @@ import Footer from "../components/Footer";
 import { Start } from "../components/Start";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Game.css";
 import axios from "axios";
 
 
 export const Game = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const mode = location.state?.mode || 'regular';
     const [feedback, setFeedback] = useState("");
     const [pageNum, setPageNum] = useState(0);
     const [score, setScore] = useState(0);
     const [gameStarted, setGameStarted] = useState(false);
     const [realImages, setRealImages] = useState([]);
     const [fakeImages, setFakeImages] = useState([]);
+    const [timer, setTimer] = useState(0);
     // const navigate = useNavigate();
 
     const GameBodyStyle = {
@@ -28,6 +31,18 @@ export const Game = () => {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
+    };
+
+    const buttonStyle = {
+        marginTop: "2rem",
+        padding: "1rem 2rem",
+        background: "linear-gradient(45deg, #4CAF50, #32a852)",
+        color: "#fff",
+        border: "none",
+        borderRadius: "5px",
+        fontSize: "1rem",
+        cursor: "pointer",
+        transition: "all 0.3s",
     };
 
 
@@ -55,28 +70,67 @@ export const Game = () => {
     }
 
     const handleGameStart = () => {
-            setGameStarted(true);
-            getImages();
+        setGameStarted(true);
+        getImages();
+        if (mode === 'timer') {
+            setTimer(30);  // Start the timer for Time Attack mode
+        }
     }
 
     const handleImageClick = (answer) => {
-        if (pageNum < 10) {
-            if (answer === "fake") {
-                setScore(score + 1);
-                setFeedback("Correct! It's fake.");
-            } else {
-                setFeedback("Incorrect! It's real.");
-            }
-            setPageNum(pageNum + 1);  // Move to the next page/round
+        if (answer === "fake") {
+            setScore(score + 1);
+            setFeedback("Correct! It's fake.");
         } else {
+            setFeedback("Incorrect! It's real.");
+        }
+        setPageNum(pageNum + 1);  // Move to the next page/round
+        if (mode === 'regular' && pageNum == 9) {
             setGameStarted(false);
         }
     };
+
+    const handleTimer = () => {
+        if (mode === 'timer' && timer >= 0) {
+            setTimeout(() => setTimer(timer - 1), 1000);  // Decrease the timer every second
+        }
+        else {
+            setGameStarted(false);
+        }
+    }
     
+    const galleryItems = [
+        ...fakeImages.map((src, index) => ({ src, alt: `Fake Image ${index + 1}`, correctAnswer: "fake" })),
+        ...realImages.map((src, index) => ({ src, alt: `Real Image ${index + 1}`, correctAnswer: "real" })),
+    ];
+
+    // const shuffledGalleryItems = shuffleArray(galleryItems);
+    const shuffledGalleryItems = galleryItems.sort(() => Math.random() - 0.5);
+    
+    // useEffect(() => {
+    //     Object.assign(document.body.style, GameBodyStyle);
+    //     if (gameStarted && mode === 'timer') {
+    //         handleTimer();  // Start the timer when game starts in Time Attack mode
+    //     }
+
+    //     return () => {
+    //         Object.assign(document.body.style, {
+    //             backgroundColor: "",
+    //             color: "",
+    //             minHeight: "",
+    //             display: "",
+    //             flexDirection: "",
+    //         });
+    //     };
+    // }, [gameStarted, mode, timer]);
 
 
     useEffect(() => {
         Object.assign(document.body.style, GameBodyStyle);
+
+        if (gameStarted && mode === 'timer') {
+            handleTimer();  // Start the timer when game starts in Time Attack mode
+        }
 
         return () => {
             Object.assign(document.body.style, {
@@ -87,7 +141,7 @@ export const Game = () => {
                 flexDirection: "",
             });
         };
-    }, []);
+    }, [gameStarted, mode, timer]);
 
     return (
         <>
@@ -127,18 +181,25 @@ export const Game = () => {
                         }}
                     >
                         <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Score: <span style={{ color: '#4CAF50' }}>{score}</span></h2>
-                        <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Round: <span style={{ color: '#4CAF50' }}>{pageNum}/10</span></h2>
+                        {mode === 'regular' && (<h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Round: <span style={{ color: '#4CAF50' }}>{pageNum}/10</span></h2>
+                        )}
+                        {mode === 'timer' && timer > 0 && (
+                        <h2 style={{ fontSize: '1.5rem', color: '#F44336' }}>
+                            Time Left: {timer}s
+                        </h2>
+                        )}
+                        {mode === 'infinite' && (<button onClick={() => setGameStarted(false)} style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#E53935', color: 'white', border: 'none', borderRadius: '5px' }}>
+                        Finish Game
+                        </button>
+                        )}
                     </div>
 
                     <h1 style={{ fontSize: "1.5rem", color: "#4CAF50", marginBottom: "1rem" }}>
                         Spot the Fake
                     </h1>
+                    
 
-                    {/* <p style={{ fontSize: "1rem", color: "#ccc", marginBottom: "2rem" }}>
-                    Scroll through the images below. Click an image if you guess it's "Fake".
-                </p> */}
-
-                <div className="gallery">
+                    <div className="gallery">
                     {[
                         { src: `${fakeImages[Math.floor(Math.random()*fakeImages.length)]}`, alt: "Person 3", correctAnswer: "fake" },
                         { src: `${realImages[Math.floor(Math.random()*realImages.length)]}`, alt: "Person 2", correctAnswer: "real" },
@@ -153,7 +214,7 @@ export const Game = () => {
                             <img src={item.src} alt={item.alt} />
                         </div>
                     ))}
-                </div>
+                    </div>
 
                 <div
                     className="feedback"
@@ -183,7 +244,7 @@ export const Game = () => {
                             setScore(0);
                             setPageNum(0)
                         }}
-                        // style={buttonStyle}
+                        style={buttonStyle}
                     >
                         Try Again
                     </button>
