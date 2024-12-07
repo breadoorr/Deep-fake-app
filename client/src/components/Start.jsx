@@ -1,34 +1,35 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import "./Start.css";
 
-export const Start = ( {onButtonClick} ) => {
+export const Start = ( {mode, onButtonClick}) => {
     const navigate = useNavigate();
+    console.log(mode);
 
     return (
         <>
             <Header />
             <div className="start-page">
-                <div className="start-header">
-                    <h1>Welcome to Basic Mode</h1>
-                    <p>Get ready to explore and test your knowledge!</p>
-                    {/*
-                    //
-                    // if (mode === "learning") {
-                    //     <h1>Welcome to Learning Mode</h1>
-                    //     <p>Learn how to distinguish deepfakes from real media.</p>
-                    // }
-                    // if (mode === "infinite") {
-                    //     <h1>Welcome to Infinite Mode</h1>
-                    //     <p>Endless gameplay awaits! Test your endurance.</p>
-                    // }
-                    // if (mode === "timer") {
-                    //     <h1>Welcome to Time Attack Mode</h1>
-                    //     <p>Race against the clock and beat your best time.</p>
-                    // }
-                    */}
-                </div>
+                    { mode === 'regular' && (
+                        <div className="start-header">
+                            <h1>Welcome to Basic Mode </h1>
+                            <p>Get ready to explore and test your knowledge!</p>
+                        </div>
+                    )}
+                    { mode === 'infinite' && (
+                        <div className="start-header">
+                            <h1>Welcome to Infinite Mode</h1>
+                            <p>Endless gameplay awaits! Test your endurance.</p>
+                        </div>
+                    )}
+
+                    { mode === 'timer' && (
+                        <div className="start-header">
+                            <h1>Welcome to Time Attack Mode</h1>
+                            <p>Race against the clock and beat your best time.</p>
+                        </div>
+                    )}
 
                 <div className="start-buttons">
                     <button className="start-btn start-play" onClick={onButtonClick}>
@@ -43,6 +44,3 @@ export const Start = ( {onButtonClick} ) => {
         </>
     );
 };
-
-// module.exports.default = {Start};
-

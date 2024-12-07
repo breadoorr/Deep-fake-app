@@ -18,8 +18,8 @@ export const Game = () => {
     const [realImages, setRealImages] = useState([]);
     const [fakeImages, setFakeImages] = useState([]);
     const [timer, setTimer] = useState(0);
-    // const navigate = useNavigate();
 
+    console.log(mode);
     const GameBodyStyle = {
         flex: 1,
         backgroundColor: "#111",
@@ -141,7 +141,7 @@ export const Game = () => {
                 flexDirection: "",
             });
         };
-    }, [gameStarted, mode, timer]);
+    }, [gameStarted ,mode, timer]);
 
     return (
         <>
@@ -151,7 +151,7 @@ export const Game = () => {
                 <i className="bi bi-arrow-left"></i>
             </button>
             { !gameStarted && pageNum === 0 && (
-                    <Start onButtonClick={handleGameStart} />
+                    <Start mode={mode} onButtonClick={handleGameStart} />
                 ) }
 
             {  gameStarted && (

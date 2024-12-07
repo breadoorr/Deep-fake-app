@@ -99,7 +99,7 @@ const Login = ({ isOpen, onClose }) => {
                                     Reset Password
                                 </button>
                                 <p className="no-account-text">
-                                    Back to <a href="#" onClick={backToLogin}>Login</a>
+                                    Back to <a onClick={backToLogin}>Login</a>
                                 </p>
                             </div>
                         ) : isLoginMode ? (
@@ -123,10 +123,10 @@ const Login = ({ isOpen, onClose }) => {
                                 </button>
                                 <p className="no-account-text">
                                     Don’t have an account?{' '}
-                                    <a href="#" onClick={toggleMode}>Sign up here</a>
+                                    <a onClick={toggleMode}>Sign up here</a>
                                 </p>
                                 <p className="forgot-password-text">
-                                    <a href="#" onClick={toggleForgotPassword}>Forgot Password?</a>
+                                    <a onClick={toggleForgotPassword}>Forgot Password?</a>
                                 </p>
                             </div>
                         ) : (
@@ -157,7 +157,7 @@ const Login = ({ isOpen, onClose }) => {
                                 </button>
                                 <p className="no-account-text">
                                     Already have an account?{' '}
-                                    <a href="#" onClick={toggleMode}>Log in here</a>
+                                    <a onClick={toggleMode}>Log in here</a>
                                 </p>
                             </div>
                         )}
