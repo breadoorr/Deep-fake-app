@@ -466,11 +466,14 @@ export const Game = () => {
                         {feedback}
                     </div>
                 </div>
+                )}
+            {!gameStarted && pageNum > 0 && (
+                <div className="try-again-container">
             )}
             { !gameStarted && pageNum > 0 && (
                 <div>
                     <h2 style={{ color: "#4CAF50", fontSize: "2rem", marginBottom: "1rem" }}>
-                        Quiz Completed!
+                        Game Completed!
                     </h2>
                     <p style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
                         Your Score: <strong>{score}/{pageNum}</strong>
@@ -479,13 +482,15 @@ export const Game = () => {
                         onClick={() => {
                             setGameStarted(false);
                             setScore(0);
-                            setPageNum(0)
+                            setPageNum(0);
                         }}
-                        style={buttonStyle}
                     >
                         Try Again
                     </button>
                 </div>
+            )}
+
+
             )}
 
             <Footer />
