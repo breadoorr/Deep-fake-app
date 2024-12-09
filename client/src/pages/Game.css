@@ -84,6 +84,35 @@ body {
     color: #4CAF50;
 }
 
+.try-again-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    margin: 5rem auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+.try-again-container button {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #4CAF50, #32a852);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.try-again-container button:hover {
+    background: linear-gradient(45deg, #32a852, #4CAF50);
+}
+
+
 
 @media (max-width: 600px) {
     .gallery {
