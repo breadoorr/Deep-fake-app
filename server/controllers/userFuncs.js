@@ -2,11 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const { GetPictures } = require('./gameFuncs')
-
-// const {pool} = require('');
-
 const { pool } = require("./db");
-
 const nodemailer = require('nodemailer');
 
 const jwtSecret = process.env.JWT_SECRET;
