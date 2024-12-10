@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/index.test.js",
-    "start": "node_modules/.bin/nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
