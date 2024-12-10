@@ -17,7 +17,7 @@ import { UserProvider } from './context/UserContext';
 function App() {
   return (
     <UserProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/Deep-fake-app">
       <Routes>
         <Route path="/" element={<Landing />} />
           <Route path="/profile" element={<Profile />} />
