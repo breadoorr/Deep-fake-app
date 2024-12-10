@@ -469,9 +469,6 @@ export const Game = () => {
                 )}
             {!gameStarted && pageNum > 0 && (
                 <div className="try-again-container">
-            )}
-            { !gameStarted && pageNum > 0 && (
-                <div>
                     <h2 style={{ color: "#4CAF50", fontSize: "2rem", marginBottom: "1rem" }}>
                         Game Completed!
                     </h2>
@@ -488,9 +485,6 @@ export const Game = () => {
                         Try Again
                     </button>
                 </div>
-            )}
-
-
             )}
 
             <Footer />
