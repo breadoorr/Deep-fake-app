@@ -21,7 +21,7 @@ export const Profile = () => {
 
 
     const getProfile = async () => {
-        const user = await axios.post('http://localhost:5000/user/getProfile', {userId}, {withCredentials: true})
+        const user = await axios.post('https://deep-fake-app.vercel.app/user/getProfile', {userId}, {withCredentials: true})
         // console.log(user.data.user[0]);  
         setTotalScore(user.data.user[0].TotalScore);
         setGamesPlayed(user.data.user[0].GamesPlayed);

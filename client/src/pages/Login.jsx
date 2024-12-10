@@ -32,7 +32,7 @@ const Login = ({ isOpen, onClose }) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/user/login', { username, password }, { withCredentials: true });
+            const response = await axios.post('https://deep-fake-app.vercel.app/user/login', { username, password }, { withCredentials: true });
             const image = response.data.image;
             const blob = new Blob([new Uint8Array(image.data)], { type: 'image/jpg' });
             const url = URL.createObjectURL(blob);
@@ -47,7 +47,7 @@ const Login = ({ isOpen, onClose }) => {
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/user/register', { username, email, password }, { withCredentials: true });
+            const response = await axios.post('https://deep-fake-app.vercel.app/user/register', { username, email, password }, { withCredentials: true });
             const image = response.data.image;
             const blob = new Blob([new Uint8Array(image.data)], { type: 'image/jpg' });
             const url = URL.createObjectURL(blob);
@@ -62,7 +62,7 @@ const Login = ({ isOpen, onClose }) => {
 
     const handleForgotPassword = async () => {
         try {
-            await axios.post('http://localhost:5000/user/forgot-password', { email });
+            await axios.post('https://deep-fake-app.vercel.app/user/forgot-password', { email });
             alert('Password reset link sent! Check your email.');
             setIsForgotPassword(false);
             clearError(); // Clear error after successful password reset
