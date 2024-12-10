@@ -26,8 +26,17 @@ const Header = () => {
                 { !userId ? (
                 <li><a onClick={() => { setLoginOpen(!isLoginOpen); setNavbarOpen(false);}}>Sign Up/Login</a></li>
                 ) : (
-                   <li>{username}<img src={`${userImage}`} alt="icon" width={'20px'} onClick={() => navigate('/profile')}/></li>
-                //    <li>Logout</li>
+                    <li>
+                    <div className="user-info" onClick={() => navigate("/profile")}>
+                      <span className="username">{username}</span>
+                      <img
+                        src={`${userImage}`}
+                        alt="icon"
+                        className={'user-image'}
+                        width={'20px'}
+                      />
+                    </div>
+                  </li>
                 )}
             </ul>
         </nav>

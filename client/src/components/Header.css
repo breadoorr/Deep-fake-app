@@ -57,6 +57,41 @@ header {
     display: none;
 }
 
+#navbar li span {
+    display: flex;
+    align-items: center; 
+    gap: 0.5rem; 
+  }
+  
+  #navbar li img {
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    cursor: pointer; 
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.user-info .username {
+    color: #fff;
+    font-weight: bold;
+}
+
+.user-info .user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #77d17a;
+}
+
+  
+
 @media (max-width: 756px) {
     /* Hide desktop navbar and show mobile menu button */
     #navbar {
