@@ -29,11 +29,6 @@ export const Rules= () => {
                         <h3>Step 3: Improve Your Stats</h3>
                         <p>Track your performance, beat your high scores, and aim to climb the leaderboard.</p>
                     </div>
-                    <div className="step-card">
-                        <i className="bi bi-trophy"></i>
-                        <h3>Step 4: Win Rewards</h3>
-                        <p>Earn achievements and rewards by mastering the game and playing consistently.</p>
-                    </div>
                 </div>
 
                 <a className="back-button" onClick={() => navigate('/menu')}>
