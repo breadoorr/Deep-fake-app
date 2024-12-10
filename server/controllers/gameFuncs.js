@@ -23,22 +23,28 @@ exports.GetPictures = async (req, res) => {
 
 // Game results processing
 exports.FinishGame = async (req, res) => {
-    // const { userId, totalScore, total}
+    const { userId, score, pageNum} = req.body;
     try {
-        const sql1 = "SELECT (highScore, totalScore, totalGames) FROM UserInfo username=${username}";
-        const [result] = await pool.execute(sql1, [username]);
-        const lastScore = gameScore;
-        let highScore = result[0];
-        if (highScore < lastScore) {
-            highScore = lastScore;
-        }
-        const totalScore = result[1] + gameScore;
-        const totalGames = result[2] + 1;
-        const avgScore = totalScore / totalGames;
-        const sql2 = "UPDATE Users SET lastScore=${db.escape(lastScore)}, highScore=${db.escape(highScore)}, avgScore=${db.escape(avgScore)}, totalScore=${db.escape(totalScore)}, totalGames=${db.escape(totalGames)} WHERE username=${db.escape(username)}";
+        const sql = "SELECT TotalScore, TotalQuestions, GamesPlayed FROM UserInfo WHERE UserID=?";
+        const [result] = await pool.execute(sql, [userId]);
 
-        console.log("Process endgame results");
-        res.status(200);
+        if (result.length > 0) {
+            const totalScore = result[0].TotalScore + score;
+            const totalQuestions = result[0].TotalQuestions + pageNum;
+            const gamesPlayed = result[0].GamesPlayed + 1;
+
+            const sql1 = `
+                UPDATE UserInfo
+                SET TotalScore = ?, TotalQuestions = ?, GamesPlayed = ?
+                WHERE UserID = ?
+            `;
+            await pool.execute(sql1, [totalScore, totalQuestions, gamesPlayed, userId]);
+            console.log("User data updated successfully.");
+            res.status(200);
+        } else {
+            console.error("User not found.");
+        }
+
     } catch (error) {
         console.log(error);
         res.status(500).json({error: "Database error"});
