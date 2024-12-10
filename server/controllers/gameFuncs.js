@@ -23,9 +23,9 @@ exports.GetPictures = async (req, res) => {
 
 // Game results processing
 exports.FinishGame = async (req, res) => {
-    continueGame = false;
+    // const { userId, totalScore, total}
     try {
-        const sql1 = "SELECT (highScore, totalScore, totalGames) FROM Users username=${username}";
+        const sql1 = "SELECT (highScore, totalScore, totalGames) FROM UserInfo username=${username}";
         const [result] = await pool.execute(sql1, [username]);
         const lastScore = gameScore;
         let highScore = result[0];
