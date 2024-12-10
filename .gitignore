@@ -1,0 +1,9 @@
+# Ignore unnecessary directories
+.idea/
+node_modules/
+server/
+static/
+client/node_modules/
+
+# Ignore everything except the build folder
+!client/build/
