@@ -179,13 +179,20 @@ export const Game = () => {
                             boxShadow: '0 0 10px rgba(0, 255, 128, 0.3)',
                         }}
                     >
-                        <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Score: <span style={{ color: '#4CAF50' }}>{score}</span></h2>
-                        {mode === 'regular' && (<h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>Round: <span style={{ color: '#4CAF50' }}>{pageNum}/10</span></h2>
+                        <h2 style={{ fontSize: '1rem', color: '#ccc' }}>Score: <span style={{ color: '#4CAF50' }}>{score}</span></h2>
+                        {mode === 'regular' && (<h2 style={{ fontSize: '1rem', color: '#ccc' }}>Round: <span style={{ color: '#4CAF50' }}>{pageNum}/10</span></h2>
                         )}
                         {mode === 'timer' && timerRef.current > 0 && (
                         <h2 style={{ fontSize: '1.5rem', color: '#F44336' }}>
                             Time Left: {timerRef.current}s
                         </h2>
+                        )}
+                        {mode === 'infinite' && (
+                            <button className={'finish-button'}
+                                onClick={handleGameFinish}
+                            >
+                                Finish
+                            </button>
                         )}
                     </div>
 
