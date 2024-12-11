@@ -32,7 +32,7 @@ export const Profile = () => {
         getProfile();
 
         if (gamesPlayed >= 1) {
-            setAccuracy(totalScore / questions);
+            setAccuracy((totalScore / questions) * 100);
             
         }
     }, [getProfile]);
