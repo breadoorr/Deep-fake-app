@@ -26,15 +26,16 @@ export const Profile = () => {
         setTotalScore(user.data.user[0].TotalScore);
         setGamesPlayed(user.data.user[0].GamesPlayed);
         setQuestions(user.data.user[0].TotalQuestions);
-        if (gamesPlayed >= 1) {
-            setAccuracy(totalScore / questions);
-            
-        }
     }
 
     useEffect(() => {
         getProfile();
-    }, []);
+
+        if (gamesPlayed >= 1) {
+            setAccuracy(totalScore / questions);
+            
+        }
+    }, [getProfile]);
 
 
     const containerStyle = {

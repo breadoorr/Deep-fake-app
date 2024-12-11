@@ -5,8 +5,10 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Game.css";
 import axios from "axios";
+import { useUser } from "../context/UserContext";
 
 export const Game = () => {
+    const {userId} = useUser();
     const navigate = useNavigate();
     const location = useLocation();
     const mode = location.state?.mode || 'regular';
@@ -56,6 +58,7 @@ export const Game = () => {
 
             // Populate real images
             result.data.real.forEach(image => {
+                // console.log(image.ImageReal.data)
                 const blob = new Blob([new Uint8Array(image.ImageReal.data)], { type: 'image/jpg' });
                 const url = URL.createObjectURL(blob);
                 real.push(url);
@@ -85,10 +88,13 @@ export const Game = () => {
         }
     };
 
-    const handleGameFinish = () => {
+    const handleGameFinish = async () => {
         setGameStarted(false);
         clearInterval(intervalRef.current); // Clear interval when game finishes
         isTimerRunning.current = false; // Stop the timer flag
+
+        await axios.post('https://deep-fake-app.vercel.app/game/end', {userId, score, pageNum}, {withCredentials: true});
+
 
     };
 
@@ -142,13 +148,37 @@ export const Game = () => {
         return [];
     };
 
+    const [showModal, setShowModal] = useState(false);
+
+
     return (
         <>
             <Header />
             {/* Back Arrow */}
-            <button className="back-arrow-game" title="Go Back" onClick={() => navigate('/menu')}>
+            <button
+                className="back-arrow-game"
+                title="Go Back"
+                onClick={() => setShowModal(true)}
+            >
                 <i className="bi bi-arrow-left"></i>
             </button>
+
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-game">
+                        <button className="close-modal" onClick={() => setShowModal(false)}>
+                            &times; {/* Close icon */}
+                        </button>
+                        <p>Are you sure you want to quit? Your results will not be saved.</p>
+                        <div className="modal-buttons">
+                            <button onClick={() => navigate('/menu')}>Yes</button>
+                            <button onClick={() => setShowModal(false)}>No</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
             { !gameStarted && pageNum === 0 && (
                     <Start mode={mode} onButtonClick={handleGameStart} />
                 ) }
