@@ -95,7 +95,7 @@ export const Game = () => {
 
         const result = await axios.post('https://deep-fake-app.vercel.app/game/end', {userId, score, pageNum}, {withCredentials: true})
 
-        console.log(result);
+        // console.log(result);
 
     };
 
