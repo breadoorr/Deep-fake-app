@@ -1,9 +1,9 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
-import {Navigation} from "../components/Navigation";
-import './Learning.css'
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
+import './Learning.css';
 
 export const Learning = () => {
     const navigate = useNavigate();
@@ -13,16 +13,16 @@ export const Learning = () => {
     const [currentInfo, setCurrentInfo] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [feedback, setFeedback] = useState("");
+    const [showNext, setShowNext] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
 
     useEffect(() => {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth <= 800);
         };
-
         handleResize();
-
         window.addEventListener("resize", handleResize);
-
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -138,6 +138,7 @@ export const Learning = () => {
                     Positive Uses:
                     - Entertainment
                     - Education and Training
+
                     Negative Uses:
                     - Political Propaganda
                     - Fake News
@@ -145,7 +146,6 @@ export const Learning = () => {
                 </p>
             )
         },
-
         {
             header: "How to Distinguish Deepfakes from Real Media",
             content: (
@@ -177,7 +177,6 @@ export const Learning = () => {
                 </ul>
             )
         },
-
         {
             header: "Ethical and Legal Implications",
             content: (
@@ -200,46 +199,66 @@ export const Learning = () => {
         }
     ];
 
-
     const startQuiz = () => {
         setQuizStarted(true);
     };
 
     const handleRead = () => {
-        if (currentPage < 10) {
-            setCurrentPage(currentPage + 1)
-        }
         if (currentInfo < info.length - 1) {
-            setCurrentInfo(currentInfo + 1)
+            setCurrentInfo(currentInfo + 1);
+            setCurrentPage(currentPage + 1);
+        } else {
+            setQuizStarted(true);
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const goNextQuestion = () => {
+        setFeedback("");
+        setShowNext(false);
+        setSelectedOption(null);
+        if (currentQuestion < questions.length - 1) {
+            setCurrentQuestion(currentQuestion + 1);
+            setCurrentPage(currentPage + 1);
+        } else {
+            setQuizStarted(false);
+            setCurrentPage(currentPage + 1);
         }
     };
 
     const handleAnswer = (index) => {
-        if (index === questions[currentQuestion].correct) {
+        // If user already answered, do nothing
+        if (selectedOption !== null) return;
+
+        setSelectedOption(index);
+        const correctIndex = questions[currentQuestion].correct;
+
+        if (index === correctIndex) {
             setScore(score + 1);
-        }
-        if (currentPage < 10) {
-            setCurrentPage(currentPage + 1)
-        }
-        if (currentQuestion < questions.length - 1) {
-            setCurrentQuestion(currentQuestion + 1);
+            setFeedback("Correct! 🎉");
+            setTimeout(() => {
+                goNextQuestion();
+            }, 2000);
         } else {
-            setQuizStarted(false);
+            setFeedback(
+                `Incorrect! The correct answer is "${questions[currentQuestion].options[correctIndex]}".`
+            );
+            setShowNext(true);
         }
     };
 
+    /*** STYLES ***/
     const containerStyle = {
         padding: "2.5rem",
         maxWidth: "600px",
-        height: 'auto',
         width: '90%',
-        // height: '500px',
         margin: "6rem auto",
         backgroundColor: "rgba(50, 50, 50, 0.9)",
         color: "#fff",
         boxShadow: "0 10px 20px rgba(0, 0, 0, 0.6)",
         textAlign: "center",
         lineHeight: "1.8",
+        borderRadius: "10px",
     };
 
     const quizButtonStyle = {
@@ -269,98 +288,155 @@ export const Learning = () => {
         transition: "all 0.3s",
     };
 
+    const getOptionStyle = (index) => {
+        const style = { ...quizButtonStyle };
+        const correctIndex = questions[currentQuestion].correct;
+
+        if (feedback.includes("Incorrect")) {
+            if (index !== correctIndex) {
+                style.border = "2px solid #E53935";
+            } else {
+                style.border = "2px solid #4CAF50";
+            }
+        }
+        return style;
+    };
+
     return (
-        <>            <Header />
-            {/* Back Arrow */}
-            <a href="#" className="back-arrow-game" title="Go Back" onClick={() => navigate('/menu')}>
+        <>
+            <Header />
+            <a href="#" className="back-arrow-learning" title="Go Back" onClick={() => navigate('/menu')}>
                 <i className="bi bi-arrow-left"></i>
             </a>
 
             <div className="w-screen">
-            <div style={containerStyle}>
-
-                {!quizStarted && currentPage === 0 && (
-                    <>
-
-
-                        <h1 style={{ fontSize: "1.5rem", marginBottom: "1.5rem", color: "#4CAF50" }}>
-
-                            Understanding Deepfakes
-                        </h1>
-                        <p style={{ marginBottom: "1rem", fontSize: "1.1rem", color: "#ddd" }}>
-                            Deepfakes are AI-generated media that can alter reality.
-                            They can be used for both creative purposes and malicious intent.
-                        </p>
-                        <button onClick={startQuiz} style={buttonStyle}>
-                            Start Quiz
-                        </button>
-                    </>
-                )}
-                { quizStarted && currentPage % 2 === 0 && (
-                    <div>
-                        <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
-                            {info[currentInfo].header}
-                        </h2>
-                        <div style={{fontSize: '1rem'}}>
-                            {info[currentInfo].content}
-                            <button
-                                onClick={() => handleRead()}
-                                style={quizButtonStyle}
-                                >
-                                Next
+                <div style={containerStyle}>
+                    {!quizStarted && currentPage === 0 && (
+                        <>
+                            <h1 style={{ fontSize: "1.5rem", marginBottom: "1.5rem", color: "#4CAF50" }}>
+                                Understanding Deepfakes
+                            </h1>
+                            <p style={{ marginBottom: "1rem", fontSize: "1.1rem", color: "#ddd" }}>
+                                Deepfakes are AI-generated media that can alter reality.
+                                They can be used for both creative purposes and malicious intent.
+                            </p>
+                            <button onClick={startQuiz} style={buttonStyle}>
+                                Start Quiz
                             </button>
-                        </div>
-                    </div>
-                )}
-                {quizStarted && currentPage % 2 !== 0 && (
-                    <div>
-                        <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
-                            {questions[currentQuestion].question}
-                        </h2>
-                        <div style={{fontSize: '1rem'}}>
-                            {questions[currentQuestion].options.map((option, index) => (
+                        </>
+                    )}
+
+                    { quizStarted && currentPage % 2 === 0 && (
+                        <div>
+                            <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
+                                {info[currentInfo].header}
+                            </h2>
+                            <div style={{fontSize: '1rem'}}>
+                                {info[currentInfo].content}
                                 <button
-                                    key={index}
-                                    onClick={() => handleAnswer(index)}
+                                    onClick={handleRead}
                                     style={quizButtonStyle}
                                 >
-                                    {option}
+                                    Next
                                 </button>
-                            ))}
+                            </div>
                         </div>
-                    </div>
-                )}
-                {!quizStarted && currentPage > 0 && (
-                    <div>
-                        <h2 style={{ color: "#4CAF50", fontSize: "2rem", marginBottom: "1rem" }}>
-                            Quiz Completed!
-                        </h2>
-                        <p style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
-                            Your Score: <strong>{score}/{questions.length}</strong>
-                        </p>
-                        <button
-                            onClick={() => {
-                                setQuizStarted(false);
-                                setScore(0);
-                                setCurrentPage(0);
-                            }}
-                            style={buttonStyle}
-                        >
-                            Try Again
-                        </button>
-                    </div>
-                )}
-            </div>
+                    )}
+
+                    {quizStarted && currentPage % 2 !== 0 && (
+                        <div>
+                            <div style={{ marginBottom: "1rem" }}>
+                                <div
+                                    style={{
+                                        backgroundColor: "#555",
+                                        height: "10px",
+                                        borderRadius: "5px",
+                                        overflow: "hidden",
+                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            width: `${((currentQuestion + 1) / questions.length) * 100}%`,
+                                            height: "100%",
+                                            backgroundColor: "#4CAF50",
+                                            boxShadow: "0 0 10px #4CAF50",
+                                            transition: "width 0.3s ease-in-out",
+                                        }}
+                                    ></div>
+                                </div>
+                                <p style={{ color: "#fff", fontSize: "0.9rem", marginTop: "0.5rem" }}>
+                                    Question {currentQuestion + 1} of {questions.length}
+                                </p>
+                            </div>
+
+
+                            <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
+                                {questions[currentQuestion].question}
+                            </h2>
+                            <div style={{fontSize: '1rem'}}>
+                                {questions[currentQuestion].options.map((option, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => handleAnswer(index)}
+                                        style={getOptionStyle(index)}
+                                        disabled={selectedOption !== null}
+                                    >
+                                        {option}
+                                    </button>
+                                ))}
+                            </div>
+                            {feedback && (
+                                <p style={{ marginTop: "1rem", fontSize: "1.2rem", color: feedback.includes("Correct") ? "#4CAF50" : "#E53935", animation: "fadeIn 1s ease-in-out" }}>
+                                    {feedback}
+                                </p>
+                            )}
+                            {showNext && (
+                                <button
+                                    onClick={goNextQuestion}
+                                    style={buttonStyle}
+                                >
+                                    Next
+                                </button>
+                            )}
+                        </div>
+                    )}
+
+                    {!quizStarted && currentPage > 0 && (
+                        <div>
+                            <Confetti />
+                            <h2 style={{ color: "#4CAF50", fontSize: "2rem", marginBottom: "1rem" }}>
+                                Quiz Completed!
+                            </h2>
+                            <p style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
+                                Your Score: <strong>{score}/{questions.length}</strong>
+                            </p>
+                            <button
+                                onClick={() => {
+                                    setQuizStarted(false);
+                                    setScore(0);
+                                    setCurrentPage(0);
+                                    setCurrentInfo(0);
+                                    setCurrentQuestion(0);
+                                    setFeedback("");
+                                    setShowNext(false);
+                                    setSelectedOption(null);
+                                }}
+                                style={buttonStyle}
+                            >
+                                Try Again
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
 
             <Footer />
+            {/* Responsive Styles */}
             <style>
                 {`
                 @media (max-width: 800px) {
-                    h1 {
-                        font-size: 1.1rem;
-                    }
-                    h2 {
+                    h1, h2 {
                         font-size: 1.1rem;
                     }
                     p {
@@ -370,10 +446,10 @@ export const Learning = () => {
                         font-size: 0.9rem;
                     }
                 }
+
+             
                 `}
             </style>
-            </>
-
-
+        </>
     );
 };
