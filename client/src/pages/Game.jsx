@@ -74,7 +74,7 @@ export const Game = () => {
             // Store images in refs (will not trigger re-renders)
             realImages.current = real;
             fakeImages.current = fake;
-            // imagesLoaded.current = true; // Mark images as loaded
+            imagesLoaded.current = true; // Mark images as loaded
         } catch (err) {
             console.log(err);
         }
@@ -93,9 +93,8 @@ export const Game = () => {
         clearInterval(intervalRef.current); // Clear interval when game finishes
         isTimerRunning.current = false; // Stop the timer flag
 
-        const result = await axios.post('https://deep-fake-app.vercel.app/game/end', {userId, score, pageNum}, {withCredentials: true})
+        await axios.post('https://deep-fake-app.vercel.app/game/end', {userId, score, pageNum}, {withCredentials: true});
 
-        // console.log(result);
 
     };
 
@@ -133,7 +132,7 @@ export const Game = () => {
     // Shuffle the images once after they are loaded and pick 4 random ones
     const getRandomImages = () => {
         // Only shuffle and select images if they have been loaded
-        // if (imagesLoaded.current) {
+        if (imagesLoaded.current) {
             const shuffledFakeImages = [...fakeImages.current].sort(() => Math.random() - 0.5);
             const shuffledRealImages = [...realImages.current].sort(() => Math.random() - 0.5);
 
@@ -145,8 +144,8 @@ export const Game = () => {
                 ...selectedFakeImages.map((src, index) => ({ src, alt: `Fake Image ${index + 1}`, correctAnswer: "fake" })),
                 ...selectedRealImages.map((src, index) => ({ src, alt: `Real Image ${index + 1}`, correctAnswer: "real" }))
             ].sort(() => Math.random() - 0.5); // Shuffle to mix fake and real images
-        // }
-        // return [];
+        }
+        return [];
     };
 
     return (
