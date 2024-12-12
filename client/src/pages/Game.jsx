@@ -166,8 +166,8 @@ export const Game = () => {
                 await axios.post('https://deep-fake-app.vercel.app/game/end', {
                     userId: userId,
                     score: scoreRef.current,
-                    pageNum: pageNumRef.current,
-                }, {withCredentials: true});
+                    pageNum: pageNumRef.current
+                });
                 console.log('Stats saved successfully.');
             } catch (err) {
                 console.error('Error saving stats:', err);
