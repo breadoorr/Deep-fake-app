@@ -7,7 +7,7 @@ const game = express.Router();
 game.use(cors());
 
 game.get("/getPictures", GetPictures);
-game.put("/end", FinishGame);
+game.post("/end", FinishGame);
 
 game.get("/", (req, res) => {
     res.send("This is the game page request")

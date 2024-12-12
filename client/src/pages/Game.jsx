@@ -66,31 +66,41 @@ export const Game = () => {
     const [finalScore, setFinalScore] = useState(0);
     const [finalRounds, setFinalRounds] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
+    
 
     const getImages = useCallback(async () => {
         try {
-            const result = await axios.get('https://deep-fake-app.vercel.app/game/getPictures');
-            
-            // Directly create object URLs without synchronous decoding
-            const realImages = result.data.real.map(image => {
-                const array = new Uint8Array(image.ImageReal.data);
-                const blob = new Blob([array], { type: 'image/jpg' });
-                return [URL.createObjectURL(blob), 'real'];
-            });
+            const response = await fetch('/images.json'); 
+    
+            if (!response.ok) {
+                console.error('Failed to fetch images.json:', response.status, response.statusText);
+                return false;
+            }
+    
+            const text = await response.text();
+    
+            let jsonData;
+            try {
+                jsonData = JSON.parse(text);
+            } catch (err) {
+                console.error('JSON parse error:', err);
+                return false;
+            }
 
-            const fakeImages = result.data.fake.map(image => {
-                const array = new Uint8Array(image.ImageFake.data);
-                const blob = new Blob([array], { type: 'image/jpg' });
-                return [URL.createObjectURL(blob), 'fake'];
-            });
-
-            imagesRef.current = [...realImages, ...fakeImages];
+            imagesRef.current = [
+                ...jsonData.real.map(url => [url, 'real']),
+                ...jsonData.fake.map(url => [url, 'fake'])
+            ];
             return true;
         } catch (err) {
-            console.error('Image loading error:', err);
+            console.error('Image loading error from JSON:', err);
             return false;
         }
     }, []);
+    
+    
 
     const randomizeRoundImages = useCallback(() => {
         if (imagesRef.current.length === 0) return [];
@@ -225,6 +235,21 @@ export const Game = () => {
             <button className="back-arrow-game" title="Go Back" onClick={() => navigate('/menu')}>
                 <i className="bi bi-arrow-left"></i>
             </button>
+
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-game">
+                        <button className="close-modal" onClick={() => setShowModal(false)}>
+                            &times; {/* Close icon */}
+                        </button>
+                        <p>Are you sure you want to quit? Your results will not be saved.</p>
+                        <div className="modal-buttons">
+                            <button onClick={() => navigate('/menu')}>Yes</button>
+                            <button onClick={() => setShowModal(false)}>No</button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Show loading after Start is clicked, before game starts */}
             {isLoading && (

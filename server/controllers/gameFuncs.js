@@ -13,12 +13,17 @@ exports.GetPictures = async (req, res) => {
         const sql1 = "SELECT ImageReal, ImageFake FROM ImageInfo LIMIT 1000";
         let [result] = await pool.execute(sql1);
 
-        res.status(202).json( { "real": result, "fake": result } )
+        // Separate into two arrays: one for real images and one for fake images
+        const realImages = result.map(row => ({ ImageReal: row.ImageReal }));
+        const fakeImages = result.map(row => ({ ImageFake: row.ImageFake }));
+
+        res.status(200).json({ real: realImages, fake: fakeImages });
     } catch (error) {
         console.error("Error fetching photos:", error);
-        throw error;
+        res.status(500).json({ error: 'Error fetching photos' });
     }
-}
+};
+
 
 
 // Game results processing
