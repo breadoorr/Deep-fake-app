@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
+import Champ from "../asseta/images/little-dance.gif"; // Make sure this path is correct.
+
 import './Learning.css';
 
 export const Learning = () => {
@@ -135,13 +137,12 @@ export const Learning = () => {
                     letterSpacing: isSmallScreen ? "-0.6px" : "0px",
                     wordSpacing: isSmallScreen ? "-1.2px" : "0px"
                 }}>
-                    Positive Uses:
-                    - Entertainment
-                    - Education and Training
-
-                    Negative Uses:
-                    - Political Propaganda
-                    - Fake News
+                    Positive Uses:<br/>
+                    - Entertainment<br/>
+                    - Education and Training<br/><br/>
+                    Negative Uses:<br/>
+                    - Political Propaganda<br/>
+                    - Fake News<br/>
                     - Fraud
                 </p>
             )
@@ -411,6 +412,17 @@ export const Learning = () => {
                             <p style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
                                 Your Score: <strong>{score}/{questions.length}</strong>
                             </p>
+                                <img
+                                    src={Champ}
+                                    alt="Champion"
+                                    style={{
+                                        width: '200px',
+                                        marginBottom: '20px',
+                                        borderRadius: '10px',
+                                        display: 'block',
+                                        margin: '0 auto'
+                                    }}
+                                />
                             <button
                                 onClick={() => {
                                     setQuizStarted(false);
@@ -432,7 +444,6 @@ export const Learning = () => {
             </div>
 
             <Footer />
-            {/* Responsive Styles */}
             <style>
                 {`
                 @media (max-width: 800px) {
@@ -446,8 +457,6 @@ export const Learning = () => {
                         font-size: 0.9rem;
                     }
                 }
-
-             
                 `}
             </style>
         </>
