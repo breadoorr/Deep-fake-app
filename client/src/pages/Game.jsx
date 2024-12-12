@@ -3,6 +3,7 @@ import { Start } from "../components/Start";
 import Header from "../components/Header";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Confetti from "react-confetti";
 import "./Game.css";
 import axios from "axios";
 import { useUser } from "../context/UserContext";
@@ -23,6 +24,9 @@ export const Game = () => {
     const realImages = useRef([]);  // Store the images in useRef
     const fakeImages = useRef([]);  // Store the fake images in useRef
     const imagesLoaded = useRef(false); // Flag to track if images are loaded
+
+    const [showConfetti, setShowConfetti] = useState(false);
+
 
     const GameBodyStyle = {
         flex: 1,
@@ -148,7 +152,7 @@ export const Game = () => {
         return [];
     };
 
-    const [showModal, setShowModal] = useState(false);
+   git
 
 
     return (
@@ -263,17 +267,56 @@ export const Game = () => {
                     <p style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
                         Your Score: <strong>{score}/{pageNum}</strong>
                     </p>
+
+                    {/* Show Congrats Emoji and Confetti Trigger if Score > 8 */}
+                    {score >= 8 && (
+                        <div style={{ marginTop: "2rem" }}>
+                            <p style={{ fontSize: "1.2rem", color: "#4CAF50" }}>
+                                🎉 Congrats on a great score! Click the emoji to celebrate! 🎉
+                            </p>
+                            <button
+                                onClick={() => setShowConfetti(true)}
+                                style={{
+                                    fontSize: "2rem",
+                                    background: "none",
+                                    border: "none",
+                                    cursor: "pointer",
+                                    transition: "transform 0.3s ease",
+                                    marginTop: "1rem"
+                                }}
+                                onMouseEnter={(e) => (e.target.style.transform = "scale(1.2)")}
+                                onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+                                title="Click to celebrate!"
+                            >
+                                🎄
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Confetti Component */}
+                    {showConfetti && (
+                        <Confetti
+                            width={window.innerWidth}
+                            height={window.innerHeight}
+                            recycle={false}
+                            numberOfPieces={500}
+                            onConfettiComplete={() => setShowConfetti(false)}
+                        />
+                    )}
+
                     <button
                         onClick={() => {
                             setGameStarted(false);
                             setScore(0);
                             setPageNum(0);
                         }}
+                        style={{ marginTop: "2rem", padding: "1rem 2rem", background: "linear-gradient(45deg, #4CAF50, #32a852)", color: "#fff", border: "none", borderRadius: "5px", fontSize: "1rem", cursor: "pointer", transition: "all 0.3s" }}
                     >
                         Try Again
                     </button>
                 </div>
             )}
+
 
             <Footer />
         </>
