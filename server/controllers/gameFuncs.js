@@ -10,10 +10,10 @@ let gameScore = 0;     // In-game score
 // Pull a pair of pictures from a DB
 exports.GetPictures = async (req, res) => {
     try {
-        const sql1 = "SELECT ImageReal, ImageFake FROM ImageInfo LIMIT 100";
-        let result = await pool.execute(sql1);
+        const sql1 = "SELECT ImageReal, ImageFake FROM ImageInfo LIMIT 1000";
+        let [result] = await pool.execute(sql1);
 
-        res.status(202).json( { "real": result[0], "fake": result[0] } )
+        res.status(202).json( { "real": result, "fake": result } )
     } catch (error) {
         console.error("Error fetching photos:", error);
         throw error;

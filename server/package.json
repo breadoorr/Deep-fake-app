@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/index.test.js",
+    "dev": "nodemon index.js",
     "start": "node index.js"
   },
   "keywords": [],

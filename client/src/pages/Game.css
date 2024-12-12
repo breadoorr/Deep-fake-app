@@ -75,6 +75,27 @@ body {
     box-shadow: 0 0 10px rgba(0, 255, 128, 0.3);
 }
 
+.finish-button {
+    height: 48px;
+    padding: 0 2rem;
+    background: linear-gradient(45deg, #FF5722, #E53935);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finish-button:hover {
+    background: linear-gradient(45deg, #E53935, #FF5722);
+    transform: translateY(-2px);
+    transition: all 0.3s ease-in-out;
+}
+
 .score-container h2 {
     font-size: 1.2rem;
     color: #ccc;
@@ -129,5 +150,12 @@ body {
     .back-arrow-game {
         top: 3.5rem;
         left: 0.4rem;
+    }
+
+    .finish-button {
+        height: 40px;
+        width: 115px;
+        padding: 0 1.5rem;
+        font-size: 0.9rem;
     }
 }
