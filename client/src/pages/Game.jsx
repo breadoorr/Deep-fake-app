@@ -67,6 +67,7 @@ export const Game = () => {
     const [finalRounds, setFinalRounds] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [saved, setSaved] = useState(false);
 
     
 
@@ -161,7 +162,7 @@ export const Game = () => {
         setFinalScore(scoreRef.current);
         setFinalRounds(pageNumRef.current);
 
-        if (userId) {
+        if (userId && !saved) {
             try {
                 await axios.post('https://deep-fake-app.vercel.app/game/end', {
                     userId: userId,
@@ -169,6 +170,7 @@ export const Game = () => {
                     pageNum: pageNumRef.current
                 });
                 console.log('Stats saved successfully.');
+                setSaved(true);
             } catch (err) {
                 console.error('Error saving stats:', err);
             }
