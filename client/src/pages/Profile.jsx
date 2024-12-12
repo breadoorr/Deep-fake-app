@@ -32,7 +32,7 @@ export const Profile = () => {
         getProfile();
 
         if (gamesPlayed >= 1) {
-            setAccuracy(Math.floor((totalScore / questions) * 100));
+            setAccuracy(((totalScore / questions) * 100));
             
         }
     }, [getProfile]);
@@ -152,7 +152,7 @@ export const Profile = () => {
                         <div style={statItemStyle} className="accuracy-item">
                             <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Accuracy</h3>
                             <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#4CAF50' }}>
-                                {accuracy}%
+                                {Math.ceil(accuracy)}%
                             </p>
                         </div>
                     </div>

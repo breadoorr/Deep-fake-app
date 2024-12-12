@@ -20,6 +20,8 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUserId(null);
+    setUsername(null);
+    setUserImage(null);
   };
 
   return (

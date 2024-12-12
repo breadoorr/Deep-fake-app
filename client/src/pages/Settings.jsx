@@ -2,16 +2,18 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
+import { useUser } from "../context/UserContext";
 
 export const Settings = () => {
     const navigate = useNavigate();
     const [inputFocus, setInputFocus] = useState(false);
     const [saveButtonHover, setSaveButtonHover] = useState(false);
     const [signOutHover, setSignOutHover] = useState(false);
+    const {logout} = useUser();
 
-    const handleLogout = () => {
-
-    }
+    // const handleLogout = () => {
+    //     ();
+    // }
 
 
     useEffect(() => {
@@ -148,7 +150,7 @@ export const Settings = () => {
                 <h1 style={titleStyle}>Account Settings</h1>
                 <p style={paragraphStyle}>Update your username, email, or password below.</p>
                 <form id="settings-form">
-                    <div>
+                    {/* <div>
                         <label htmlFor="username" style={labelStyle}>
                             Change Username:
                         </label>
@@ -189,22 +191,22 @@ export const Settings = () => {
                             onFocus={() => setInputFocus(true)}
                             onBlur={() => setInputFocus(false)}
                         />
-                    </div>
-                    <button
+                    </div> */}
+                    {/* <button
                         type="submit"
                         style={buttonStyle}
                         onMouseEnter={() => setSaveButtonHover(true)}
                         onMouseLeave={() => setSaveButtonHover(false)}
                     >
                         Save Changes
-                    </button>
+                    </button> */}
                 </form>
                 <button
                     type="button"
                     style={signOutButtonStyle}
                     onMouseEnter={() => setSignOutHover(true)}
                     onMouseLeave={() => setSignOutHover(false)}
-                    onClick={handleLogout}
+                    onClick={logout()}
                 >
                     Sign Out
                 </button>
