@@ -72,7 +72,7 @@ export const Game = () => {
 
     const getImages = useCallback(async () => {
         try {
-            const response = await fetch('/images.json'); 
+            const response = await fetch('https://breadoorr.github.io/Deep-fake-app/images.json'); 
     
             if (!response.ok) {
                 console.error('Failed to fetch images.json:', response.status, response.statusText);
