@@ -212,9 +212,35 @@ body {
     color: #e53935;
 }
 
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-text {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.score-text span {
+    color: #4CAF50;
+}
 
 
 @media (max-width: 600px) {
+    .score-text {
+        font-size: 1rem;
+    }
+
+    .timer {
+        font-size: 1rem;
+    }
+    .timer i {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+
     .finish-button {
         height: 40px;
         width: 115px;

@@ -30,14 +30,27 @@ const Timer = ({ duration, isRunning, onTimeUp }) => {
     }, [isRunning, timeLeft, onTimeUp]);
 
     return (
-        <h2 style={{ 
-            fontSize: '1.5rem', 
-            color: timeLeft <= 5 ? '#FF0000' : '#F44336' 
-        }}>
-            Time Left: {timeLeft}s
+        <h2
+            className="timer"
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'rgba(0,0,0,0.5)',
+                padding: '0.8rem 1rem',
+                borderRadius: '8px',
+                color: timeLeft <= 5 ? '#FF0000' : '#4CAF50',
+                gap: '0.5rem',
+                boxShadow: '0 0 10px rgba(0, 255, 128, 0.3)'
+            }}
+        >
+            <i className="bi bi-clock"></i>
+            {timeLeft}s
         </h2>
     );
 };
+
+
 
 export const Game = () => {
     const navigate = useNavigate();
@@ -265,8 +278,8 @@ export const Game = () => {
             {gameState.gameStarted && !isLoading && (
                 <div className="game-container" style={styles.gameContainer}>
                     <div style={styles.scoreBar}>
-                        <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>
-                            Score: <span style={{ color: '#4CAF50' }}>{scoreRef.current}</span>
+                        <h2 className="score-text">
+                            Score: <span>{scoreRef.current}</span>
                         </h2>
                         {mode === 'regular' && (
                             <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>
