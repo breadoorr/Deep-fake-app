@@ -186,7 +186,6 @@
     transform: translateY(0);
 }
 
-/* Heading Transition */
 .content-section h2 {
     font-size: 2.5vh;
     color: #4CAF50;
@@ -197,14 +196,12 @@
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* Make heading visible */
 .content-section:focus-within h2,
 .content-section:hover h2 {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Paragraph Transition */
 .content-section p {
     font-size: 2vh;
     color: #ccc;
@@ -216,7 +213,6 @@
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
-/* Make paragraph visible */
 .content-section:focus-within p,
 .content-section:hover p {
     /*opacity: 1;*/
@@ -300,7 +296,7 @@
 }
 
 .mode p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #ccc;
     line-height: 1.5;
     max-width: 500px;

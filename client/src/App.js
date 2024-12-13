@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Landing } from './pages/Landing';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import NotFound from "./components/notFound";
 import Login from "./pages/Login";
 import {Profile} from "./pages/Profile";
 import {Leaderboard} from "./pages/Leaderboard";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/leader" element={<Leaderboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/notFound" element={<NotFound />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/game" element={<Game />} />

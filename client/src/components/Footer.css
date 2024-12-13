@@ -17,3 +17,9 @@
     margin: 0;
     padding: 0;
 }
+
+@media (max-width: 600px) {
+    .footer-copyright p {
+        font-size: 0.7rem;
+    }
+}

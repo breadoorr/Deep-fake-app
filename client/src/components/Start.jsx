@@ -14,20 +14,20 @@ export const Start = ( {mode, onButtonClick}) => {
                     { mode === 'regular' && (
                         <div className="start-header">
                             <h1>Welcome to Basic Mode </h1>
-                            <p>Get ready to explore and test your knowledge!</p>
+                            <p style={{lineHeight:"1.7rem"}}>Get ready to explore and test your knowledge!</p>
                         </div>
                     )}
                     { mode === 'infinite' && (
                         <div className="start-header">
                             <h1>Welcome to Infinite Mode</h1>
-                            <p>Endless gameplay awaits! Test your endurance.</p>
+                            <p style={{lineHeight:"1.7rem"}}>Endless gameplay awaits! Test your endurance.</p>
                         </div>
                     )}
 
                     { mode === 'timer' && (
                         <div className="start-header">
                             <h1>Welcome to Time Attack Mode</h1>
-                            <p>Race against the clock and beat your best time.</p>
+                            <p style={{lineHeight:"1.7rem"}}>Race against the clock and beat your best time.</p>
                         </div>
                     )}
 

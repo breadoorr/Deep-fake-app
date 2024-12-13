@@ -63,16 +63,16 @@ export const Landing = () => {
                     ref={setRef(1)}
                 >
                     <h2>Fighting Misinformation</h2>
-                    <p>Six students are raising awareness about deepfakes, revealing their impact on society.</p>
+                    <p style={{lineHeight: "1.3rem"}}>Six students are raising awareness about deepfakes, revealing their impact on society.</p>
 
                     <h2>Engaging for Awareness</h2>
-                    <p>The Deepfake Training Game boosts understanding of deepfake content through interactive play.</p>
+                    <p style={{lineHeight: "1.3rem"}}>The Deepfake Training Game boosts understanding of deepfake content through interactive play.</p>
 
                     <h2>How It Works</h2>
-                    <p>Players distinguish real from fake in dynamic scenarios, sharpening their critical skills.</p>
+                    <p style={{lineHeight: "1.3rem"}}>Players distinguish real from fake in dynamic scenarios, sharpening their critical skills.</p>
 
                     <h2>Why It Matters</h2>
-                    <p>Deepfake awareness is vital for everyone in today’s digital age.</p>
+                    <p style={{lineHeight: "1.3rem"}}>Deepfake awareness is vital for everyone in today’s digital age.</p>
                 </section>
 
                 <section
@@ -84,13 +84,13 @@ export const Landing = () => {
                     <h2>Choose Your Mode</h2>
                     <div className="mode">
                         <h3>Learning Mode</h3>
-                        <p>Explore the world of deepfakes. This mode provides tips and examples to help you identify
+                        <p style={{lineHeight: "1.7rem",  fontFamily: "'Space Mono', monospace"}}>Explore the world of deepfakes. This mode provides tips and examples to help you identify
                             manipulated content and understand common signs of fake images and videos.</p>
                         <button className="mode-btn" id="learning-mode" onClick={() => navigate('/learning')}>Let's Learn</button>
                     </div>
                     <div className="mode">
                         <h3>Play Mode</h3>
-                        <p>Put your skills to the test! Use your knowledge to spot fake content in real scenarios.</p>
+                        <p style={{lineHeight: "1.7rem", fontFamily: "'Space Mono', monospace"}}>Put your skills to the test! Use your knowledge to spot fake content in real scenarios.</p>
                         <button className="mode-btn" id="play-mode" onClick={() => navigate('/menu')}>Challenge Me</button>
                     </div>
                 </section>
@@ -135,10 +135,10 @@ export const Landing = () => {
                     <div className="footer-content">
                         <div className="contact-info">
                             <h3>Contact Us</h3>
-                            <p>If you have any questions, feel free to reach out to us at:</p>
-                            <p><strong>Email:</strong> <a
+                            <p style={{lineHeight: "1.3rem"}}>If you have any questions, feel free to reach out to us at:</p>
+                            <p style={{lineHeight: "1.3rem"}}><strong>Email:</strong> <a
                                 href="mailto:deepFakeProjectTeam@gmail.com">deepFakeProjectTeam@gmail.com</a></p>
-                            <p>We’ll get back to you as soon as possible!</p>
+                            <p style={{lineHeight: "1.3rem"}}>We’ll get back to you as soon as possible!</p>
                         </div>
                         <form className="contact-form">
                             <label htmlFor="contact-name">Name</label>
