@@ -65,7 +65,7 @@ const Login = ({ isOpen, onClose }) => {
             await axios.post('https://deep-fake-app.vercel.app/user/forgot-password', { email });
             alert('Password reset link sent! Check your email.');
             setIsForgotPassword(false);
-            clearError(); // Clear error after successful password reset
+            clearError();
         } catch (error) {
             console.error('Password reset failed:', error);
             setErrorMessage('Failed to send password reset link. Try again later.');
@@ -104,6 +104,15 @@ const Login = ({ isOpen, onClose }) => {
                             </div>
                         ) : isLoginMode ? (
                             <div id="login-form">
+                                <h2 style={{
+                                    fontSize: "1.4rem",
+                                    color: "#4CAF50",
+                                    marginTop: "0",
+                                    position: "relative",
+                                    top: "-20px"
+                                }}>
+                                    Login
+                                </h2>
                                 <input
                                     type="text"
                                     placeholder="Username"
@@ -125,12 +134,21 @@ const Login = ({ isOpen, onClose }) => {
                                     Don’t have an account?{' '}
                                     <a onClick={toggleMode}>Sign up here</a>
                                 </p>
-                                <p className="forgot-password-text">
-                                    <a onClick={toggleForgotPassword}>Forgot Password?</a>
-                                </p>
+                                {/*<p className="forgot-password-text">*/}
+                                {/*    <a onClick={toggleForgotPassword}>Forgot Password?</a>*/}
+                                {/*</p>*/}
                             </div>
                         ) : (
                             <div id="registration-form">
+                                <h2 style={{
+                                    fontSize: "1.4rem",
+                                    color: "#4CAF50",
+                                    marginTop: "0",
+                                    position: "relative",
+                                    top: "-20px"
+                                }}>
+                                    Register
+                                </h2>
                                 <input
                                     type="text"
                                     placeholder="Enter Username"

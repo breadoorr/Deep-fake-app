@@ -20,7 +20,7 @@ export const Menu = () => {
                     <h1 style={{fontSize: '2rem', marginBottom: '1rem', color: '#4CAF50'}}>
                         Choose Your Play Mode
                     </h1>
-                    <p style={{fontSize: '1.2rem', color: '#ccc', marginBottom: '3rem'}}>
+                    <p style={{fontSize: '1.2rem', color: '#ccc', marginBottom: '3rem',  lineHeight:"1.5rem"}}>
                         Select one of the modes below to start playing.
                     </p>
                     <div
@@ -34,7 +34,7 @@ export const Menu = () => {
                                 <i className="bi bi-book" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Learning Mode
                             </h2>
-                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem'}}>
+                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem', lineHeight:"1.5rem"}}>
                                 Learn to distinguish Real and Fake.
                             </p>
                             {/*<Link to="/learning" className="menu-mode-btn">*/}
@@ -45,9 +45,9 @@ export const Menu = () => {
                         <div className="menu-card" onClick={() => navigate('/game')}>
                             <h2 className="menu-h2">
                                 <i className="bi bi-controller" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
-                                Regular Mode
+                                Basic Mode
                             </h2>
-                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem'}}>
+                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem', lineHeight:"1.5rem"}}>
                                 Play the classic mode with standard rules.
                             </p>
                             {/*<Link to="/game" className="menu-mode-btn">*/}
@@ -61,7 +61,7 @@ export const Menu = () => {
                                 <i className="bi bi-infinity" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Infinite Mode
                             </h2>
-                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem'}}>
+                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem', lineHeight:"1.5rem"}}>
                                 Endless gameplay. Test your endurance!
                             </p>
                             {/*<button className="menu-mode-btn" onClick={() => console.log("infinite")}>Play</button>*/}
@@ -73,7 +73,7 @@ export const Menu = () => {
                                 <i className="bi bi-clock" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
                                 Time Attack
                             </h2>
-                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem'}}>
+                            <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem',  lineHeight:"1.5rem"}}>
                                 Race against the clock and beat your best time.
                             </p>
                             {/*<button className="menu-mode-btn">Play</button>*/}
