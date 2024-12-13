@@ -622,6 +622,12 @@ section:target, section:focus-visible, section:hover {
 }
 
 @media (max-width: 768px) {
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
 
     .content-section h2 {
         font-size: 1.5vh;
