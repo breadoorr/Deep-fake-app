@@ -60,10 +60,20 @@
     display: flex;
 }
 
+.play-mode-menu {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
 @media (max-width: 768px) {
     .menu-container .d-flex {
         flex-direction: column;
         gap: 3rem;
+    }
+
+    .play-mode-menu {
+        font-size: 1.7rem;
     }
 
     .menu-h2 {

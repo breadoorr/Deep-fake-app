@@ -17,10 +17,10 @@ export const Menu = () => {
                 {/* Main Content */}
                 <main className="menu-container d-flex w-screen">
 
-                    <h1 style={{fontSize: '2rem', marginBottom: '1rem', color: '#4CAF50'}}>
+                    <h1 className={"play-mode-menu"}>
                         Choose Your Play Mode
                     </h1>
-                    <p style={{fontSize: '1.2rem', color: '#ccc', marginBottom: '3rem',  lineHeight:"1.5rem"}}>
+                    <p style={{fontSize: '1.1rem', color: '#ccc', marginBottom: '3rem',  lineHeight:"1.5rem"}}>
                         Select one of the modes below to start playing.
                     </p>
                     <div
