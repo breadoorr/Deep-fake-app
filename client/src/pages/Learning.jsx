@@ -4,6 +4,9 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import Champ from "../asseta/images/little-dance.gif"; // Make sure this path is correct.
+import '@fontsource/roboto'; // Defaults to weight 400
+import '@fontsource/space-mono'; // Regular weight
+
 
 import './Learning.css';
 
@@ -18,6 +21,7 @@ export const Learning = () => {
     const [feedback, setFeedback] = useState("");
     const [showNext, setShowNext] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -93,6 +97,8 @@ export const Learning = () => {
             header: "Introduction to Deepfakes",
             content: (
                 <p style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: "1.4rem",
                     lineHeight: isSmallScreen ? "1.3" : "1.8",
                     letterSpacing: isSmallScreen ? "-0.6px" : "0px",
                     wordSpacing: isSmallScreen ? "-1.2px" : "0px"
@@ -102,7 +108,8 @@ export const Learning = () => {
                         href="https://www.britannica.com/technology/deepfake"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "#4CAF50", textDecoration: "none", marginLeft: "5px" }}
+                        style={{ color: "#4CAF50", textDecoration: "none", marginLeft: "5px", fontFamily: "'Space Mono', monospace",
+                            fontSize: "1.3rem" }}
                     >
                         Read more
                     </a>
@@ -113,16 +120,19 @@ export const Learning = () => {
             header: "How Deepfakes Are Made",
             content: (
                 <p style={{
+                    fontSize: "1.4rem",
                     lineHeight: isSmallScreen ? "1.3" : "1.8",
                     letterSpacing: isSmallScreen ? "-0.6px" : "0px",
-                    wordSpacing: isSmallScreen ? "-1.2px" : "0px"
+                    wordSpacing: isSmallScreen ? "-1.2px" : "0px",
+                    fontFamily: "'Space Mono', monospace",
                 }}>
                     Deepfakes use massive image and video datasets to train AI algorithms. To iteratively increase the realism of generated media, GANs use two networks: the discriminator, which detects fakes, and the generator, which produces fake content.
                     <a
                         href="https://spectrum.ieee.org/what-is-deepfake"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "#4CAF50", textDecoration: "none", marginLeft: "5px" }}
+                        style={{ color: "#4CAF50", textDecoration: "none", marginLeft: "5px", fontFamily: "'Space Mono', monospace",
+                            fontSize: "1.3rem" }}
                     >
                         Read more
                     </a>
@@ -133,6 +143,8 @@ export const Learning = () => {
             header: "Applications of Deepfakes",
             content: (
                 <p style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: "1.4rem",
                     lineHeight: isSmallScreen ? "1.3" : "1.8",
                     letterSpacing: isSmallScreen ? "-0.6px" : "0px",
                     wordSpacing: isSmallScreen ? "-1.2px" : "0px"
@@ -150,30 +162,21 @@ export const Learning = () => {
         {
             header: "How to Distinguish Deepfakes from Real Media",
             content: (
-                <ul
-                    style={{
-                        lineHeight: isSmallScreen ? "1.3" : "1.8",
-                        letterSpacing: isSmallScreen ? "-0.6px" : "0px",
-                        wordSpacing: isSmallScreen ? "-1.2px" : "0px",
-                        textAlign: "left",
-                        marginTop: "1rem",
-                        marginBottom: "1rem",
-                    }}
-                >
+                <ul className={"questionUL"}>
                     <li>
-                        <strong style={{ color: "#4CAF50" }}>Unnatural Details:</strong> Asymmetrical lighting, irregular expressions, or blinking.
+                        <strong style={{ color: "#4CAF50", fontFamily: "'Space Mono', monospace" }}>Unnatural Details:</strong> Asymmetrical lighting, irregular expressions, or blinking.
                     </li>
                     <li>
-                        <strong style={{ color: "#4CAF50" }}>Image Artifacts:</strong> Blurriness, pixelation, or odd face boundaries.
+                        <strong style={{ color: "#4CAF50", fontFamily: "'Space Mono', monospace" }}>Image Artifacts:</strong> Blurriness, pixelation, or odd face boundaries.
                     </li>
                     <li>
-                        <strong style={{ color: "#4CAF50" }}>Audio-Visual Mismatches:</strong> Lip movements not matching audio.
+                        <strong style={{ color: "#4CAF50", fontFamily: "'Space Mono', monospace" }}>Audio-Visual Mismatches:</strong> Lip movements not matching audio.
                     </li>
                     <li>
-                        <strong style={{ color: "#4CAF50" }}>Metadata Analysis:</strong> File properties showing editing.
+                        <strong style={{ color: "#4CAF50", fontFamily: "'Space Mono', monospace" }}>Metadata Analysis:</strong> File properties showing editing.
                     </li>
                     <li>
-                        <strong style={{ color: "#4CAF50" }}>Detection Tools:</strong> Use tools like Deepware Scanner or Microsoft's Video Authenticator.
+                        <strong style={{ color: "#4CAF50", fontFamily: "'Space Mono', monospace" }}>Detection Tools:</strong> Use tools like Deepware Scanner or Microsoft's Video Authenticator.
                     </li>
                 </ul>
             )
@@ -182,16 +185,19 @@ export const Learning = () => {
             header: "Ethical and Legal Implications",
             content: (
                 <p style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: "1.4rem",
                     lineHeight: isSmallScreen ? "1.3" : "1.8",
                     letterSpacing: isSmallScreen ? "-0.6px" : "0px",
-                    wordSpacing: isSmallScreen ? "-1.2px" : "0px"
+                    wordSpacing: isSmallScreen ? "-1.2px" : "0px",
                 }}>
                     Deepfakes present moral risks such as invasions of privacy, reputational harm, and cybercrime misuse. Although there are few legal restrictions, some areas demand the disclosure of AI content and prohibit detrimental usage.
                     <a
                         href="https://jme.bmj.com/content/early/2024/09/30/jme-2024-109985"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "#4CAF50", textDecoration: "none", marginLeft: "5px" }}
+                        style={{ color: "#4CAF50", textDecoration: "none", marginLeft: "5px", fontFamily: "'Space Mono', monospace",
+                            fontSize: "1.3rem" }}
                     >
                         Read more
                     </a>
@@ -228,7 +234,6 @@ export const Learning = () => {
     };
 
     const handleAnswer = (index) => {
-        // If user already answered, do nothing
         if (selectedOption !== null) return;
 
         setSelectedOption(index);
@@ -260,6 +265,7 @@ export const Learning = () => {
         textAlign: "center",
         lineHeight: "1.8",
         borderRadius: "10px",
+        fontFamily: "'Space Mono', monospace",
     };
 
     const quizButtonStyle = {
@@ -270,11 +276,12 @@ export const Learning = () => {
         color: "#fff",
         border: "1px solid #4CAF50",
         borderRadius: "5px",
-        fontSize: "1rem",
+        fontSize: "1.3rem",
         width: "100%",
         maxWidth: "300px",
         cursor: "pointer",
         transition: "background 0.3s",
+        fontFamily: "'Space Mono', monospace",
     };
 
     const buttonStyle = {
@@ -284,9 +291,10 @@ export const Learning = () => {
         color: "#fff",
         border: "none",
         borderRadius: "5px",
-        fontSize: "1rem",
+        fontSize: "1.2rem",
         cursor: "pointer",
         transition: "all 0.3s",
+        fontFamily: "'Space Mono', monospace",
     };
 
     const getOptionStyle = (index) => {
@@ -314,10 +322,10 @@ export const Learning = () => {
                 <div style={containerStyle}>
                     {!quizStarted && currentPage === 0 && (
                         <>
-                            <h1 style={{ fontSize: "1.5rem", marginBottom: "1.5rem", color: "#4CAF50" }}>
+                            <h1 style={{ fontSize: "2.1rem", marginBottom: "1.5rem", color: "#4CAF50", fontFamily: "'Space Mono', monospace",  }}>
                                 Understanding Deepfakes
                             </h1>
-                            <p style={{ marginBottom: "1rem", fontSize: "1.1rem", color: "#ddd" }}>
+                            <p style={{ marginBottom: "1rem", fontSize: "1.6rem", color: "#ddd",  fontFamily: "'Space Mono', monospace" }}>
                                 Deepfakes are AI-generated media that can alter reality.
                                 They can be used for both creative purposes and malicious intent.
                             </p>
@@ -329,7 +337,7 @@ export const Learning = () => {
 
                     { quizStarted && currentPage % 2 === 0 && (
                         <div>
-                            <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
+                            <h2 className={"quizTitle"}>
                                 {info[currentInfo].header}
                             </h2>
                             <div style={{fontSize: '1rem'}}>
@@ -366,13 +374,13 @@ export const Learning = () => {
                                         }}
                                     ></div>
                                 </div>
-                                <p style={{ color: "#fff", fontSize: "0.9rem", marginTop: "0.5rem" }}>
+                                <p style={{ color: "#fff", fontSize: "1.3rem", marginTop: "0.5rem", fontFamily: "'Space Mono', monospace",}}>
                                     Question {currentQuestion + 1} of {questions.length}
                                 </p>
                             </div>
 
 
-                            <h2 style={{fontSize: "1.5rem", marginBottom: "1rem"}}>
+                            <h2 className={"questionStyle"}>
                                 {questions[currentQuestion].question}
                             </h2>
                             <div style={{fontSize: '1rem'}}>
@@ -388,7 +396,7 @@ export const Learning = () => {
                                 ))}
                             </div>
                             {feedback && (
-                                <p style={{ marginTop: "1rem", fontSize: "1.2rem", color: feedback.includes("Correct") ? "#4CAF50" : "#E53935", animation: "fadeIn 1s ease-in-out" }}>
+                                <p className="feedback-learning" style={{ color: feedback.includes("Correct") ? "#4CAF50" : "#E53935", animation: "fadeIn 1s ease-in-out" }}>
                                     {feedback}
                                 </p>
                             )}
@@ -405,8 +413,14 @@ export const Learning = () => {
 
                     {!quizStarted && currentPage > 0 && (
                         <div>
-                            <Confetti />
-                            <h2 style={{ color: "#4CAF50", fontSize: "2rem", marginBottom: "1rem" }}>
+                            <Confetti
+                                style={{ width: '400px', height:"600px" }}
+                                particleSize={100} 
+                                numberOfPieces={250}
+                            />
+
+
+                            <h2 style={{ color: "#4CAF50", fontSize: "1.9rem", marginBottom: "1rem" }}>
                                 Quiz Completed!
                             </h2>
                             <p style={{ marginBottom: "1.5rem", fontSize: "1.2rem" }}>
@@ -444,21 +458,6 @@ export const Learning = () => {
             </div>
 
             <Footer />
-            <style>
-                {`
-                @media (max-width: 800px) {
-                    h1, h2 {
-                        font-size: 1.1rem;
-                    }
-                    p {
-                        font-size: 1rem;
-                    }
-                    button {
-                        font-size: 0.9rem;
-                    }
-                }
-                `}
-            </style>
         </>
     );
 };
