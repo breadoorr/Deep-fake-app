@@ -81,16 +81,16 @@ export const Landing = () => {
                     tabIndex="0"
                     ref={setRef(2)}
                 >
-                    <h2>Choose Your Mode</h2>
+                    <h2 className="choose-mode-name">Choose Your Mode</h2>
                     <div className="mode">
                         <h3>Learning Mode</h3>
-                        <p style={{lineHeight: "1.7rem",  fontFamily: "'Space Mono', monospace"}}>Explore the world of deepfakes. This mode provides tips and examples to help you identify
+                        <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace"}}>Explore the world of deepfakes. This mode provides tips and examples to help you identify
                             manipulated content and understand common signs of fake images and videos.</p>
                         <button className="mode-btn" id="learning-mode" onClick={() => navigate('/learning')}>Let's Learn</button>
                     </div>
                     <div className="mode">
                         <h3>Play Mode</h3>
-                        <p style={{lineHeight: "1.7rem", fontFamily: "'Space Mono', monospace"}}>Put your skills to the test! Use your knowledge to spot fake content in real scenarios.</p>
+                        <p style={{lineHeight: "1.5rem", fontFamily: "'Space Mono', monospace"}}>Put your skills to the test! Use your knowledge to spot fake content in real scenarios.</p>
                         <button className="mode-btn" id="play-mode" onClick={() => navigate('/menu')}>Challenge Me</button>
                     </div>
                 </section>
@@ -101,7 +101,7 @@ export const Landing = () => {
                     tabIndex="0"
                     ref={setRef(3)}
                 >
-                    <h2>Meet the Developer Team</h2>
+                    <h2 style={{marginBottom: "-30px"}}>Meet the Developer Team</h2>
                     <div className="team-members">
                         <div className="member">
                             <h3>Chystiakova Daria</h3>
@@ -136,9 +136,9 @@ export const Landing = () => {
                         <div className="contact-info">
                             <h3>Contact Us</h3>
                             <p style={{lineHeight: "1.3rem"}}>If you have any questions, feel free to reach out to us at:</p>
-                            <p style={{lineHeight: "1.3rem"}}><strong>Email:</strong> <a
+                            <p style={{lineHeight: "1.3rem"}}><strong>Email:</strong> <a className={"email"}
                                 href="mailto:deepFakeProjectTeam@gmail.com">deepFakeProjectTeam@gmail.com</a></p>
-                            <p style={{lineHeight: "1.3rem"}}>We’ll get back to you as soon as possible!</p>
+                            {/*<p style={{lineHeight: "1.3rem"}}>We’ll get back to you as soon as possible!</p>*/}
                         </div>
                         <form className="contact-form">
                             <label htmlFor="contact-name">Name</label>
