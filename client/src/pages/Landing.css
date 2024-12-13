@@ -587,7 +587,18 @@ section {
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
-    transition: opacity 0.5s, transform 0.5s ease;
+    /* Instead of overflow hidden here,
+       we rely on the inner container to manage overflow */
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.section-content {
+    /* Allow internal scrolling if content is too long */
+    overflow-y: auto;
+    max-height: 100%;
+    /* Optional: add some right padding to avoid overlapping scrollbar with text */
+    padding-right: 1rem;
 }
 
 section:not(.hero) {

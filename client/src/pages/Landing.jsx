@@ -62,17 +62,19 @@ export const Landing = () => {
                     tabIndex="0"
                     ref={setRef(1)}
                 >
-                    <h2>Fighting Misinformation</h2>
-                    <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>Six students are raising awareness about deepfakes, revealing their impact on society.</p>
+                    <div className="section-content">
+                        <h2>Fighting Misinformation</h2>
+                        <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>Six students are raising awareness about deepfakes, revealing their impact on society.</p>
 
-                    <h2>Engaging for Awareness</h2>
-                    <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>The Deepfake Training Game boosts understanding of deepfake content through interactive play.</p>
+                        <h2>Engaging for Awareness</h2>
+                        <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>The Deepfake Training Game boosts understanding of deepfake content through interactive play.</p>
 
-                    <h2>How It Works</h2>
-                    <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>Players distinguish real from fake in dynamic scenarios, sharpening their critical skills.</p>
+                        <h2>How It Works</h2>
+                        <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>Players distinguish real from fake in dynamic scenarios, sharpening their critical skills.</p>
 
-                    <h2>Why It Matters</h2>
-                    <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>Deepfake awareness is vital for everyone in today’s digital age.</p>
+                        <h2>Why It Matters</h2>
+                        <p style={{lineHeight: "1.5rem",  fontFamily: "'Space Mono', monospace", fontSize:"1.1rem"}}>Deepfake awareness is vital for everyone in today’s digital age.</p>
+                    </div>
                 </section>
 
                 <section
