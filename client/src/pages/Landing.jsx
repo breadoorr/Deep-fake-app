@@ -21,7 +21,7 @@ export const Landing = () => {
                 });
             },
             {
-                threshold: 1,
+                threshold: 0.9,
             }
         );
 

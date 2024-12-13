@@ -282,7 +282,7 @@ export const Game = () => {
                             Score: <span>{scoreRef.current}</span>
                         </h2>
                         {mode === 'regular' && (
-                            <h2 style={{ fontSize: '1.2rem', color: '#ccc' }}>
+                            <h2 className="score-text">
                                 Round: <span style={{ color: '#4CAF50' }}>{pageNumRef.current + 1}/10</span>
                             </h2>
                         )}
