@@ -13,7 +13,7 @@ export const Start = ( {mode, onButtonClick}) => {
             <div className="start-page">
                     { mode === 'regular' && (
                         <div className="start-header">
-                            <h1>Welcome to Basic Mode </h1>
+                            <h1>Welcome to Regular Mode </h1>
                             <p style={{lineHeight:"1.7rem"}}>Get ready to explore and test your knowledge!</p>
                         </div>
                     )}

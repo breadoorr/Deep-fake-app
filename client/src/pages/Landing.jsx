@@ -1,7 +1,8 @@
 import './Landing.css';
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import {useEffect, useRef} from "react";
+import emailjs from 'emailjs-com';
+
 
 
 
@@ -38,6 +39,21 @@ export const Landing = () => {
 
     const setRef = (index) => (el) => {
         sections.current[index] = el;
+    };
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_PUBLIC_KEY')
+            .then((result) => {
+                console.log(result.text);
+                alert("Message Sent Successfully!");
+            }, (error) => {
+                console.log(error.text);
+                alert("An error occurred. Please try again.");
+            });
+
+        e.target.reset();
     };
 
     return (
@@ -142,15 +158,16 @@ export const Landing = () => {
                                 href="mailto:deepFakeProjectTeam@gmail.com">deepFakeProjectTeam@gmail.com</a></p>
                             {/*<p style={{lineHeight: "1.3rem"}}>We’ll get back to you as soon as possible!</p>*/}
                         </div>
-                        <form className="contact-form">
+                        <form className="contact-form" onSubmit={sendEmail}>
                             <label htmlFor="contact-name">Name</label>
-                            <input type="text" id="contact-name" name="contact-name" placeholder="Your name" required/>
+                            <input type="text" id="contact-name" name="contact-name" placeholder="Your name" required />
+
                             <label htmlFor="contact-email">Email</label>
-                            <input type="email" id="contact-email" name="contact-email" placeholder="Your email"
-                                   required/>
+                            <input type="email" id="contact-email" name="contact-email" placeholder="Your email" required />
+
                             <label htmlFor="contact-message">Message</label>
-                            <textarea id="contact-message" name="contact-message" placeholder="Your message" rows="3"
-                                      required></textarea>
+                            <textarea id="contact-message" name="contact-message" placeholder="Your message" rows="3" required></textarea>
+
                             <button type="submit" className="contact-btn">Send Message</button>
                         </form>
                     </div>

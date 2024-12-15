@@ -45,7 +45,7 @@ export const Menu = () => {
                         <div className="menu-card" onClick={() => navigate('/game')}>
                             <h2 className="menu-h2">
                                 <i className="bi bi-controller" style={{marginRight: '0.5rem', fontSize: '1.8rem'}}></i>
-                                Basic Mode
+                                Regular Mode
                             </h2>
                             <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem', lineHeight:"1.5rem"}}>
                                 Play the classic mode with standard rules.
