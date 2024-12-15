@@ -1,7 +1,8 @@
 import './Landing.css';
 import Header from "../components/Header";
 import {useEffect, useRef} from "react";
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 
 
@@ -44,21 +45,49 @@ export const Landing = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_PUBLIC_KEY')
-            .then((result) => {
-                console.log(result.text);
-                alert("Message Sent Successfully!");
-            }, (error) => {
-                console.log(error.text);
-                alert("An error occurred. Please try again.");
-            });
+        emailjs
+            .sendForm(
+                'service_hym8mmi',
+                'template_i1qmvmu',
+                e.target,
+                'R5Jo42IXEdME8cq5Z'
+            )
+            .then(
+                (result) => {
+                    console.log('SUCCESS!', result.text);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Message Sent!',
+                        text: 'Thank you for reaching out. We will get back to you shortly!',
+                        confirmButtonColor: '#4CAF50',
+                        confirmButtonText: 'OK'
+                    });
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops!',
+                        text: 'Something went wrong. Please try again later.',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'Close'
+                    });
+                }
+            );
 
-        e.target.reset();
+        e.target.reset(); // Reset the form after submission
     };
 
     return (
         <div className="Landing">
             <Header />
+            <div id="customModal" className="modal-email">
+                <div className="modal-content-email">
+                    <span className="close-email">&times;</span>
+                    <h2>Message Sent!</h2>
+                    <p>Thank you for reaching out. We will get back to you shortly!</p>
+                </div>
+            </div>
             <div className="snap-wrapper">
                 <section
                     id="hero"
@@ -160,16 +189,35 @@ export const Landing = () => {
                         </div>
                         <form className="contact-form" onSubmit={sendEmail}>
                             <label htmlFor="contact-name">Name</label>
-                            <input type="text" id="contact-name" name="contact-name" placeholder="Your name" required />
+                            <input
+                                type="text"
+                                id="contact-name"
+                                name="from_name"
+                                placeholder="Your name"
+                                required
+                            />
 
                             <label htmlFor="contact-email">Email</label>
-                            <input type="email" id="contact-email" name="contact-email" placeholder="Your email" required />
+                            <input
+                                type="email"
+                                id="contact-email"
+                                name="from_email"
+                                placeholder="Your email"
+                                required
+                            />
 
                             <label htmlFor="contact-message">Message</label>
-                            <textarea id="contact-message" name="contact-message" placeholder="Your message" rows="3" required></textarea>
+                            <textarea
+                                id="contact-message"
+                                name="message"
+                                placeholder="Your message"
+                                rows="3"
+                                required
+                            ></textarea>
 
                             <button type="submit" className="contact-btn">Send Message</button>
                         </form>
+
                     </div>
                     <div className="landing-footer-copyright">
                         <p>&copy; 2024 Deepfake Awareness Team. All rights reserved.</p>
