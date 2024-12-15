@@ -49,7 +49,6 @@ export const Settings = () => {
     return (
         <>
             <Header />
-            {/* Back Arrow */}
             <a style={backArrowStyle} className="back-arrow" title="Go Back" onClick={() => navigate('/profile')}>
                 <i className="bi bi-arrow-left"></i>
             </a>

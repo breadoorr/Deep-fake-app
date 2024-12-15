@@ -22,7 +22,6 @@ export const Profile = () => {
 
     const getProfile = async () => {
         const user = await axios.post('https://deep-fake-app.vercel.app/user/getProfile', {userId}, {withCredentials: true})
-        // console.log(user.data.user[0]);  
         setTotalScore(user.data.user[0].TotalScore);
         setGamesPlayed(user.data.user[0].GamesPlayed);
         setQuestions(user.data.user[0].TotalQuestions);
@@ -113,12 +112,11 @@ export const Profile = () => {
         <>
             <Header />
             <main style={containerStyle}>
-                {/* Back Arrow */}
+
                 <a style={backArrowStyle} className="back-arrow" title="Go Back" onClick={() => navigate('/menu')}>
                     <i className="bi bi-arrow-left"></i>
                 </a>
 
-                {/* Settings Icon */}
                 <a style={settingsIconStyle} className="settings-icon" title="Account Settings" onClick={() => navigate('/settings')}>
                     <i className="bi bi-gear-fill"></i>
                 </a>

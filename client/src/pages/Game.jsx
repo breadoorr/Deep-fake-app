@@ -50,15 +50,12 @@ const Timer = ({ duration, isRunning, onTimeUp }) => {
     );
 };
 
-
-
 export const Game = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const mode = location.state?.mode || 'regular';
     const {userId} = useUser();
 
-    // Refs for mutable values
     const imagesRef = useRef([]);
     const scoreRef = useRef(0);
     const pageNumRef = useRef(0);
@@ -144,7 +141,6 @@ export const Game = () => {
                 imagesLoaded: true
             });
 
-            // Start timer for timer mode
             if (mode === 'timer') {
                 setTimerState({
                     isRunning: true,
@@ -215,7 +211,6 @@ export const Game = () => {
         // Randomize next round images
         currentRoundImagesRef.current = randomizeRoundImages();
 
-        // Force a small re-render to update UI
         setGameState(prev => ({ ...prev }));
     }, [mode, handleGameFinish, randomizeRoundImages]);
 
@@ -264,17 +259,14 @@ export const Game = () => {
                 </div>
             )}
 
-            {/* Show loading after Start is clicked, before game starts */}
             {isLoading && (
                 <LoadingScreen />
             )}
 
-            {/* Show Start screen if not loading, not started, and no final rounds */}
             {!isLoading && !gameState.gameStarted && finalRounds === 0 && (
                 <Start mode={mode} onButtonClick={handleGameStart} />
             )}
 
-            {/* Game Screen */}
             {gameState.gameStarted && !isLoading && (
                 <div className="game-container" style={styles.gameContainer}>
                     <div style={styles.scoreBar}>
@@ -336,7 +328,6 @@ export const Game = () => {
                 </div>
             )}
 
-            {/* Try Again Screen */}
             {!gameState.gameStarted && !isLoading && finalRounds > 0 && (
                 <div className="try-again-container" style={{ textAlign: 'center', marginTop: '100px', color: '#fff' }}>
                     <h2 style={{ color: "#4CAF50", fontSize: "2rem", marginBottom: "1rem" }}>

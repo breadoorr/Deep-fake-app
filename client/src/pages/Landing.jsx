@@ -75,7 +75,7 @@ export const Landing = () => {
                 }
             );
 
-        e.target.reset(); // Reset the form after submission
+        e.target.reset();
     };
 
     return (
@@ -185,7 +185,6 @@ export const Landing = () => {
                             <p style={{lineHeight: "1.3rem"}}>If you have any questions, feel free to reach out to us at:</p>
                             <p style={{lineHeight: "1.3rem"}}><strong>Email:</strong> <a className={"email"}
                                 href="mailto:deepFakeProjectTeam@gmail.com">deepFakeProjectTeam@gmail.com</a></p>
-                            {/*<p style={{lineHeight: "1.3rem"}}>We’ll get back to you as soon as possible!</p>*/}
                         </div>
                         <form className="contact-form" onSubmit={sendEmail}>
                             <label htmlFor="contact-name">Name</label>

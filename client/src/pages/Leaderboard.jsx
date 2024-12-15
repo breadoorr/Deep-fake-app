@@ -126,24 +126,6 @@ export const Leaderboard = () => {
                 </table>
             </main>
             <Footer />
-            <style>
-                {`
-                @media (max-width: 600px) {
-                    h1 {
-                        font-size: 1.5rem;
-                    }
-
-                    p {
-                        font-size: 0.9rem;
-                    }
-
-                    th, td {
-                        padding: 0.6rem;
-                        font-size: 0.8rem;
-                    }
-                }
-                `}
-            </style>
         </div>
     );
 };

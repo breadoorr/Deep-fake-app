@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import NotFound from "../components/notFound";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
-import Champ from "../asseta/images/little-dance.gif"; // Make sure this path is correct.
-import '@fontsource/roboto'; // Defaults to weight 400
-import '@fontsource/space-mono'; // Regular weight
+import Champ from "../asseta/images/little-dance.gif";
+import '@fontsource/roboto';
+import '@fontsource/space-mono';
 
 
 import './Learning.css';
@@ -281,7 +281,6 @@ export const Learning = () => {
         }
     };
 
-    /*** STYLES ***/
     const containerStyle = {
         padding: "2.5rem",
         maxWidth: "600px",

@@ -93,42 +93,26 @@ header {
   
 
 @media (max-width: 756px) {
-    /* Hide desktop navbar and show mobile menu button */
     #navbar {
         display: none;
     }
 
-    /* Show the mobile menu button only on screens <= 768px */
-
-    /*#mobile {*/
-    /*    display: flex;*/
-    /*    height: auto;*/
-    /*    justify-content: flex-end;*/
-    /*    !*padding: 0;*!*/
-    /*    padding-right: 1rem;*/
-    /*    color: #fff;*/
-    /*    font-size: 10vh;*/
-    /*    cursor: pointer;*/
-    /*}*/
-
     #mobile {
         display: flex;
-        align-items: center; /* Vertically center the icon */
-        justify-content: flex-end; /* Align to the right */
-        padding-right: 1rem; /* Add spacing from the right edge */
-        color: #fff; /* Keep the icon visible */
-        font-size: 2rem; /* Adjust the size of the icon */
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 1rem;
+        color: #fff;
+        font-size: 2rem;
         cursor: pointer;
-        height: 100%; /* Make it fit the navbar height */
+        height: 100%;
     }
 
     #mobile i {
         display: block;
-        line-height: 1; /* Reset line-height for precise alignment */
+        line-height: 1;
     }
 
-
-    /* Display navbar as a vertical menu when active */
     #navbar.active {
         display: flex;
         flex-direction: column;

@@ -2,7 +2,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {Link, Navigate, useNavigate} from "react-router-dom";
 import "./menu.css";
-// import {Navigation} from "../components/Navigation";
 
 export const Menu = () => {
     const navigate = useNavigate();
@@ -11,10 +10,6 @@ export const Menu = () => {
     return (
         <>
             <Header/>
-            {/* <Navigation /> */}
-
-
-                {/* Main Content */}
                 <main className="menu-container d-flex w-screen">
 
                     <h1 className={"play-mode-menu"}>
@@ -37,9 +32,6 @@ export const Menu = () => {
                             <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem', lineHeight:"1.5rem"}}>
                                 Learn to distinguish Real and Fake.
                             </p>
-                            {/*<Link to="/learning" className="menu-mode-btn">*/}
-                            {/*    Play*/}
-                            {/*</Link>*/}
                         </div>
                         {/* Regular Mode */}
                         <div className="menu-card" onClick={() => navigate('/game')}>
@@ -50,9 +42,6 @@ export const Menu = () => {
                             <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem', lineHeight:"1.5rem"}}>
                                 Play the classic mode with standard rules.
                             </p>
-                            {/*<Link to="/game" className="menu-mode-btn">*/}
-                            {/*    Play*/}
-                            {/*</Link>*/}
                         </div>
 
                         {/* Infinite Mode */}
@@ -64,7 +53,6 @@ export const Menu = () => {
                             <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem', lineHeight:"1.5rem"}}>
                                 Endless gameplay. Test your endurance!
                             </p>
-                            {/*<button className="menu-mode-btn" onClick={() => console.log("infinite")}>Play</button>*/}
                         </div>
 
                         {/* Timer Mode */}
@@ -76,7 +64,6 @@ export const Menu = () => {
                             <p style={{fontSize: '1rem', color: '#ddd', marginBottom: '2rem',  lineHeight:"1.5rem"}}>
                                 Race against the clock and beat your best time.
                             </p>
-                            {/*<button className="menu-mode-btn">Play</button>*/}
                         </div>
                     </div>
                 </main>

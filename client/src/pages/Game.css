@@ -179,7 +179,7 @@ body {
 }
 
 .modal-game button:first-child {
-    background: #e53935; /* Red for "Yes" */
+    background: #e53935;
     color: #fff;
 }
 
@@ -188,7 +188,7 @@ body {
 }
 
 .modal-game button:last-child {
-    background: #4caf50; /* Green for "No" */
+    background: #4caf50;
     color: #fff;
 }
 

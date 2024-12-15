@@ -134,9 +134,6 @@ const Login = ({ isOpen, onClose }) => {
                                     Don’t have an account?{' '}
                                     <a onClick={toggleMode}>Sign up here</a>
                                 </p>
-                                {/*<p className="forgot-password-text">*/}
-                                {/*    <a onClick={toggleForgotPassword}>Forgot Password?</a>*/}
-                                {/*</p>*/}
                             </div>
                         ) : (
                             <div id="registration-form">
