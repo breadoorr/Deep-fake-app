@@ -460,9 +460,12 @@ export const Learning = () => {
                         {!quizStarted && currentPage > 0 && (
                             <div>
                                 <Confetti
-                                    style={{width: '400px', height: "600px"}}
+
                                     particleSize={100}
                                     numberOfPieces={250}
+                                    width={window.innerWidth}
+                                    height={window.innerHeight}
+                                    // recycle={false}
                                 />
                                 <h2 style={{color: "#4CAF50", fontSize: "1.9rem", marginBottom: "1rem"}}>
                                     Quiz Completed!
