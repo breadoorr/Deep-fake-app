@@ -33,6 +33,7 @@ function App() {
           <Route path="/start" element={<Start />} />
           <Route path="/rules" element={<Rules />} />
           <Route path="/loading" element={<LoadingScreen />} />
+          <Route path="*" element={<NotFound />} />
       </Routes>
       </BrowserRouter>
       </UserProvider>
