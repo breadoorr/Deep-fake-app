@@ -5,7 +5,31 @@ import { useUser } from "../context/UserContext";
 
 export const Settings = () => {
     const navigate = useNavigate();
-    const { logout } = useUser();
+    const [inputFocus, setInputFocus] = useState(false);
+    const [saveButtonHover, setSaveButtonHover] = useState(false);
+    const [signOutHover, setSignOutHover] = useState(false);
+    const {logout} = useUser();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+
+    }
+
+
+    useEffect(() => {
+        document.body.style.backgroundColor = "#222";
+        document.body.style.color = "#fff";
+        document.body.style.backgroundColor = "#222";
+        document.body.style.color = "#fff";
+
+        return () => {
+            document.body.style.backgroundColor = "";
+            document.body.style.color = "";
+            document.body.style.backgroundColor = "";
+            document.body.style.color = "";
+        };
+    }, []);
 
     const containerStyle = {
         backgroundColor: "rgba(255, 255, 255, 0.1)",
@@ -57,7 +81,9 @@ export const Settings = () => {
                 <button
                     type="button"
                     style={signOutButtonStyle}
-                    onClick={logout}
+                    onMouseEnter={() => setSignOutHover(true)}
+                    onMouseLeave={() => setSignOutHover(false)}
+                    onClick={handleLogout}
                 >
                     Sign Out
                 </button>
