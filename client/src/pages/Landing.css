@@ -590,7 +590,7 @@ section {
 }
 
 .section-content {
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     max-height: 100%;
     padding-right: 1rem;
 }
